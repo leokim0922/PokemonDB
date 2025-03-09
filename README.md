@@ -1,2 +1,19 @@
-# project_template
-# Please include any additional information that will be useful to your TA in your README! Remember, your goal is to make it easy for your TA to give you points!
+# PokemonDB
+## Milestone 4 (TODO)
+- Database setup
+- tasks 1-8 denoted in "Pokemon ER - Milestone 3.pdf"
+
+## Milestone 3
+- Division of tasks (Frontend & Backend)
+- Project Timeline setup
+- IDE setup
+- Completion: March 7, 2025
+
+## Milestone 2
+- Relation Schema Design
+- Functional Dependencies & Normalization
+- Completion: March 2, 2025
+
+## Milestone 1
+- ER Diagram
+- Completion: Feb 10, 2025
