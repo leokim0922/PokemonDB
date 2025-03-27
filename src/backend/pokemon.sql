@@ -5,6 +5,7 @@ drop table EFFECT cascade constraints;
 drop table EVOLVESINTO cascade constraints;
 drop table GYM cascade constraints;
 drop table ITEM_OWNS cascade constraints;
+drop table ITEM_OWNS2 cascade constraints;
 drop table LEARNS cascade constraints;
 drop table LOCATION cascade constraints;
 drop table MOVE_ASSOCIATES1 cascade constraints;
@@ -186,11 +187,18 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		ON DELETE CASCADE
 	);
 
+	CREATE TABLE Item_Owns2(
+		ItemEffect VARCHAR2(200) PRIMARY KEY,
+		ItemType VARCHAR2(50)
+	);
+
 	CREATE TABLE Item_Owns(
 		ItemName VARCHAR2(30) PRIMARY KEY,
 		ItemEffect VARCHAR2(200),
-		ItemType VARCHAR2(50),
 		PokemonID INTEGER,
+		FOREIGN KEY (ItemEffect) REFERENCES
+		Item_Owns2(ItemEffect)
+		ON DELETE CASCADE,
 		FOREIGN KEY (PokemonID) REFERENCES
 		Pokemon(PokemonID)
 		ON DELETE SET NULL
@@ -579,35 +587,65 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		VALUES ('Blackthorn City', 'Johto');
 		
 	-- INSERT Item_Owns
-		INSERT INTO Item_Owns(ItemName, ItemEffect, ItemType, PokemonID)
-		VALUES ('Potion', 'Restores 20 HP', 'Healing', NULL);
+		INSERT INTO Item_Owns2
+		VALUES ('Restores 20 HP', 'Healing');
 
-		INSERT INTO Item_Owns(ItemName, ItemEffect, ItemType, PokemonID)
-		VALUES ('Super Potion', 'Restores 50 HP', 'Healing', NULL);
+		INSERT INTO Item_Owns
+		VALUES ('Potion', 'Restores 20 HP', NULL);
 
-		INSERT INTO Item_Owns(ItemName, ItemEffect, ItemType, PokemonID)
-		VALUES ('Hyper Potion', 'Restores 100 HP', 'Healing', NULL);
+		INSERT INTO Item_Owns2
+		VALUES ('Restores 50 HP', 'Healing');
 
-		INSERT INTO Item_Owns(ItemName, ItemEffect, ItemType, PokemonID)
-		VALUES('Fire Stone', 'Evolves Fire-type Pokemon', 'Evolution', 2);
+		INSERT INTO Item_Owns
+		VALUES ('Super Potion', 'Restores 50 HP', NULL);
 
-		INSERT INTO Item_Owns(ItemName, ItemEffect, ItemType, PokemonID)
-		VALUES ('Water Stone', 'Evolves Water-type Pokemon', 'Evolution', 3);
+		INSERT INTO Item_Owns2
+		VALUES ('Restores 100 HP', 'Healing');
 
-		INSERT INTO Item_Owns(ItemName, ItemEffect, ItemType, PokemonID)
-		VALUES ('Rare Candy', 'Increases level by one', 'Stat', NULL);
+		INSERT INTO Item_Owns
+		VALUES ('Hyper Potion', 'Restores 100 HP', NULL);
 
-		INSERT INTO Item_Owns(ItemName, ItemEffect, ItemType, PokemonID)
-		VALUES ('Awakening', 'Wakes up a sleeping pokemon', 'Medicine', NULL);
+		INSERT INTO Item_Owns2
+		VALUES ('Evolves Fire-type Pokemon', 'Evolution');
 
-		INSERT INTO Item_Owns(ItemName, ItemEffect, ItemType, PokemonID)
-		VALUES ('Poke Ball', 'Captures Pokemon', 'Pokeball', NULL);
+		INSERT INTO Item_Owns
+		VALUES('Fire Stone', 'Evolves Fire-type Pokemon', 2);
 
-		INSERT INTO Item_Owns(ItemName, ItemEffect, ItemType, PokemonID)
-		VALUES ('Great Ball', 'Better Captures Pokemon', 'Pokeball', NULL);
+		INSERT INTO Item_Owns2
+		VALUES ('Evolves Water-type Pokemon', 'Evolution');
 
-		INSERT INTO Item_Owns(ItemName, ItemEffect, ItemType, PokemonID)
-		VALUES ('Ultra Ball', 'Greatly Captures Pokemon', 'Pokeball', NULL);
+		INSERT INTO Item_Owns
+		VALUES ('Water Stone', 'Evolves Water-type Pokemon', 3);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Increases level by one', 'Stat');
+
+		INSERT INTO Item_Owns
+		VALUES ('Rare Candy', 'Increases level by one', NULL);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Wakes up a sleeping pokemon', 'Medicine');
+
+		INSERT INTO Item_Owns
+		VALUES ('Awakening', 'Wakes up a sleeping pokemon', NULL);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Captures Pokemon', 'Pokeball');
+
+		INSERT INTO Item_Owns
+		VALUES ('Poke Ball', 'Captures Pokemon', NULL);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Better Captures Pokemon', 'Pokeball');
+
+		INSERT INTO Item_Owns
+		VALUES ('Great Ball', 'Better Captures Pokemon', NULL);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Greatly Captures Pokemon', 'Pokeball');
+
+		INSERT INTO Item_Owns
+		VALUES ('Ultra Ball', 'Greatly Captures Pokemon', NULL);
 
 	-- INSERT Sells
 		INSERT INTO Sells(ItemName, LocationName, RegionName)
