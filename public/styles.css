@@ -114,6 +114,7 @@ input::placeholder, textarea::placeholder {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    max-width: 100%;
 }
 
 .body-container {
