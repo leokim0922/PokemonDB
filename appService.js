@@ -74,7 +74,7 @@ async function testOracleConnection() {
 
 async function fetchPokemonFromDb() {
     return await withOracleDB(async (connection) => {
-        const result = await connection.execute('SELECT p.pokemonid, p.pokemonname, b.typename, m.movename, a.abilityeffect  \n' +
+        const result = await connection.execute('SELECT DISTINCT p.pokemonid, p.pokemonname, b.typename, m.movename, a.abilityeffect  \n' +
             'FROM pokemon p, belongs b, possesses po, ability a, learns l, move_associates1 m\n' +
             'WHERE p.pokemonid = po.pokemonid and po.abilityid = a.abilityid and \n' +
             'p.pokemonid = b.pokemonid and p.pokemonid = l.pokemonid and l.moveid = m.moveid\n' +
@@ -85,7 +85,33 @@ async function fetchPokemonFromDb() {
     });
 }
 
+async function fetchTypeNameFromDb() {
+    return await withOracleDB(async (connection) => {
+        const result = await connection.execute('SELECT typename FROM type');
+        return result.rows;
+    }).catch(() => {
+        return [];
+    });
+}
+
+async function insertPokemon(id, description, name, type, moveID, abilityID) {
+    return await withOracleDB(async (connection) => {
+        const result = await connection.execute(
+            `BEGIN AddPokemonWithTypeAbilityLearns(id, description, name, type, moveID, abilityID); END; \n` +
+            '/',
+            [id, description, name, type, moveID, abilityID],
+            { autoCommit: true }
+        );
+
+        return result.rowsAffected && result.rowsAffected > 0;
+    }).catch(() => {
+        return false;
+    });
+}
+
 module.exports = {
     testOracleConnection,
-    fetchPokemonFromDb
+    fetchPokemonFromDb,
+    fetchTypeNameFromDb,
+    insertPokemon
 };

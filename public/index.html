@@ -50,19 +50,53 @@
 
 <br><hr><br> <!-- ========================================================================= -->
 
-<!--<h3> Add new Pokémon </h3>-->
-<!--<form id="insertPokemon">-->
+<h3> Add new Pokémon </h3>
+        <form id="insertPokemon">
+            <div>
+                <label for="insertId">ID:</label>
+                <input type="number" id="insertId" placeholder="Enter ID" required>
+            </div>
 
-<!--    <label for="insertId">ID:</label><input type="number" id="insertId" placeholder="Enter ID" required>-->
-<!--    Name: <input type="text" id="insertName" placeholder="Enter Name" maxlength="15">-->
-<!--    Description: <input type="text" id="insertDescription" placeholder="Enter Description" maxlength="200">-->
-<!--    Type: <input type="text" id="insertType" placeholder="Enter Type" maxlength="200">-->
+            <div>
+                <label for="insertName">Name:</label>
+                <input type="text" id="insertName" placeholder="Enter Name" maxlength="15">
+            </div>
 
-<!--    <button type="submit"> insert </button> <br>-->
-<!--</form>-->
-<!--<div id="insertResultMsg"></div>-->
+            <div>
+                <label for="insertDescription">Description:</label>
+                <input type="text" id="insertDescription" placeholder="Enter Description" maxlength="200">
+            </div>
 
-<!--<br><hr><br> &lt;!&ndash; ========================================================================= &ndash;&gt;-->
+            <div>
+                <label for="insertTypeName">Type:</label>
+                <select name="typename" id="insertTypeName">
+                    <option value="0">Select Type:</option>
+                </select>
+            </div>
+            <br>
+            <div>
+                <label for="insertMoveID">MoveID:</label>
+                <select name="MoveID" id="insertMoveID">
+                    <optgroup label="MoveIDs">
+                        <option value="0">Select MoveID:</option>
+                    </optgroup>
+                </select>
+            </div>
+            <br>
+            <div>
+                <label for="insertAbilityID">AbilityID:</label>
+                <select name="AbilityID" id="insertAbilityID">
+                    <optgroup label="AbilityIDs">
+                        <option value="0">Select AbilityID:</option>
+                    </optgroup>
+                </select>
+            </div>
+            <br>
+            <button type="submit">Insert</button>
+        </form>
+<div id="insertResultMsg"></div>
+
+<br><hr><br> <!-- ========================================================================= -->
 
 <!--<h2>Update Name in DemoTable</h2>-->
 <!--<p>The values are case sensitive and if you enter in the wrong case, the update statement will not do anything.</p>-->

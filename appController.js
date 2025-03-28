@@ -18,4 +18,20 @@ router.get('/pokemon', async (req, res) => {
     res.json({data: tableContent});
 });
 
+router.get('/typename', async (req, res) => {
+    const tableContent = await appService.fetchTypeNameFromDb();
+    res.json({data: tableContent});
+});
+
+//insert pokemon
+router.post("/insert-pokemon", async (req, res) => {
+    const { id, description, name, type, moveID, abilityID } = req.body;
+    const insertResult = await appService.insertPokemon(id, description, name, type, moveID, abilityID);
+    if (insertResult) {
+        res.json({ success: true });
+    } else {
+        res.status(500).json({ success: false });
+    }
+});
+
 module.exports = router;

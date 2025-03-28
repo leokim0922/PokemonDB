@@ -1,3 +1,94 @@
+// Fetches data from the pokemon table and displays it.
+async function fetchAndDisplayPokemon() {
+    const tableElement = document.getElementById('pokemon');
+    const tableBody = tableElement.querySelector('tbody');
+
+    const response = await fetch('/pokemon', {
+        method: 'GET'
+    });
+
+    const responseData = await response.json();
+    const pokemonContent = responseData.data;
+
+    // Always clear old, already fetched data before new fetching process.
+    if (tableBody) {
+        tableBody.innerHTML = '';
+    }
+
+    pokemonContent.forEach(pokemon => {
+        const row = tableBody.insertRow();
+        pokemon.forEach((field, index) => {
+            const cell = row.insertCell(index);
+            cell.textContent = field;
+        });
+    });
+}
+
+// Fetches typenames from Type table and become selection options.
+async function fetchAndPopulateTypeName() {
+    const selectElement  = document.getElementById('insertTypeName');
+
+    const response = await fetch('/typename', {
+        method: 'GET'
+    });
+
+    const responseData = await response.json();
+    const typenameContent = responseData.data;
+
+    // Always clear old, already fetched data before new fetching process.
+    if (selectElement) {
+        selectElement.innerHTML = `
+                <option value="0">Select Type:</option>
+        `;
+    }
+
+    typenameContent.forEach(typename => {
+        const option = document.createElement('option');
+        option.value = typename;  // Use ID as the value
+        option.textContent = typename; // Display type name
+        selectElement.appendChild(option);
+    });
+}
+
+// Inserts new pokemon
+async function insertPokemon(event) {
+    event.preventDefault();
+
+    const idValue = document.getElementById('insertId').value;
+    const nameValue = document.getElementById('insertName').value;
+    const descriptionValue = document.getElementById('insertDescription').value;
+    const typeNameValue = document.getElementById('insertTypeName').value;
+    const moveIDValue = document.getElementById('insertMoveID').value;
+    const abilityIDValue = document.getElementById('insertAbilityID').value;
+
+    const response = await fetch('/insert-pokemon', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: idValue,
+            description: descriptionValue,
+            name: nameValue,
+            type: typeNameValue,
+            moveID: moveIDValue,
+            abilityID: abilityIDValue
+        })
+    });
+
+    const responseData = await response.json();
+    const messageElement = document.getElementById('insertResultMsg');
+
+    if (responseData.success) {
+        messageElement.textContent = "Data inserted successfully!";
+        fetchTableData();
+    } else {
+        messageElement.textContent = "Error inserting data!";
+    }
+}
+
+
+// checks db connection
 async function checkDbConnection() {
     const statusElem = document.getElementById('dbStatus');
 
@@ -17,38 +108,14 @@ async function checkDbConnection() {
         });
 }
 
-// Fetches data from the pokemon table and displays it.
-async function fetchAndDisplayPokemon() {
-    const tableElement = document.getElementById('pokemon');
-    const tableBody = tableElement.querySelector('tbody');
-
-    const response = await fetch('/pokemon', {
-        method: 'GET'
-    });
-
-    const responseData = await response.json();
-    const pokemonContent = responseData.data;
-
-    // Always clear old, already fetched data before new fetching process.
-    if (tableBody) {
-        tableBody.innerHTML = '';
-    }
-
-    pokemonContent.forEach(user => {
-        const row = tableBody.insertRow();
-        user.forEach((field, index) => {
-            const cell = row.insertCell(index);
-            cell.textContent = field;
-        });
-    });
-}
-
 // ---------------------------------------------------------------
 // Initializes the webpage functionalities.
 // Add or remove event listeners based on the desired functionalities.
 window.onload = function() {
     checkDbConnection();
     fetchTableData();
+    fetchAndPopulateTypeName();
+    document.getElementById("insertPokemon").addEventListener("submit", insertPokemon);
 };
 
 // General function to refresh the displayed table data.
@@ -56,3 +123,4 @@ window.onload = function() {
 function fetchTableData() {
     fetchAndDisplayPokemon();
 }
+
