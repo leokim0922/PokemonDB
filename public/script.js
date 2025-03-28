@@ -28,7 +28,6 @@ async function fetchAndDisplayPokemon() {
 // Initializes the webpage functionalities.
 // Add or remove event listeners based on the desired functionalities.
 window.onload = function() {
-    checkDbConnection();
     fetchTableData();
 };
 
