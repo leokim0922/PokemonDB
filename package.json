@@ -4,9 +4,10 @@
   "description": "Node.js project for CPSC304.",
   "main": "server.js",
   "keywords": [],
-  "author": {
-    "name": "Zoe Yuan"
-  },
+  "contributors": [
+    { "name": "Alan Wang" },
+    { "name": "Maya Dong" }
+  ],
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
