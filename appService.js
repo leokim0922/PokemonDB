@@ -74,7 +74,11 @@ async function testOracleConnection() {
 
 async function fetchPokemonFromDb() {
     return await withOracleDB(async (connection) => {
-        const result = await connection.execute('SELECT * FROM POKEMON ORDER BY POKEMONID');
+        const result = await connection.execute('SELECT p.pokemonid, p.pokemonname, b.typename, e.condition, a.abilityeffect  \n' +
+            'FROM pokemon p, belongs b, possesses po, ability a, evolvesinto e\n' +
+            'WHERE p.pokemonid = po.pokemonid and po.abilityid = a.abilityid and \n' +
+            'p.pokemonid = b.pokemonid and e.preevolutionid = p.pokemonid\n' +
+            'ORDER BY p.pokemonid');
         return result.rows;
     }).catch(() => {
         return [];
