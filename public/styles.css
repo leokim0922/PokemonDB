@@ -1,22 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 /* GLOBAL STYLES */
+header {
+    background-color: #FFFFA9;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    border-radius: 15px 15px 15px 15px;
+    opacity: 1;
+    padding-bottom: 10px;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     padding: 40px;
     max-width: 800px;
     margin: auto;
     line-height: 1.6;
-    background-color: rgba(51, 170, 51, .1);
+    background-image: url('img/background2.jpg');
+    background-color: rgba(51, 170, 51);
     color: #313131;
+    opacity: 0.95;
 }
 
 h1 {text-align: center;
-    font-family: 'Pokemon Hollow', sans-serif;
+    /*font-family: 'Pokemon Hollow', sans-serif;*/
+    font-family: 'Press Start 2P', cursive;
     font-size: 60px;
-    border: 10px;}
+}
 
 h2 {text-align: center;
-    font-family: 'BobloxClassic', sans-serif;
-    font-size: 40px;}
+    font-family: 'Press Start 2P', cursive;
+    font-size: 40px;
+}
 
 hr {
     border-top: 2px solid rgb(44, 51, 62);
@@ -52,8 +67,8 @@ tr:hover {
 }
 
 button {
-    background-color: rgb(32, 107, 227);
-    color: #fff;
+    background-color: rgb(159, 255, 195);
+    color: #51F693;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
@@ -64,7 +79,7 @@ button {
 }
 
 button:hover {
-    background-color: rgb(22, 87, 207);
+    background-color: rgb(159, 255, 195);
 }
 
 button:active {
@@ -94,3 +109,46 @@ input::placeholder, textarea::placeholder {
     vertical-align: middle;
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.body-container {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 15px 15px 15px 15px;
+    padding: 10px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/*Obtained from https://getcssscan.com/css-buttons-examples by Temani Afif*/
+.button-89 {
+    --b: 3px;   /* border thickness */
+    --s: .45em; /* size of the corner */
+    --color: #373B44;
+    padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+    color: var(--color);--_p: var(--s);
+    background:conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+    outline: var(--b) solid #0000;outline-offset: .6em;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    border: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-89:hover,.button-89:focus-visible{
+    --_p: 0px;
+    outline-color: var(--color);
+    outline-offset: .05em;
+}
+
+.button-89:active {
+    background: var(--color);
+    color: #fff;
+}
