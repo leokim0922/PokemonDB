@@ -2,9 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title!!</title>
+    <!-- This meta tag ensures that the website renders correctly across different device sizes,
+    enhancing mobile responsiveness. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.cdnfonts.com/css/pokemon-hollow" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/bobloxclassic" rel="stylesheet">
+    <title>Pokémon Database</title>
 </head>
+
 <body>
 
+<h1> Pokémon Database</h1>
+
+<!-- Show 'pokemon' table.
+    Data will be fetched and inserted here dynamically using JavaScript. -->
+<h2>Pokédex</h2>
+<table id="pokemon">
+    <thead>
+    <tr>
+        <!--Table head, need to be adjusted accordingly to align with your own.-->
+        <th style="width:5%">No.</th>
+        <th style="width:20%">Pokémon</th>
+        <th style="width:10%">Type</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<br><hr><br> <!-- ========================================================================= -->
+
+<h3> Add new Pokémon </h3>
+<form id="insertPokemon">
+
+    <label for="insertId">ID:</label><input type="number" id="insertId" placeholder="Enter ID" required>
+    Name: <input type="text" id="insertName" placeholder="Enter Name" maxlength="15">
+    Description: <input type="text" id="insertDescription" placeholder="Enter Description" maxlength="200">
+    Type: <input type="text" id="insertType" placeholder="Enter Type" maxlength="200">
+
+    <button type="submit"> insert </button> <br>
+</form>
+<div id="insertResultMsg"></div>
+
+<br><hr><br> <!-- ========================================================================= -->
+
+<h2>Update Name in DemoTable</h2>
+<p>The values are case sensitive and if you enter in the wrong case, the update statement will not do anything.</p>
+<form id="updataNameDemotable">
+    Old Name: <input type="text" id="updateOldName" placeholder="Enter Old Name" required> <br><br>
+    New Name: <input type="text" id="updateNewName" placeholder="Enter New Name" maxlength="20"> <br><br>
+
+    <button type="submit"> update </button> <br>
+</form>
+<!-- A placeholder to display messages related to the update operation. -->
+<div id="updateNameResultMsg"></div>
+
+<br><hr><br> <!-- ========================================================================= -->
+
+<h2>Count the Tuples in DemoTable</h2>
+<button id="countDemotable"> count </button> <br><br>
+<!-- A placeholder to display the count result. -->
+<div id="countResultMsg"></div> <br>
+
+<br><hr><br> <!-- ========================================================================= -->
+
+<button id="resetDemotable"> reset </button> <br>
+<!-- A placeholder to display messages related to the reset operation. -->
+<div id="resetResultMsg"></div>
+
+<!-- ===================================================================================== -->
+<!-- External JavaScript file that contains the functionality/logic for the operations above. -->
+<script src="scripts.js"></script>
 </body>
 </html>
