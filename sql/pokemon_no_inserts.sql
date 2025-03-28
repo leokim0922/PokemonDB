@@ -24,8 +24,8 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 	CREATE TABLE Pokemon (
 		PokemonID INTEGER PRIMARY KEY,
-		PokemonDescription VARCHAR2(200),
-		PokemonName VARCHAR2(15) UNIQUE
+		PokemonName VARCHAR2(15) UNIQUE,
+		PokemonDescription VARCHAR2(200)
 	);
 
 	CREATE TABLE Type(

@@ -64,6 +64,14 @@ async function withOracleDB(action) {
 }
 
 // Core functions for database operations
+async function testOracleConnection() {
+    return await withOracleDB(async (connection) => {
+        return true;
+    }).catch(() => {
+        return false;
+    });
+}
+
 async function fetchPokemonFromDb() {
     return await withOracleDB(async (connection) => {
         const result = await connection.execute('SELECT * FROM POKEMON');
@@ -74,5 +82,6 @@ async function fetchPokemonFromDb() {
 }
 
 module.exports = {
+    testOracleConnection,
     fetchPokemonFromDb
 };

@@ -393,7 +393,7 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(3, 'Venusaur is a large, quadrupedal Pokémon with a turquoise body.',
+			AddPokemonWithTypeAbilityLearns(3, 'Venusaur is a large, quadrupedal Pokemon with a turquoise body.',
 			'Venusaur', 'Grass', 201, 103);
 		END;
 		/
