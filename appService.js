@@ -96,7 +96,7 @@ async function fetchTypeNameFromDb() {
 
 async function fetchMoveIDFromDb() {
     return await withOracleDB(async (connection) => {
-        const result = await connection.execute('SELECT moveid FROM moveassociates_1');
+        const result = await connection.execute('SELECT moveid FROM move_associates1');
         return result.rows;
     }).catch(() => {
         return [];
