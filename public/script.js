@@ -1,8 +1,3 @@
-function fetchTableData() {
-    fetchAndDisplayPokemon();
-}
-
-
 // Fetches data from the pokemon table and displays it.
 async function fetchAndDisplayPokemon() {
     const tableElement = document.getElementById('pokemon');
@@ -27,4 +22,18 @@ async function fetchAndDisplayPokemon() {
             cell.textContent = field;
         });
     });
+}
+
+// ---------------------------------------------------------------
+// Initializes the webpage functionalities.
+// Add or remove event listeners based on the desired functionalities.
+window.onload = function() {
+    checkDbConnection();
+    fetchTableData();
+};
+
+// General function to refresh the displayed table data.
+// Invoke this after any table-modifying operation to keep consistency.
+function fetchTableData() {
+    fetchAndDisplayPokemon();
 }
