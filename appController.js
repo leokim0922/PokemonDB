@@ -23,6 +23,16 @@ router.get('/typename', async (req, res) => {
     res.json({data: tableContent});
 });
 
+router.get('/moveid', async (req, res) => {
+    const tableContent = await appService.fetchMoveIDFromDb();
+    res.json({data: tableContent});
+});
+
+router.get('/abilityid', async (req, res) => {
+    const tableContent = await appService.fetchAbilityIDFromDb();
+    res.json({data: tableContent});
+});
+
 //insert pokemon
 router.post("/insert-pokemon", async (req, res) => {
     const { id, description, name, type, moveID, abilityID } = req.body;

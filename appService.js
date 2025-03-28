@@ -94,6 +94,24 @@ async function fetchTypeNameFromDb() {
     });
 }
 
+async function fetchMoveIDFromDb() {
+    return await withOracleDB(async (connection) => {
+        const result = await connection.execute('SELECT moveid FROM moveassociates_1');
+        return result.rows;
+    }).catch(() => {
+        return [];
+    });
+}
+
+async function fetchAbilityIDFromDb() {
+    return await withOracleDB(async (connection) => {
+        const result = await connection.execute('SELECT abilityid FROM ability');
+        return result.rows;
+    }).catch(() => {
+        return [];
+    });
+}
+
 async function insertPokemon(id, description, name, type, moveID, abilityID) {
     return await withOracleDB(async (connection) => {
         const result = await connection.execute(
@@ -113,5 +131,7 @@ module.exports = {
     testOracleConnection,
     fetchPokemonFromDb,
     fetchTypeNameFromDb,
+    fetchMoveIDFromDb,
+    fetchAbilityIDFromDb,
     insertPokemon
 };

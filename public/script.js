@@ -50,6 +50,58 @@ async function fetchAndPopulateTypeName() {
     });
 }
 
+// Fetches MoveID from Move table and become selection options.
+async function fetchAndPopulateMoveID() {
+    const selectElement  = document.getElementById('insertMoveID');
+
+    const response = await fetch('/moveid', {
+        method: 'GET'
+    });
+
+    const responseData = await response.json();
+    const moveIDContent = responseData.data;
+
+    // Always clear old, already fetched data before new fetching process.
+    if (selectElement) {
+        selectElement.innerHTML = `
+                <option value="0">Select Type:</option>
+        `;
+    }
+
+    moveIDContent.forEach(moveid => {
+        const option = document.createElement('option');
+        option.value = moveid;  // Use ID as the value
+        option.textContent = moveid; // Display type name
+        selectElement.appendChild(option);
+    });
+}
+
+// Fetches AbilityID from Ability table and become selection options.
+async function fetchAndPopulateAbilityID() {
+    const selectElement  = document.getElementById('insertAbilityID');
+
+    const response = await fetch('/abilityid', {
+        method: 'GET'
+    });
+
+    const responseData = await response.json();
+    const abilityIDContent = responseData.data;
+
+    // Always clear old, already fetched data before new fetching process.
+    if (selectElement) {
+        selectElement.innerHTML = `
+                <option value="0">Select Type:</option>
+        `;
+    }
+
+    abilityIDContent.forEach(abilityID => {
+        const option = document.createElement('option');
+        option.value = abilityID;  // Use ID as the value
+        option.textContent = abilityID; // Display type name
+        selectElement.appendChild(option);
+    });
+}
+
 // Inserts new pokemon
 async function insertPokemon(event) {
     event.preventDefault();
@@ -115,6 +167,8 @@ window.onload = function() {
     checkDbConnection();
     fetchTableData();
     fetchAndPopulateTypeName();
+    fetchAndPopulateMoveID();
+    fetchAndPopulateAbilityID();
     document.getElementById("insertPokemon").addEventListener("submit", insertPokemon);
 };
 
