@@ -1,3 +1,22 @@
+async function checkDbConnection() {
+    const statusElem = document.getElementById('dbStatus');
+
+    const response = await fetch('/check-db-connection', {
+        method: "GET"
+    });
+
+    // Display the statusElem's text in the placeholder.
+    statusElem.style.display = 'inline';
+
+    response.text()
+        .then((text) => {
+            statusElem.textContent = text;
+        })
+        .catch((error) => {
+            statusElem.textContent = 'connection timed out';  // Adjust error handling if required.
+        });
+}
+
 // Fetches data from the pokemon table and displays it.
 async function fetchAndDisplayPokemon() {
     const tableElement = document.getElementById('pokemon');
@@ -28,6 +47,7 @@ async function fetchAndDisplayPokemon() {
 // Initializes the webpage functionalities.
 // Add or remove event listeners based on the desired functionalities.
 window.onload = function() {
+    checkDbConnection();
     fetchTableData();
 };
 
