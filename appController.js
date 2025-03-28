@@ -9,3 +9,4 @@ router.get('/pokemon', async (req, res) => {
     res.json({data: tableContent});
 });
 
+module.exports = router;
