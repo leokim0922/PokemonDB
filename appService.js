@@ -139,10 +139,10 @@ async function insertPokemon(id, description, name, type, abilityID, moveID) {
             return false;
         }
         const result = await connection.execute(
-            `INSERT INTO Pokemon VALUES (:id, :name, :description); \n` +
-            `INSERT INTO Belongs VALUES (:id, :type); \n` +
-            `INSERT INTO Possesses VALUES (:id, :abilityID); \n` +
-            `INSERT INTO Learns VALUES (:id, :moveID); \n`,
+            `INSERT INTO Pokemon(PokemonID, PokemonName, PokemonDescription) VALUES (:id, :name, :description); \n` +
+            `INSERT INTO Belongs(PokemonID, TypeName) VALUES (:id, :type); \n` +
+            `INSERT INTO Possesses(PokemonID, AbilityID) VALUES (:id, :abilityID); \n` +
+            `INSERT INTO Learns(PokemonID, MoveID) VALUES (:id, :moveID); \n`,
             [id, name, description, type, abilityID, moveID],
             { autoCommit: true }
         );
