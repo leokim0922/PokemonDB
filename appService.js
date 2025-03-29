@@ -114,11 +114,37 @@ async function fetchAbilityIDFromDb() {
 
 async function insertPokemon(id, description, name, type, abilityID, moveID) {
     return await withOracleDB(async (connection) => {
+        const checkType = await connection.execute(
+            `SELECT COUNT(*)
+             FROM Type
+             WHERE TypeName = :type`);
+        if (checkType < 1) {
+            console.log('TypeName does not exist.');
+            return false;
+        }
+        const checkAbility = await connection.execute(
+            `SELECT COUNT(*)
+             FROM Ability
+             WHERE AbilityID = :abilityID`);
+        if (checkAbility < 1) {
+            console.log('Ability does not exist.');
+            return false;
+        }
+        const checkMove = await connection.execute(
+            `SELECT COUNT(*)
+             FROM Move_Associates1
+             WHERE MoveID = :moveID`);
+        if (checkMove < 1) {
+            console.log('Move does not exist.');
+            return false;
+        }
         const result = await connection.execute(
-            `BEGIN
-                AddPokemonWithTypeAbilityLearns(:id, :description, :name, :type, :abilityID, :moveID);
-            END;`,
-            {id, description, name, type, abilityID, moveID}
+            `INSERT INTO Pokemon VALUES (:id, :name, :description); \n` +
+            `INSERT INTO Belongs VALUES (:id, :type); \n` +
+            `INSERT INTO Possesses VALUES (:id, :abilityID); \n` +
+            `INSERT INTO Learns VALUES (:id, :moveID); \n`,
+            [id, name, description, type, abilityID, moveID],
+            { autoCommit: true }
         );
 
         return result.rowsAffected && result.rowsAffected > 0;
