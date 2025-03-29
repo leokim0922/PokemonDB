@@ -33,11 +33,27 @@ router.get('/abilityid', async (req, res) => {
     res.json({data: tableContent});
 });
 
+router.get('/pokemonid', async (req, res) => {
+    const tableContent = await appService.fetchPokemonIDFromDb();
+    res.json({data: tableContent});
+});
+
 //insert pokemon
 router.post("/insert-pokemon", async (req, res) => {
     const { pokemonid, pokemondescription, pokemonname, typename, abilityID, moveID } = req.body;
     const insertResult = await appService.insertPokemon(pokemonid, pokemondescription, pokemonname, typename, abilityID, moveID);
     if (insertResult) {
+        res.json({ success: true });
+    } else {
+        res.status(500).json({ success: false });
+    }
+});
+
+//delete pokemon
+router.post("/delete-pokemon", async (req, res) => {
+    const { pokemonid } = req.body;
+    const deleteResult = await appService.deletePokemon(pokemonid);
+    if (deleteResult) {
         res.json({ success: true });
     } else {
         res.status(500).json({ success: false });

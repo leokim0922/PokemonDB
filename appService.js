@@ -116,6 +116,16 @@ async function fetchAbilityIDFromDb() {
     });
 }
 
+// SELECT FROM DATABASE
+async function fetchPokemonIDFromDb() {
+    return await withOracleDB(async (connection) => {
+        const result = await connection.execute('SELECT pokemonid FROM Pokemon');
+        return result.rows;
+    }).catch(() => {
+        return [];
+    });
+}
+
 //INSERTING INTO DATABASE
 async function insertPokemon(id, description, name, type, abilityID, moveID) {
     return await withOracleDB(async (connection) => {
@@ -182,6 +192,19 @@ async function insertPokemon(id, description, name, type, abilityID, moveID) {
     });
 }
 
+//DELETE POKEMON FROM DATABASE
+async function deletePokemon(id) {
+    return await withOracleDB(async (connection) => {
+          await connection.execute(
+            `DELETE FROM Pokemon p WHERE p.pokemonid = :id`);
+
+        await connection.commit();
+        return true;
+    }).catch((err) => {
+        console.error(err);
+        return false;
+    });
+}
 
 module.exports = {
     testOracleConnection,
@@ -189,5 +212,7 @@ module.exports = {
     fetchTypeNameFromDb,
     fetchMoveIDFromDb,
     fetchAbilityIDFromDb,
+    fetchPokemonIDFromDb,
+    deletePokemon,
     insertPokemon
 };

@@ -102,6 +102,32 @@ async function fetchAndPopulateAbilityID() {
     });
 }
 
+// Fetches PokemonID from Pokemon table and become selection options.
+async function fetchAndPopulatePokemonID() {
+    const selectElement  = document.getElementById('deletePokemon');
+
+    const response = await fetch('/pokemonid', {
+        method: 'GET'
+    });
+
+    const responseData = await response.json();
+    const PokemonIDContent = responseData.data;
+
+    // Always clear old, already fetched data before new fetching process.
+    if (selectElement) {
+        selectElement.innerHTML = `
+                <option value="0">Select PokemonID:</option>
+        `;
+    }
+
+    PokemonIDContent.forEach(PokemonID => {
+        const option = document.createElement('option');
+        option.value = PokemonID;  // Use ID as the value
+        option.textContent = PokemonID; // Display type name
+        selectElement.appendChild(option);
+    });
+}
+
 // Inserts new pokemon
 async function insertPokemon(event) {
     event.preventDefault();
@@ -125,6 +151,33 @@ async function insertPokemon(event) {
             typename: typeNameValue,
             abilityID: abilityIDValue,
             moveID: moveIDValue
+        })
+    });
+
+    const responseData = await response.json();
+    const messageElement = document.getElementById('insertResultMsg');
+
+    if (responseData.success) {
+        messageElement.textContent = "Data inserted successfully!";
+        fetchTableData();
+    } else {
+        messageElement.textContent = "Error inserting data!";
+    }
+}
+
+// deletes pokemon by ID
+async function deletePokemon(event) {
+    event.preventDefault();
+
+    const idValue = document.getElementById('deletePokemon').value;
+
+    const response = await fetch('/delete-pokemon', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            pokemonid: idValue
         })
     });
 
@@ -169,12 +222,15 @@ window.onload = function() {
     fetchAndPopulateTypeName();
     fetchAndPopulateMoveID();
     fetchAndPopulateAbilityID();
+    fetchAndPopulatePokemonID()
     document.getElementById("insertPokemon").addEventListener("submit", insertPokemon);
+    document.getElementById("deletePokemon").addEventListener("submit", deletePokemon);
 };
 
 // General function to refresh the displayed table data.
 // Invoke this after any table-modifying operation to keep consistency.
 function fetchTableData() {
     fetchAndDisplayPokemon();
+    fetchAndPopulatePokemonID()
 }
 

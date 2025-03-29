@@ -48,9 +48,9 @@
             </tbody>
         </table>
 
-<br><hr><br> <!-- ========================================================================= -->
+        <br><hr><br> <!-- ========================================================================= -->
 
-<h3> Add new Pokémon </h3>
+        <h3> Add new Pokémon </h3>
         <form id="insertPokemon">
             <div>
                 <label for="insertId">ID:</label>
@@ -91,33 +91,19 @@
             <button type="submit">Insert</button>
         </form>
         <br>
-<div id="insertResultMsg"></div>
+        <div id="insertResultMsg"></div>
 
-<br><hr><br> <!-- ========================================================================= -->
+        <hr><br> <!-- ========================================================================= -->
 
-<!--<h2>Update Name in DemoTable</h2>-->
-<!--<p>The values are case sensitive and if you enter in the wrong case, the update statement will not do anything.</p>-->
-<!--<form id="updataNameDemotable">-->
-<!--    Old Name: <input type="text" id="updateOldName" placeholder="Enter Old Name" required> <br><br>-->
-<!--    New Name: <input type="text" id="updateNewName" placeholder="Enter New Name" maxlength="20"> <br><br>-->
+        <h3> Delete Pokémon </h3>
+        <label for="deletePokemon">Delete Pokemon:</label>
+        <select name="pokemonID" id="deletePokemon">
+            <option value="0">Select PokemonID:</option>
+        </select>
+        <br><br>
+        <button type="submit">Delete</button>
 
-<!--    <button type="submit"> update </button> <br>-->
-<!--</form>-->
-<!--&lt;!&ndash; A placeholder to display messages related to the update operation. &ndash;&gt;-->
-<!--<div id="updateNameResultMsg"></div>-->
-
-<!--<br><hr><br> &lt;!&ndash; ========================================================================= &ndash;&gt;-->
-
-<!--<h2>Count the Tuples in DemoTable</h2>-->
-<!--<button id="countDemotable"> count </button> <br><br>-->
-<!--&lt;!&ndash; A placeholder to display the count result. &ndash;&gt;-->
-<!--<div id="countResultMsg"></div> <br>-->
-
-<!--<br><hr><br> &lt;!&ndash; ========================================================================= &ndash;&gt;-->
-
-<!--<button id="resetDemotable"> reset </button> <br>-->
-<!--&lt;!&ndash; A placeholder to display messages related to the reset operation. &ndash;&gt;-->
-<!--<div id="resetResultMsg"></div>-->
+        <br><br><hr><br> <!-- ========================================================================= -->
 
         <h3>Database Connection Status:
             <!-- An in-line placeholder to display connection status. -->
