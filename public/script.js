@@ -169,7 +169,7 @@ async function insertPokemon(event) {
 async function deletePokemon(event) {
     event.preventDefault();
 
-    const idValue = document.getElementById('deletePokemon').value;
+    const idValue = document.getElementById('insertPokemonID').value;
 
     const response = await fetch('/delete-pokemon', {
         method: 'POST',
