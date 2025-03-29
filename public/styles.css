@@ -33,6 +33,11 @@ h2 {text-align: center;
     font-size: 40px;
 }
 
+h4 {text-align: left;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+}
+
 hr {
     border-top: 2px solid rgb(44, 51, 62);
     margin: auto;
@@ -79,6 +84,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: 'Press Start 2P', cursive;
     outline: none;
 }
 
@@ -119,6 +125,13 @@ input::placeholder, textarea::placeholder {
     align-items: center;
     gap: 10px;
     max-width: 100%;
+}
+
+.checkbox-container {
+    display: inline-block;
+    gap: 10px;
+    align-items: center;
+    margin-right: 20px;
 }
 
 .body-container {
