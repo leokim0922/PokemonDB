@@ -104,7 +104,7 @@ async function fetchAndPopulateAbilityID() {
 
 // Fetches PokemonID from Pokemon table and become selection options.
 async function fetchAndPopulatePokemonID() {
-    const selectElement  = document.getElementById('deletePokemon');
+    const selectElement  = document.getElementById('insertPokemonID');
 
     const response = await fetch('/pokemonid', {
         method: 'GET'
