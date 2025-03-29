@@ -116,24 +116,24 @@ async function insertPokemon(id, description, name, type, abilityID, moveID) {
     return await withOracleDB(async (connection) => {
         const checkType = await connection.execute(
             `SELECT COUNT(*)
-             FROM Type
-             WHERE TypeName = :type`);
+             FROM Type t
+             WHERE t.typeName = :type`);
         if (checkType < 1) {
             console.log('TypeName does not exist.');
             return false;
         }
         const checkAbility = await connection.execute(
             `SELECT COUNT(*)
-             FROM Ability
-             WHERE AbilityID = :abilityID`);
+             FROM Ability a
+             WHERE a.AbilityID = :abilityID`);
         if (checkAbility < 1) {
             console.log('Ability does not exist.');
             return false;
         }
         const checkMove = await connection.execute(
             `SELECT COUNT(*)
-             FROM Move_Associates1
-             WHERE MoveID = :moveID`);
+             FROM Move_Associates1 m
+             WHERE m.MoveID = :moveID`);
         if (checkMove < 1) {
             console.log('Move does not exist.');
             return false;
