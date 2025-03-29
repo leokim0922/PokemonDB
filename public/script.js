@@ -119,10 +119,10 @@ async function insertPokemon(event) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            id: idValue,
-            description: descriptionValue,
-            name: nameValue,
-            type: typeNameValue,
+            pokemonid: idValue,
+            pokemondescription: descriptionValue,
+            pokemonname: nameValue,
+            typename: typeNameValue,
             abilityID: abilityIDValue,
             moveID: moveIDValue
         })
