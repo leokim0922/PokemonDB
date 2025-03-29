@@ -115,7 +115,7 @@ async function fetchAbilityIDFromDb() {
 async function insertPokemon(id, description, name, type, moveID, abilityID) {
     return await withOracleDB(async (connection) => {
         const result = await connection.execute(
-            `BEGIN AddPokemonWithTypeAbilityLearns(:id, :description, :name, :type, :abilityID, :moveID); END; /`,
+            `BEGIN AddPokemonWithTypeAbilityLearns(:id, :description, :name, :type, :abilityID, :moveID); END;`,
             [id, description, name, type, abilityID, moveID],
             { autoCommit: true }
         );
