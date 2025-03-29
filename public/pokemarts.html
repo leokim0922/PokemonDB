@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- This meta tag ensures that the website renders correctly across different device sizes,
+    enhancing mobile responsiveness. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.cdnfonts.com/css/pokemon-hollow" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/bobloxclassic" rel="stylesheet">
+    <title>Pokémon Database</title>
+</head>
+
+<body>
+
+    <header role="banner">
+
+        <h1> <img src="img/pokemon_logo.png" alt="Pokemon">Database</h1>
+
+        <div class="button-container">
+            <a href="index.html"><button class="button-89" role="button">Pokemon</button></a>
+            <a href="moves.html"><button class="button-89" role="button">Moves</button></a>
+            <a href="types.html"><button class="button-89" role="button">Types</button></a>
+            <a href="gym.html"><button class="button-89" role="button">Gyms</button></a>
+            <a href="pokemarts.html"><button class="button-89" role="button">Pokemarts</button></a>
+        </div>
+
+    </header>
+
+<br>
+    <div class="body-container">
+        <h2>Poké Mart</h2>
+
+        <!-- Show 'pokemon' table.
+            Data will be fetched and inserted here dynamically using JavaScript. -->
+        <table id="pokemon">
+            <thead>
+            <tr>
+                <!--Table head, need to be adjusted accordingly to align with your own.-->
+                <th style="width:3%">Item Name</th>
+                <th style="width:20%">Effect</th>
+                <th style="width:15%">Item Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <br><hr><br> <!-- ========================================================================= -->
+
+        <!-- Aggregation with GROUP BY -->
+        <h3> Filter Items </h3>
+        <form id="filterForm">
+            <label for="itemType">Select Item Type</label>
+            <select name="itemType" id="itemType">
+                <option value="0">All Types</option>
+            </select>
+            <br><br>
+            <button type="submit">Filter</button>
+        </form>
+        <br>
+        <div id="filterTypeResultMsg"></div>
+
+        <hr><br> <!-- ========================================================================= -->
+
+         <!-- Aggregation with HAVING -->
+        <h3> Filter Items by Type and Quantity </h3>
+        <form id="quantityFilterForm">
+            <label for="itemType">Select Item Type</label>
+            <select name="itemType" id="itemType">
+                <option value="0">All Types</option>
+            </select>
+            <br><br>
+            <div>
+                <label for="minQuantity">Minimum Quantity:</label>
+                <input
+                  type="number"
+                  id="minQuantity"
+                  name="minQuantity"
+                  placeholder="Enter minimum quantity"
+                  required
+                />
+            <br><br>
+            <button type="submit">Filter</button>
+        </form>
+        <br>
+        <div id="filterQuantityResultMsg"></div>
+
+        <br><br><hr><br> <!-- ========================================================================= -->
+
+        <h3>Database Connection Status:
+            <!-- An in-line placeholder to display connection status. -->
+            <span id="dbStatus"> </span>
+        </h3>
+
+    </div>
+
+<!-- ===================================================================================== -->
+<!-- External JavaScript file that contains the functionality/logic for the operations above. -->
+<script src="script.js"></script>
+</body>
+</html>
