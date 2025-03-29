@@ -196,7 +196,8 @@ async function insertPokemon(id, description, name, type, abilityID, moveID) {
 async function deletePokemon(id) {
     return await withOracleDB(async (connection) => {
           await connection.execute(
-            `DELETE FROM Pokemon p WHERE p.pokemonid = :id`);
+            `DELETE FROM Pokemon p WHERE p.pokemonid = :id`,
+              { id });
 
         await connection.commit();
         return true;
