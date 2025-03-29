@@ -72,6 +72,7 @@ async function testOracleConnection() {
     });
 }
 
+// SELECT FROM DATABASE
 async function fetchPokemonFromDb() {
     return await withOracleDB(async (connection) => {
         const result = await connection.execute('SELECT DISTINCT p.pokemonid, p.pokemonname, b.typename, m.movename, a.abilityeffect  \n' +
@@ -85,6 +86,7 @@ async function fetchPokemonFromDb() {
     });
 }
 
+// SELECT FROM DATABASE
 async function fetchTypeNameFromDb() {
     return await withOracleDB(async (connection) => {
         const result = await connection.execute('SELECT typename FROM type');
@@ -94,6 +96,7 @@ async function fetchTypeNameFromDb() {
     });
 }
 
+// SELECT FROM DATABASE
 async function fetchMoveIDFromDb() {
     return await withOracleDB(async (connection) => {
         const result = await connection.execute('SELECT moveid FROM move_associates1');
@@ -103,6 +106,7 @@ async function fetchMoveIDFromDb() {
     });
 }
 
+// SELECT FROM DATABASE
 async function fetchAbilityIDFromDb() {
     return await withOracleDB(async (connection) => {
         const result = await connection.execute('SELECT abilityid FROM ability');
@@ -112,6 +116,7 @@ async function fetchAbilityIDFromDb() {
     });
 }
 
+//INSERTING INTO DATABASE
 async function insertPokemon(id, description, name, type, abilityID, moveID) {
     return await withOracleDB(async (connection) => {
         // Check if type exists
