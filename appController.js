@@ -35,8 +35,8 @@ router.get('/abilityid', async (req, res) => {
 
 //insert pokemon
 router.post("/insert-pokemon", async (req, res) => {
-    const { id, description, name, type, moveID, abilityID } = req.body;
-    const insertResult = await appService.insertPokemon(id, description, name, type, moveID, abilityID);
+    const { id, description, name, type, abilityID, moveID } = req.body;
+    const insertResult = await appService.insertPokemon(id, description, name, type, abilityID, moveID);
     if (insertResult) {
         res.json({ success: true });
     } else {

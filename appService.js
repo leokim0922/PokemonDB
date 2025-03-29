@@ -118,7 +118,7 @@ async function insertPokemon(id, description, name, type, abilityID, moveID) {
             `BEGIN
                 AddPokemonWithTypeAbilityLearns(:id, :description, :name, :type, :abilityID, :moveID);
             END;`,
-            [id, description, name, type, abilityID, moveID]
+            {id, description, name, type, abilityID, moveID}
         );
 
         return result.rowsAffected && result.rowsAffected > 0;

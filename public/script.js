@@ -110,8 +110,8 @@ async function insertPokemon(event) {
     const nameValue = document.getElementById('insertName').value;
     const descriptionValue = document.getElementById('insertDescription').value;
     const typeNameValue = document.getElementById('insertTypeName').value;
-    const moveIDValue = document.getElementById('insertMoveID').value;
     const abilityIDValue = document.getElementById('insertAbilityID').value;
+    const moveIDValue = document.getElementById('insertMoveID').value;
 
     const response = await fetch('/insert-pokemon', {
         method: 'POST',
@@ -123,8 +123,8 @@ async function insertPokemon(event) {
             description: descriptionValue,
             name: nameValue,
             type: typeNameValue,
-            moveID: moveIDValue,
-            abilityID: abilityIDValue
+            abilityID: abilityIDValue,
+            moveID: moveIDValue
         })
     });
 
