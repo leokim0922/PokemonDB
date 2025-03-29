@@ -114,44 +114,69 @@ async function fetchAbilityIDFromDb() {
 
 async function insertPokemon(id, description, name, type, abilityID, moveID) {
     return await withOracleDB(async (connection) => {
+        // Check if type exists
         const checkType = await connection.execute(
-            `SELECT COUNT(*)
-             FROM Type t
-             WHERE t.typeName = :type`);
-        if (checkType < 1) {
+            `SELECT COUNT(*) FROM Type t WHERE t.typeName = :type`,
+            { type }
+        );
+        if (checkType.rows[0][0] < 1) {
             console.log('TypeName does not exist.');
             return false;
         }
+
+        // Check if ability exists
         const checkAbility = await connection.execute(
-            `SELECT COUNT(*)
-             FROM Ability a
-             WHERE a.AbilityID = :abilityID`);
-        if (checkAbility < 1) {
+            `SELECT COUNT(*) FROM Ability a WHERE a.AbilityID = :abilityID`,
+            { abilityID }
+        );
+        if (checkAbility.rows[0][0] < 1) {
             console.log('Ability does not exist.');
             return false;
         }
+
+        // Check if move exists
         const checkMove = await connection.execute(
-            `SELECT COUNT(*)
-             FROM Move_Associates1 m
-             WHERE m.MoveID = :moveID`);
-        if (checkMove < 1) {
+            `SELECT COUNT(*) FROM Move_Associates1 m WHERE m.MoveID = :moveID`,
+            { moveID }
+        );
+        if (checkMove.rows[0][0] < 1) {
             console.log('Move does not exist.');
             return false;
         }
-        const result = await connection.execute(
-            `INSERT INTO Pokemon(PokemonID, PokemonName, PokemonDescription) VALUES (:id, :name, :description); \n` +
-            `INSERT INTO Belongs(PokemonID, TypeName) VALUES (:id, :type); \n` +
-            `INSERT INTO Possesses(PokemonID, AbilityID) VALUES (:id, :abilityID); \n` +
-            `INSERT INTO Learns(PokemonID, MoveID) VALUES (:id, :moveID); \n`,
-            [id, name, description, type, abilityID, moveID],
-            { autoCommit: true }
+
+        // Execute insert queries separately
+        await connection.execute(
+            `INSERT INTO Pokemon (PokemonID, PokemonName, PokemonDescription) 
+             VALUES (:id, :name, :description)`,
+            { id, name, description }
         );
 
-        return result.rowsAffected && result.rowsAffected > 0;
-    }).catch(() => {
+        await connection.execute(
+            `INSERT INTO Belongs (PokemonID, TypeName) 
+             VALUES (:id, :type)`,
+            { id, type }
+        );
+
+        await connection.execute(
+            `INSERT INTO Possesses (PokemonID, AbilityID) 
+             VALUES (:id, :abilityID)`,
+            { id, abilityID }
+        );
+
+        await connection.execute(
+            `INSERT INTO Learns (PokemonID, MoveID) 
+             VALUES (:id, :moveID)`,
+            { id, moveID }
+        );
+
+        await connection.commit();
+        return true;
+    }).catch((err) => {
+        console.error(err);
         return false;
     });
 }
+
 
 module.exports = {
     testOracleConnection,
