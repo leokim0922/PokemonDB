@@ -1,4 +1,4 @@
-import { checkDbConnection } from './Script.js';
+import { checkDbConnection, fetchAndPopulateTypeName} from './commonScripts.js';
 
 // Fetches data from the pokemon table and displays it.
 async function fetchAndDisplayPokemon() {
@@ -23,32 +23,6 @@ async function fetchAndDisplayPokemon() {
             const cell = row.insertCell(index);
             cell.textContent = field;
         });
-    });
-}
-
-// Fetches typenames from Type table and become selection options.
-async function fetchAndPopulateTypeName() {
-    const selectElement  = document.getElementById('insertTypeName');
-
-    const response = await fetch('/typename', {
-        method: 'GET'
-    });
-
-    const responseData = await response.json();
-    const typenameContent = responseData.data;
-
-    // Always clear old, already fetched data before new fetching process.
-    if (selectElement) {
-        selectElement.innerHTML = `
-                <option value="0">Select Type:</option>
-        `;
-    }
-
-    typenameContent.forEach(typename => {
-        const option = document.createElement('option');
-        option.value = typename;  // Use ID as the value
-        option.textContent = typename; // Display type name
-        selectElement.appendChild(option);
     });
 }
 

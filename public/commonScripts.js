@@ -17,3 +17,29 @@ export async function checkDbConnection() {
             statusElem.textContent = 'connection timed out';  // Adjust error handling if required.
         });
 }
+
+// Fetches typenames from Type table and become selection options.
+export async function fetchAndPopulateTypeName() {
+    const selectElement  = document.getElementById('insertTypeName');
+
+    const response = await fetch('/typename', {
+        method: 'GET'
+    });
+
+    const responseData = await response.json();
+    const typenameContent = responseData.data;
+
+    // Always clear old, already fetched data before new fetching process.
+    if (selectElement) {
+        selectElement.innerHTML = `
+                <option value="0">Select Type:</option>
+        `;
+    }
+
+    typenameContent.forEach(typename => {
+        const option = document.createElement('option');
+        option.value = typename;  // Use ID as the value
+        option.textContent = typename; // Display type name
+        selectElement.appendChild(option);
+    });
+}
