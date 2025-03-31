@@ -1,3 +1,5 @@
+import { checkDbConnection } from './Script.js';
+
 // Fetches data from the pokemon table and displays it.
 async function fetchAndDisplayPokemon() {
     const tableElement = document.getElementById('pokemon');
@@ -193,25 +195,25 @@ async function deletePokemon(event) {
 }
 
 
-// checks db connection
-async function checkDbConnection() {
-    const statusElem = document.getElementById('dbStatus');
-
-    const response = await fetch('/check-db-connection', {
-        method: "GET"
-    });
-
-    // Display the statusElem's text in the placeholder.
-    statusElem.style.display = 'inline';
-
-    response.text()
-        .then((text) => {
-            statusElem.textContent = text;
-        })
-        .catch((error) => {
-            statusElem.textContent = 'connection timed out';  // Adjust error handling if required.
-        });
-}
+// // checks db connection
+// async function checkDbConnection() {
+//     const statusElem = document.getElementById('dbStatus');
+//
+//     const response = await fetch('/check-db-connection', {
+//         method: "GET"
+//     });
+//
+//     // Display the statusElem's text in the placeholder.
+//     statusElem.style.display = 'inline';
+//
+//     response.text()
+//         .then((text) => {
+//             statusElem.textContent = text;
+//         })
+//         .catch((error) => {
+//             statusElem.textContent = 'connection timed out';  // Adjust error handling if required.
+//         });
+// }
 
 // ---------------------------------------------------------------
 // Initializes the webpage functionalities.
@@ -222,7 +224,7 @@ window.onload = function() {
     fetchAndPopulateTypeName();
     fetchAndPopulateMoveID();
     fetchAndPopulateAbilityID();
-    fetchAndPopulatePokemonID()
+    fetchAndPopulatePokemonID();
     document.getElementById("insertPokemon").addEventListener("submit", insertPokemon);
     document.getElementById("deletePokemon").addEventListener("submit", deletePokemon);
 };
@@ -231,6 +233,6 @@ window.onload = function() {
 // Invoke this after any table-modifying operation to keep consistency.
 function fetchTableData() {
     fetchAndDisplayPokemon();
-    fetchAndPopulatePokemonID()
+    fetchAndPopulatePokemonID();
 }
 
