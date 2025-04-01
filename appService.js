@@ -106,9 +106,9 @@ async function fetchPokemonIDFromDb() {
     return await fetchQuery(query);
 }
 
-async function fetchQuery(query) {
+async function fetchQuery(query, bindValues = {}) {
     return await withOracleDB(async (connection) => {
-        const result = await connection.execute(query);
+        const result = await connection.execute(query, bindValues);
         return result.rows;
     }).catch(() => {
         return [];
@@ -124,14 +124,8 @@ async function fetchTypesEffectFromDb() {
 
 // SELECT & JOIN Types + Effect from DB
 async function fetchTypesEffectParamsFromDb(parameters) {
-    let query = `
-        SELECT t.Typename, t.typeDescription, e.percentage, e.typename2
-        FROM Type t
-        JOIN Effect e ON t.Typename = e.TypeName1
-    `;
-
-    let whereClauses = [];
-    let bindValues = {}; // Object to store bound values
+    var query = 'SELECT t.Typename, t.typeDescription, e.percentage, e.typename2 ' +
+        'FROM Type t, Effect e WHERE t.TypeName = e.TypeName1';
 
     let type = parameters[0];
     let op1 = parameters[1];
@@ -140,55 +134,33 @@ async function fetchTypesEffectParamsFromDb(parameters) {
     let op2 = parameters[4];
     let num2 = parameters[5];
 
-    // If both parameters are default, return all results
-    if (type === 'All' && op1 === 'None') {
+    let bindValues = {};
+
+    if (parameters[0] === 'All' && parameters[1] === 'None') {
         return fetchTypesEffectFromDb();
     }
-
-    // Filtering by type
-    if (type !== 'All') {
-        whereClauses.push(`t.Typename = :type`);
+    if (parameters[0] !== 'All') {
+        query = query + ' and t.Typename = :type';
         bindValues.type = type;
     }
-
-    // Filtering by percentage
-    if (op1 !== 'None') {
-        if (!['>', '<', '>=', '<=', '=', '!='].includes(op1)) {
-            throw new Error(`Invalid operator: ${op1}`);
-        }
-        whereClauses.push(`e.percentage ${op1} :num1`);
+    if (parameters[1] !== 'None') {
+        query = query + ' and (e.percentage ${op1} :num1';
         bindValues.num1 = num1;
-
-        if (logic !== 'None') {
-            if (!['AND', 'OR'].includes(logic)) {
-                throw new Error(`Invalid logical operator: ${logic}`);
-            }
-            if (!['>', '<', '>=', '<=', '=', '!='].includes(op2)) {
-                throw new Error(`Invalid operator: ${op2}`);
-            }
-            whereClauses.push(`${logic} e.percentage ${op2} :num2`);
+        if (parameters[3] === 'None') {
+            query = query + ')'
+            return await fetchQuery(query,bindValues);
+        } else {
+            query = query + ` ${logic} e.percentage ${op2} :num2)`;
             bindValues.num2 = num2;
         }
     }
 
-    // Construct the WHERE clause
-    if (whereClauses.length > 0) {
-        query += " WHERE " + whereClauses.join(" ");
-    }
-
     try {
-        return await withOracleDB(async (connection) => {
-            const result = await connection.execute(query, bindValues); // Pass bind values here
-            return result.rows;
-        }).catch(() => {
-            return [];
-        });
+        return await fetchQuery(query,bindValues);
     } catch (error) {
-        console.error("Error executing query:", error.message);
-        throw error;
+        console.error("Error message element not found:", error.message);
     }
 }
-
 
 // INSERTING POKEMON & associated BELONGS, LEARNS and POSSESSES into Database
 async function insertPokemon(id, description, name, type, abilityID, moveID) {
