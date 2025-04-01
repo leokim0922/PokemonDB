@@ -6,10 +6,31 @@ async function fetchAndDisplayItems() {
     await fetchAndDisplayTable('personal', '/items');
 }
 
+async function fetchAndPopulateItemType(elementId) {
+    const selectElement  = document.getElementById(elementId);
+
+    const response = await fetch('/itemtype', {
+        method: 'GET'
+    });
+
+    const responseData = await response.json();
+    const itemTypeContent = responseData.data;
+
+    selectElement.innerHTML = `<option value="0">Select Type:</option>`;
+
+    itemTypeContent.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item;
+        option.textContent = item;
+        // Populate both select elements
+        selectElement.appendChild(option.cloneNode(true));
+    });
+}
+
 // Fetch ItemType and populate for fitler selection
-async function fetchAndPopulateItemType() {
-    await fetchAndPopulateTypeName('itemtypes1');
-    await fetchAndPopulateTypeName('itemtypes2');
+async function fetchAndPopulateItemTypes() {
+    await fetchAndPopulateItemType('itemtypes1');
+    await fetchAndPopulateItemType('itemtypes2');
 }
 
 // Display item count filtered by selected type
@@ -130,7 +151,7 @@ async function fetchAndDisplayPokemartByTypeAndMin(event) {
 window.onload = function() {
     checkDbConnection();
     fetchAndDisplayItems();
-    fetchAndPopulateItemType();
+    fetchAndPopulateItemTypes();
     fetchAndDisplayPokeMart();
     document.getElementById('filterCountsByType').addEventListener('submit', fetchAndDisplayItemCountByType);
     document.getElementById('quantityFilterForm').addEventListener('submit', fetchAndDisplayPokemartByTypeAndMin);
