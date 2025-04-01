@@ -127,24 +127,25 @@ async function fetchTypesEffectParamsFromDb(parameters) {
     var query = 'SELECT t.Typename, t.typeDescription, e.percentage, e.typename2 ' +
         'FROM Type t, Effect e WHERE t.TypeName = e.TypeName1';
 
+    let type = parameters[0];
+    let op1 = parameters[1];
+    let num1 = parameters[2];
+    let logic = parameters[3];
+    let op2 = parameters[4];
+    let num2 = parameters[5];
+
     if (parameters[0] === 'All' && parameters[1] === 'None') {
         return fetchTypesEffectFromDb();
     }
     if (parameters[0] !== 'All') {
-        let type = parameters[0];
         query = query + ' and t.Typename = :type';
     }
     if (parameters[1] !== 'None') {
-        let op1 = parameters[1];
-        let num1 = parameters[2];
         query = query + ' and (e.percentage :op1 :num1';
         if (parameters[3] === 'None') {
             query = query + ')'
             return await fetchQuery(query);
         } else {
-            let logic = parameters[3];
-            let op2 = parameters[4];
-            let num2 = parameters[5];
             query = query + ' :logic e.percentage :op2 :num2)';
         }
     }
