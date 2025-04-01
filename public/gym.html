@@ -48,6 +48,35 @@
 
         <br><hr><br> <!-- ========================================================================= -->
 
+        <!-- Aggregation with GROUP BY -->
+
+        <h3>Find Gyms Where Average Winnings Exceed:</h3>
+        <form id="filterGymsByWinnings">
+            <label for="minWinnings">Minimum Average Winnings</label>
+            <input 
+            type="number" 
+            id="minWinnings" 
+            name="minWinnings" 
+            placeholder="Enter minimum winnings" 
+            required>
+            <br><br>
+            <button type="submit">View</button>
+        </form>
+        <br>
+        <div id="filterGymsByWinningsMsg"></div>
+
+        <table id="gymsByWinningsTable">
+            <thead>
+                <tr>
+                    <th>Gym Location</th>
+                    <th>Region</th>
+                    <th>Average Winnings</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <br><br>
+
         <br><br><hr><br> <!-- ========================================================================= -->
 
         <h3>Database Connection Status:
