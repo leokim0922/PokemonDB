@@ -207,9 +207,9 @@ async function deletePokemon(id) {
     });
 }
 
-async function queryFromOracle(query) {
+async function queryFromOracle(query, binds = {}) {
     return await withOracleDB(async (connection) => {
-        const result = await connection.execute(query);
+        const result = await connection.execute(query, binds);
         return result.rows;
     }).catch(() => {
         return [];
@@ -229,10 +229,11 @@ async function fetchMoveAttributesFromDb(attributes) {
 
     if (typeFilter === "All") {
         query = `SELECT ${attributeList} FROM Movetype`;
+        return await queryFromOracle(query);
     } else {
-        query = `SELECT ${attributeList} FROM Movetype WHERE Movetype.typename = :typeFilter`;
+        query = `SELECT ${attributeList} FROM Movetype mt WHERE mt.typename = :typeFilter`;
+        return await queryFromOracle(query, { typeFilter });
     }
-    return await queryFromOracle(query);
 }
 
 module.exports = {
