@@ -143,14 +143,14 @@ async function fetchTypesEffectParamsFromDb(parameters) {
         query = query + ' and t.Typename = :type';
         bindValues.type = type;
     }
-    if (op1 !== 'None' && num1 >= 0 && num1 != null) {
+    if (op1 !== 'None' && num1 >= 0 && num1 != '') {
         console.log("num1: ", num1);
         query = query + ` and (e.percentage ${op1} :num1`;
         bindValues.num1 = num1;
         if (logic === 'None') {
             query = query + ')'
         } else {
-            if (op2 !== 'None' && num2 >= 0 && num2 != null) {
+            if (op2 !== 'None' && num2 >= 0 && num2 != '') {
                 query = query + ` ${logic} e.percentage ${op2} :num2)`;
                 bindValues.num2 = num2;
             } else {
