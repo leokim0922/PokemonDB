@@ -213,11 +213,136 @@ async function checkDbConnection() {
         });
 }
 
+// Fetch Items from DB
+
+async function fetchAndDisplayItems() {
+    const tableElement = document.getElementById('personal');
+    const tableBody = tableElement.querySelector('tbody');
+
+    const response = await fetch('/items', {
+        method: 'GET'
+    });
+
+    const responseData = await response.json();
+    const itemContent = responseData.data;
+
+    // Always clear old, already fetched data before new fetching process.
+    if (tableBody) {
+        tableBody.innerHTML = '';
+    }
+
+    itemContent.forEach(item => {
+        const row = tableBody.insertRow();
+        item.forEach((field, index) => {
+            const cell = row.insertCell(index);
+            cell.textContent = field;
+        });
+    });
+}
+
+// Fetch ItemType and populate for fitler selection
+async function fetchAndPopulateItemType() {
+    const selectElement1  = document.getElementById('itemtypes1');
+    const selectElement2  = document.getElementById('itemtypes2');
+
+    const response = await fetch('/itemtype', {
+        method: 'GET'
+    });
+
+    const responseData = await response.json();
+    const itemTypeContent = responseData.data;
+
+    // Always clear old, already fetched data before new fetching process.
+    if (selectElement1) {
+        selectElement1.innerHTML = `
+            <option value="0">Select Type:</option>
+        `;
+    }
+    if (selectElement2) {
+        selectElement2.innerHTML = `
+            <option value="0">Select Type:</option>
+        `;
+    }
+
+    itemTypeContent.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item;  
+        option.textContent = item; 
+        // Populate both select elements
+        if (selectElement1) selectElement1.appendChild(option.cloneNode(true));
+        if (selectElement2) selectElement2.appendChild(option.cloneNode(true));
+    });
+}
+
+// Display item count filtered by selected type
+
+async function fetchAndDisplayItemCountByType(event) {
+    event.preventDefault(); 
+
+    const selectedType = document.getElementById('itemCountsByType').value;
+
+    let url = '/item-count';
+    if (selectedType && selectedType !== "0") {
+        url += `?itemtype=${encodeURIComponent(selectedType)}`;
+    }
+
+    const response = await fetch(url, { method: 'GET' });
+    const responseData = await response.json();
+
+    const tableElement = document.getElementById('itemCountsTable');
+    const tableBody = tableElement.querySelector('tbody');
+
+    // Clear old data
+    if (tableBody) {
+        tableBody.innerHTML = '';
+    }
+
+    // Populate the table with new data
+    responseData.data.forEach(item => {
+        const row = tableBody.insertRow();
+        
+        // item[0] is the Item Type, item[1] is the Item Count
+        const itemTypeCell = row.insertCell(0);
+        itemTypeCell.textContent = item[0]; 
+
+        const itemCountCell = row.insertCell(1);
+        itemCountCell.textContent = item[1]; 
+    });
+}
+
+// Fetch Poke Mart Items from DB
+
+async function fetchAndDisplayPokeMart() {
+    const tableElement = document.getElementById('pokemart');
+    const tableBody = tableElement.querySelector('tbody');
+
+    const response = await fetch('/pokemart', {
+        method: 'GET'
+    });
+
+    const responseData = await response.json();
+    const itemContent = responseData.data;
+
+    // Always clear old, already fetched data before new fetching process.
+    if (tableBody) {
+        tableBody.innerHTML = '';
+    }
+
+    itemContent.forEach(item => {
+        const row = tableBody.insertRow();
+        item.forEach((field, index) => {
+            const cell = row.insertCell(index);
+            cell.textContent = field;
+        });
+    });
+}
+
 // ---------------------------------------------------------------
 // Initializes the webpage functionalities.
 // Add or remove event listeners based on the desired functionalities.
 window.onload = function() {
     checkDbConnection();
+    if (window.location.pathname === '/index.html') {
     fetchTableData();
     fetchAndPopulateTypeName();
     fetchAndPopulateMoveID();
@@ -225,6 +350,14 @@ window.onload = function() {
     fetchAndPopulatePokemonID()
     document.getElementById("insertPokemon").addEventListener("submit", insertPokemon);
     document.getElementById("deletePokemon").addEventListener("submit", deletePokemon);
+    } else if (window.location.pathname === '/pokemarts.html') {
+        fetchAndDisplayItems();
+        fetchAndPopulateItemType();
+        fetchAndDisplayPokeMart();
+        document.getElementById('filterCountsByType').addEventListener('submit', fetchAndDisplayItemCountByType);
+
+
+    }
 };
 
 // General function to refresh the displayed table data.

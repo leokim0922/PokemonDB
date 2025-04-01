@@ -31,15 +31,17 @@
     <div class="body-container">
         <h2>Poké Mart</h2>
 
+        <h3>My Items</h3>
+
         <!-- Show 'pokemon' table.
             Data will be fetched and inserted here dynamically using JavaScript. -->
-        <table id="pokemon">
+        <table id="personal">
             <thead>
             <tr>
                 <!--Table head, need to be adjusted accordingly to align with your own.-->
                 <th style="width:3%">Item Name</th>
-                <th style="width:20%">Effect</th>
-                <th style="width:15%">Item Type</th>
+                <th style="width:20%">Item Type</th>
+                <th style="width:15%">Effect</th>
             </tr>
             </thead>
             <tbody>
@@ -49,25 +51,54 @@
         <br><hr><br> <!-- ========================================================================= -->
 
         <!-- Aggregation with GROUP BY -->
-        <h3> Filter Items </h3>
-        <form id="filterForm">
-            <label for="itemType">Select Item Type</label>
-            <select name="itemType" id="itemType">
+        <h3> View Item Counts by Type </h3>
+        <form id="filterCountsByType">
+            <label for="itemtypes1">Select Item Type</label>
+            <select name="itemType" id="itemtypes1">
                 <option value="0">All Types</option>
             </select>
             <br><br>
-            <button type="submit">Filter</button>
+            <button type="submit">View</button>
         </form>
         <br>
-        <div id="filterTypeResultMsg"></div>
+        <div id="filterCountsByTypeMsg"></div>
+
+        <table id="itemCountsTable">
+            <thead>
+                <tr>
+                    <th>Item Type</th>
+                    <th>Item Count</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
 
         <hr><br> <!-- ========================================================================= -->
 
+        <h3>Poké Mart Inventory</h3>
+
+        <!-- Show 'pokemon' table.
+            Data will be fetched and inserted here dynamically using JavaScript. -->
+            <table id="pokemart">
+                <thead>
+                <tr>
+                    <!--Table head, need to be adjusted accordingly to align with your own.-->
+                    <th style="width:3%">Item Name</th>
+                    <th style="width:20%">Item Type</th>
+                    <th style="width:15%">Effect</th>
+                    <th style="width:15%">Poké Mart Location</th>
+                    <th style="width:15%">Region</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
          <!-- Aggregation with HAVING -->
-        <h3> Filter Items by Type and Quantity </h3>
+        <h3> Filter PokéMarts by Item Type and Minimum Quantity </h3>
         <form id="quantityFilterForm">
-            <label for="itemType">Select Item Type</label>
-            <select name="itemType" id="itemType">
+            <label for="itemtypes2">Select Item Type</label>
+            <select name="itemType" id="itemtypes2">
                 <option value="0">All Types</option>
             </select>
             <br><br>

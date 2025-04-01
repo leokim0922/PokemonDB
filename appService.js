@@ -207,6 +207,86 @@ async function deletePokemon(id) {
     });
 }
 
+// SELECT FROM DATABASE
+async function fetchItemFromDB() {
+    return await withOracleDB(async (connection) => {
+        const result = await connection.execute(
+            `SELECT DISTINCT io.ItemName, io2.ItemType, io.ItemEffect
+            FROM Item_Owns io
+            JOIN Item_Owns2 io2 ON io.ItemEffect = io2.ItemEffect
+            ORDER BY io.ItemName`
+        );
+        return result.rows;
+    }).catch(() => {
+        return [];
+    });
+}
+
+// // SELECT FROM DATABASE
+// async function fetchItemNameFromDb() {
+//     return await withOracleDB(async (connection) => {
+//         const result = await connection.execute('SELECT itemname FROM item_owns');
+//         return result.rows;
+//     }).catch(() => {
+//         return [];
+//     });
+// }
+
+// SELECT FROM DATABASE
+async function fetchItemTypeFromDb() {
+    return await withOracleDB(async (connection) => {
+        const result = await connection.execute('SELECT DISTINCT itemtype FROM item_owns2');
+        return result.rows;
+    }).catch(() => {
+        return [];
+    });
+}
+
+// // SELECT FROM DATABASE
+// async function fetchItemEffectFromDb() {
+//     return await withOracleDB(async (connection) => {
+//         const result = await connection.execute('SELECT itemeffect FROM item_owns2');
+//         return result.rows;
+//     }).catch(() => {
+//         return [];
+//     });
+// }
+
+async function fetchItemCountByType(itemtype) {
+    return await withOracleDB(async (connection) => {
+        const result = await connection.execute(
+            `SELECT io.ItemType, COUNT(i.ItemName) AS ItemCount
+            FROM Item_Owns i
+            JOIN Item_Owns2 io ON i.ItemEffect = io.ItemEffect
+            WHERE io.ItemType = :itemtype
+            GROUP BY io.ItemType
+            ORDER BY ItemCount DESC`,
+            { itemtype }
+        );
+        return result.rows;
+    }).catch(() => {
+        return [];
+    });
+}
+
+// SELECT FROM DATABASE
+async function fetchMartFromDB() {
+    return await withOracleDB(async (connection) => {
+        const result = await connection.execute(
+            `SELECT DISTINCT io.ItemName, io2.ItemType, io.ItemEffect, p.LocationName, p.RegionName
+            FROM Item_Owns io
+            JOIN Item_Owns2 io2 ON io.ItemEffect = io2.ItemEffect
+            JOIN Sells s ON io.ItemName = s.ItemName
+            JOIN Pokemart p ON s.LocationName = p.LocationName AND s.RegionName = p.RegionName
+            ORDER BY io.ItemName`
+        );
+        console.log(result)
+        return result.rows;
+    }).catch(() => {
+        return [];
+    });
+}
+
 module.exports = {
     testOracleConnection,
     fetchPokemonFromDb,
@@ -215,5 +295,11 @@ module.exports = {
     fetchAbilityIDFromDb,
     fetchPokemonIDFromDb,
     deletePokemon,
-    insertPokemon
+    insertPokemon,
+    // fetchItemNameFromDb,
+    fetchItemTypeFromDb,
+    // fetchItemEffectFromDb,
+    fetchItemFromDB,
+    fetchItemCountByType,
+    fetchMartFromDB
 };

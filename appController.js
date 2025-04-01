@@ -60,4 +60,39 @@ router.post("/delete-pokemon", async (req, res) => {
     }
 });
 
+router.get('/items', async (req, res) => {
+    console.log("Database connection established!");
+    const tableContent = await appService.fetchItemFromDB();
+    res.json({data: tableContent});
+});
+
+// router.get('/itemname', async (req, res) => {
+//     console.log("Database connection established!");
+//     const tableContent = await appService.fetchItemNameFromDb();
+//     res.json({data: tableContent});
+// });
+
+router.get('/itemtype', async (req, res) => {
+    const tableContent = await appService.fetchItemTypeFromDb();
+    res.json({data: tableContent});
+});
+
+// router.get('/itemeffect', async (req, res) => {
+//     const tableContent = await appService.fetchItemEffectFromDb();
+//     res.json({data: tableContent});
+// });
+
+router.get('/item-count', async (req, res) => {
+    const { itemtype } = req.query;
+    const tableContent = await appService.fetchItemCountByType(itemtype);
+    res.json({data: tableContent});
+});
+
+router.get('/pokemart', async (req, res) => {
+    const tableContent = await appService.fetchMartFromDB();
+    res.json({data: tableContent});
+    console.log(tableContent)
+});
+
+
 module.exports = router;

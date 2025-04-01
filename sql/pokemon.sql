@@ -665,5 +665,35 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT INTO Sells(ItemName, LocationName, RegionName)
 		VALUES ('Hyper Potion', 'Blackthorn City', 'Johto');
+		
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Poke Ball', 'Pewter City', 'Kanto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Great Ball', 'Pewter City', 'Kanto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Ultra Ball', 'Cerulean City', 'Kanto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Water Stone', 'Cerulean City', 'Kanto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Fire Stone', 'Cerulean City', 'Kanto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Rare Candy', 'Blackthorn City', 'Johto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Awakening', 'Blackthorn City', 'Johto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Poke Ball', 'Azalea Town', 'Johto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Great Ball', 'Azalea Town', 'Johto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Fire Stone', 'Azalea Town', 'Johto');
 
 COMMIT;
