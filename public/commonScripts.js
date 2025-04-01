@@ -19,8 +19,8 @@ export async function checkDbConnection() {
 }
 
 // Fetches typenames from Type table and become selection options.
-export async function fetchAndPopulateTypeName() {
-    const selectElement  = document.getElementById('insertTypeName');
+export async function fetchAndPopulateTypeName(elementId = 'insertTypeName') {
+    const selectElement  = document.getElementById(elementId);
 
     const response = await fetch('/typename', {
         method: 'GET'
