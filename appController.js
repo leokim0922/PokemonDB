@@ -33,9 +33,47 @@ router.get('/abilityid', async (req, res) => {
     res.json({data: tableContent});
 });
 
+router.get('/abilities', async (req, res) => {
+    const tableContent = await appService.fetchAbilitiesFromDb();
+    res.json({data: tableContent});
+});
+
 router.get('/pokemonid', async (req, res) => {
     const tableContent = await appService.fetchPokemonIDFromDb();
     res.json({data: tableContent});
+});
+
+router.get('/types', async (req, res) => {
+    const tableContent = await appService.fetchTypesEffectFromDb();
+    res.json({data: tableContent});
+});
+
+router.get('/moves', async (req, res) => {
+    try {
+        const attributes = req.query.attributes ? req.query.attributes.split(',') : [];
+        if (attributes.length === 0) {
+            return res.status(400).json({ error: 'No attributes provided' });
+        }
+
+        const tableContent = await appService.fetchMoveAttributesFromDb(attributes);
+        res.json({ data: tableContent });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.get('/typeEffect', async (req, res) => {
+    try {
+        const parameters = req.query.attributes ? req.query.attributes.split(',') : [];
+        if (parameters.length === 0) {
+            return res.status(400).json({ error: 'No attributes provided' });
+        }
+
+        const tableContent = await appService.fetchTypesEffectParamsFromDb(parameters);
+        res.json({ data: tableContent });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 //insert pokemon

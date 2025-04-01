@@ -217,6 +217,12 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		ON DELETE CASCADE
 	);
 
+	CREATE VIEW MoveType(moveid, movename, power, accuracy, powerpoints, moveeffect, typename) AS
+		SELECT m1.MoveID, m1.MoveName, m1.Power, m1.Accuracy, m1.PowerPoints, m1.MoveEffect,
+		m2.TypeName 
+		FROM Move_Associates1 m1, Move_Associates2 m2
+		WHERE m1.MoveEffect = m2.MoveEffect;
+		
 -- PROCEDURE STATEMENTS
 
 	-- PROCEDURE to add Pokemon (Belongs) Associated Type 

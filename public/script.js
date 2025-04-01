@@ -1,53 +1,10 @@
+import {checkDbConnection, fetchAndPopulateTypeName} from './commonScripts.js';
+import { fetchAndDisplayTable } from './commonScripts.js';
+
+
 // Fetches data from the pokemon table and displays it.
 async function fetchAndDisplayPokemon() {
-    const tableElement = document.getElementById('pokemon');
-    const tableBody = tableElement.querySelector('tbody');
-
-    const response = await fetch('/pokemon', {
-        method: 'GET'
-    });
-
-    const responseData = await response.json();
-    const pokemonContent = responseData.data;
-
-    // Always clear old, already fetched data before new fetching process.
-    if (tableBody) {
-        tableBody.innerHTML = '';
-    }
-
-    pokemonContent.forEach(pokemon => {
-        const row = tableBody.insertRow();
-        pokemon.forEach((field, index) => {
-            const cell = row.insertCell(index);
-            cell.textContent = field;
-        });
-    });
-}
-
-// Fetches typenames from Type table and become selection options.
-async function fetchAndPopulateTypeName() {
-    const selectElement  = document.getElementById('insertTypeName');
-
-    const response = await fetch('/typename', {
-        method: 'GET'
-    });
-
-    const responseData = await response.json();
-    const typenameContent = responseData.data;
-
-    // Always clear old, already fetched data before new fetching process.
-    if (selectElement) {
-        selectElement.innerHTML = `
-                <option value="0">Select Type:</option>
-        `;
-    }
-
-    typenameContent.forEach(typename => {
-        const option = document.createElement('option');
-        option.value = typename;  // Use ID as the value
-        option.textContent = typename; // Display type name
-        selectElement.appendChild(option);
-    });
+    await fetchAndDisplayTable('pokemon', '/pokemon');
 }
 
 // Fetches MoveID from Move table and become selection options.
@@ -192,26 +149,7 @@ async function deletePokemon(event) {
     }
 }
 
-
-// checks db connection
-async function checkDbConnection() {
-    const statusElem = document.getElementById('dbStatus');
-
-    const response = await fetch('/check-db-connection', {
-        method: "GET"
-    });
-
-    // Display the statusElem's text in the placeholder.
-    statusElem.style.display = 'inline';
-
-    response.text()
-        .then((text) => {
-            statusElem.textContent = text;
-        })
-        .catch((error) => {
-            statusElem.textContent = 'connection timed out';  // Adjust error handling if required.
-        });
-}
+//START ITEMS JS FILE
 
 // Fetch Items from DB
 
@@ -266,8 +204,8 @@ async function fetchAndPopulateItemType() {
 
     itemTypeContent.forEach(item => {
         const option = document.createElement('option');
-        option.value = item;  
-        option.textContent = item; 
+        option.value = item;
+        option.textContent = item;
         // Populate both select elements
         if (selectElement1) selectElement1.appendChild(option.cloneNode(true));
         if (selectElement2) selectElement2.appendChild(option.cloneNode(true));
@@ -277,7 +215,7 @@ async function fetchAndPopulateItemType() {
 // Display item count filtered by selected type
 
 async function fetchAndDisplayItemCountByType(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const selectedType = document.getElementById('itemtypes1').value;
 
@@ -300,13 +238,13 @@ async function fetchAndDisplayItemCountByType(event) {
     // Populate the table with new data
     responseData.data.forEach(item => {
         const row = tableBody.insertRow();
-        
+
         // item[0] is the Item Type, item[1] is the Item Count
         const itemTypeCell = row.insertCell(0);
-        itemTypeCell.textContent = item[0]; 
+        itemTypeCell.textContent = item[0];
 
         const itemCountCell = row.insertCell(1);
-        itemCountCell.textContent = item[1]; 
+        itemCountCell.textContent = item[1];
     });
 }
 
@@ -340,12 +278,12 @@ async function fetchAndDisplayPokeMart() {
 // Display Poke Mart based on Type and Min (from user input)
 
 async function fetchAndDisplayPokemartByTypeAndMin(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const selectedType = document.getElementById('itemtypes2').value;
     const minQuantity = document.getElementById('minQuantity').value;
 
-    let url = '/pokemartbytypeandmin'; 
+    let url = '/pokemartbytypeandmin';
 
     if (selectedType && selectedType !== "0") {
         url += `?itemType=${encodeURIComponent(selectedType)}`;
@@ -370,19 +308,19 @@ async function fetchAndDisplayPokemartByTypeAndMin(event) {
     // Populate the table with new data
     responseData.data.forEach(item => {
         const row = tableBody.insertRow();
-        
+
         // item[0] is the Location Name, item[1] is the Region Name, item[2] is Item Type, item[3] is Item Quantity
         const locationCell = row.insertCell(0);
-        locationCell.textContent = item[0]; 
+        locationCell.textContent = item[0];
 
         const regionCell = row.insertCell(1);
         regionCell.textContent = item[1];
 
         const itemTypeCell = row.insertCell(2);
-        itemTypeCell.textContent = item[2]; 
+        itemTypeCell.textContent = item[2];
 
         const itemQuantityCell = row.insertCell(3);
-        itemQuantityCell.textContent = item[3]; 
+        itemQuantityCell.textContent = item[3];
     });
 }
 
@@ -396,7 +334,7 @@ window.onload = function() {
     fetchAndPopulateTypeName();
     fetchAndPopulateMoveID();
     fetchAndPopulateAbilityID();
-    fetchAndPopulatePokemonID()
+    fetchAndPopulatePokemonID();
     document.getElementById("insertPokemon").addEventListener("submit", insertPokemon);
     document.getElementById("deletePokemon").addEventListener("submit", deletePokemon);
     } else if (window.location.pathname === '/pokemarts.html') {
@@ -405,8 +343,6 @@ window.onload = function() {
         fetchAndDisplayPokeMart();
         document.getElementById('filterCountsByType').addEventListener('submit', fetchAndDisplayItemCountByType);
         document.getElementById('quantityFilterForm').addEventListener('submit', fetchAndDisplayPokemartByTypeAndMin);
-
-
     }
 };
 
@@ -414,6 +350,6 @@ window.onload = function() {
 // Invoke this after any table-modifying operation to keep consistency.
 function fetchTableData() {
     fetchAndDisplayPokemon();
-    fetchAndPopulatePokemonID()
+    fetchAndPopulatePokemonID();
 }
 
