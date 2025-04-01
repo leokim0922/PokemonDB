@@ -61,7 +61,6 @@ router.post("/delete-pokemon", async (req, res) => {
 });
 
 router.get('/items', async (req, res) => {
-    console.log("Database connection established!");
     const tableContent = await appService.fetchItemFromDB();
     res.json({data: tableContent});
 });
@@ -91,7 +90,13 @@ router.get('/item-count', async (req, res) => {
 router.get('/pokemart', async (req, res) => {
     const tableContent = await appService.fetchMartFromDB();
     res.json({data: tableContent});
-    console.log(tableContent)
+});
+
+router.get('/pokemartbytypeandmin', async (req, res) => {
+    const itemType = req.query.itemType
+    const minQuantity = req.query.minQuantity //minQuantity is still a string here
+    const tableContent = await appService.fetchPokeMartByTypeAndMin(itemType, minQuantity);
+    res.json({data: tableContent});
 });
 
 

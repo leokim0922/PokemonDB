@@ -337,6 +337,55 @@ async function fetchAndDisplayPokeMart() {
     });
 }
 
+// Display Poke Mart based on Type and Min (from user input)
+
+async function fetchAndDisplayPokemartByTypeAndMin(event) {
+    event.preventDefault(); 
+
+    const selectedType = document.getElementById('itemtypes2').value;
+    const minQuantity = document.getElementById('minQuantity').value;
+
+    let url = '/pokemartbytypeandmin'; 
+
+    if (selectedType && selectedType !== "0") {
+        url += `?itemType=${encodeURIComponent(selectedType)}`;
+    }
+
+    if (minQuantity) {
+        // If itemType was already added, use '&', else use '?' - this ensures correct formatting
+        url += (url.includes('?') ? '&' : '?') + `minQuantity=${encodeURIComponent(minQuantity)}`;
+    }
+
+    const response = await fetch(url, { method: 'GET' });
+    const responseData = await response.json();
+
+    const tableElement = document.getElementById('pokemartTable');
+    const tableBody = tableElement.querySelector('tbody');
+
+    // Clear old data
+    if (tableBody) {
+        tableBody.innerHTML = '';
+    }
+
+    // Populate the table with new data
+    responseData.data.forEach(item => {
+        const row = tableBody.insertRow();
+        
+        // item[0] is the Location Name, item[1] is the Region Name, item[2] is Item Type, item[3] is Item Quantity
+        const locationCell = row.insertCell(0);
+        locationCell.textContent = item[0]; 
+
+        const regionCell = row.insertCell(1);
+        regionCell.textContent = item[1];
+
+        const itemTypeCell = row.insertCell(2);
+        itemTypeCell.textContent = item[2]; 
+
+        const itemQuantityCell = row.insertCell(3);
+        itemQuantityCell.textContent = item[3]; 
+    });
+}
+
 // ---------------------------------------------------------------
 // Initializes the webpage functionalities.
 // Add or remove event listeners based on the desired functionalities.
@@ -355,6 +404,7 @@ window.onload = function() {
         fetchAndPopulateItemType();
         fetchAndDisplayPokeMart();
         document.getElementById('filterCountsByType').addEventListener('submit', fetchAndDisplayItemCountByType);
+        document.getElementById('quantityFilterForm').addEventListener('submit', fetchAndDisplayPokemartByTypeAndMin);
 
 
     }

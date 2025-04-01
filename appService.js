@@ -287,6 +287,42 @@ async function fetchMartFromDB() {
     });
 }
 
+// Filter Poke Marts by item type and minimum quantity
+
+async function fetchPokeMartByTypeAndMin(itemType, minQuantity) {
+    const minQuantityNum = parseInt(minQuantity, 10); // Convert minQuantity from a string to an integer (base 10)
+    return await withOracleDB(async (connection) => {
+        const result = await connection.execute(
+            `SELECT 
+                p.LocationName, 
+                p.RegionName, 
+                io2.ItemType, 
+                COUNT(s.ItemName) AS ItemQuantity
+            FROM 
+                Item_Owns io
+            JOIN 
+                Item_Owns2 io2 ON io.ItemEffect = io2.ItemEffect
+            JOIN 
+                Sells s ON io.ItemName = s.ItemName
+            JOIN 
+                Pokemart p ON s.LocationName = p.LocationName AND s.RegionName = p.RegionName
+            WHERE 
+                io2.ItemType = :itemType
+            GROUP BY 
+                p.LocationName, p.RegionName, io2.ItemType
+            HAVING 
+                COUNT(s.ItemName) >= :minQuantity
+            ORDER BY 
+                p.LocationName`,
+            { itemType, minQuantity: minQuantityNum }
+        );
+        console.log(result)
+        return result.rows;
+    }).catch(() => {
+        return [];
+    });
+}
+
 module.exports = {
     testOracleConnection,
     fetchPokemonFromDb,
@@ -301,5 +337,6 @@ module.exports = {
     // fetchItemEffectFromDb,
     fetchItemFromDB,
     fetchItemCountByType,
-    fetchMartFromDB
+    fetchMartFromDB,
+    fetchPokeMartByTypeAndMin,
 };
