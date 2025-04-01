@@ -279,7 +279,7 @@ async function fetchAndPopulateItemType() {
 async function fetchAndDisplayItemCountByType(event) {
     event.preventDefault(); 
 
-    const selectedType = document.getElementById('itemCountsByType').value;
+    const selectedType = document.getElementById('itemtypes1').value;
 
     let url = '/item-count';
     if (selectedType && selectedType !== "0") {
