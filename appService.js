@@ -131,16 +131,22 @@ async function fetchTypesEffectParamsFromDb(parameters) {
         return fetchTypesEffectFromDb();
     }
     if (parameters[0] !== 'All') {
-        query = query + ' and t.Typename = :parameters[0]';
+        let type = parameters[0];
+        query = query + ' and t.Typename = :type';
     }
     if (parameters[1] !== 'None') {
-        query = query + ' and (e.percentage :parameters[1] :parameters[2]';
+        let op1 = parameters[1];
+        let num1 = parameters[2];
+        query = query + ' and (e.percentage :op1 :num1';
     }
     if (parameters[3] === 'None') {
         query = query + ')'
         return await fetchQuery(query);
     } else {
-        query = query + ' :parameters[3] e.percentage :parameters[4] :parameters[5])';
+        let logic = parameters[3];
+        let op2 = parameters[4];
+        let num2 = parameters[5];
+        query = query + ' :logic e.percentage :op2 :num2)';
     }
     try {
         return await fetchQuery(query);
