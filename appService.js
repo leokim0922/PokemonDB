@@ -213,7 +213,7 @@ async function fetchMoveAttributesFromDb(attributes) {
     }
 
     const attributeList = attributes.map(attr => attr.trim()).join(', ');
-    const query = `SELECT ${attributeList} FROM MoveAssociates_1`;
+    const query = `SELECT ${attributeList} FROM Movetype`;
 
     return await withOracleDB(async (connection) => {
         const result = await connection.execute(query);
