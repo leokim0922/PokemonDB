@@ -150,7 +150,12 @@ async function fetchTypesEffectParamsFromDb(parameters) {
     }
 
     try {
-        return await fetchQuery(query);
+        return await withOracleDB(async (connection) => {
+            const result = await connection.execute(query);
+            return result.rows;
+        }).catch(() => {
+            return [];
+        });
     } catch (error) {
         console.error("Error message element not found:", error.message);
     }
