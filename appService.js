@@ -230,7 +230,7 @@ async function fetchMoveAttributesFromDb(attributes) {
     if (typeFilter === "All") {
         query = `SELECT ${attributeList} FROM Movetype`;
     } else {
-        query = `SELECT ${attributeList} FROM Movetype WHERE typename = :typeFilter`;
+        query = `SELECT ${attributeList} FROM Movetype WHERE Movetype.typename = :typeFilter`;
     }
     return await queryFromOracle(query);
 }
