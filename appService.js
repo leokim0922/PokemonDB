@@ -140,28 +140,38 @@ async function fetchTypesEffectParamsFromDb(parameters) {
         return fetchTypesEffectFromDb();
     }
     if (type !== 'All') {
-        query = query + ' and t.Typename = :type';
+        query += ' AND t.Typename = :type';
         bindValues.type = type;
     }
     if (op1 !== 'None' && num1 >= 0) {
-        query = query + ` and (e.percentage ${op1} :num1`;
+        if (!['=', '!=', '<', '<=', '>', '>='].includes(op1)) {
+            throw new Error(`Invalid operator: ${op1}`);
+        }
+        query += ` AND (e.percentage ${op1} :num1`;
         bindValues.num1 = num1;
-        if (logic === 'None') {
-            query = query + ')'
-        } else {
+
+        if (logic !== 'None') {
+            if (!['AND', 'OR'].includes(logic)) {
+                throw new Error(`Invalid logical operator: ${logic}`);
+            }
             if (op2 !== 'None' && num2 >= 0) {
-                query = query + ` ${logic} e.percentage ${op2} :num2)`;
+                if (!['=', '!=', '<', '<=', '>', '>='].includes(op2)) {
+                    throw new Error(`Invalid operator: ${op2}`);
+                }
+                query += ` ${logic} e.percentage ${op2} :num2`;
                 bindValues.num2 = num2;
-            } else {
-                query = query + ')'
             }
         }
+        query += ')';
     }
 
+    console.log("Final Query: ", query);
+    console.log("Bind Values: ", bindValues);
+
     try {
-        return await fetchQuery(query,bindValues);
+        return await fetchQuery(query, bindValues);
     } catch (error) {
-        console.error("Error message element not found:", error.message);
+        console.error("Error executing query:", error.message);
     }
 }
 
