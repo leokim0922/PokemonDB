@@ -136,22 +136,25 @@ async function fetchTypesEffectParamsFromDb(parameters) {
 
     let bindValues = {};
 
-    if (parameters[0] === 'All' && parameters[1] === 'None') {
+    if (type === 'All' && op1 === 'None') {
         return fetchTypesEffectFromDb();
     }
-    if (parameters[0] !== 'All') {
+    if (type !== 'All') {
         query = query + ' and t.Typename = :type';
         bindValues.type = type;
     }
-    if (parameters[1] !== 'None') {
-        query = query + ' and (e.percentage ${op1} :num1';
+    if (op1 !== 'None' && num1 >= 0) {
+        query = query + ` and (e.percentage ${op1} :num1`;
         bindValues.num1 = num1;
-        if (parameters[3] === 'None') {
+        if (logic === 'None') {
             query = query + ')'
-            return await fetchQuery(query,bindValues);
         } else {
-            query = query + ` ${logic} e.percentage ${op2} :num2)`;
-            bindValues.num2 = num2;
+            if (op2 !== 'None' && num2 >= 0) {
+                query = query + ` ${logic} e.percentage ${op2} :num2)`;
+                bindValues.num2 = num2;
+            } else {
+                query = query + ')'
+            }
         }
     }
 
