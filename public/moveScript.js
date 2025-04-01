@@ -30,8 +30,26 @@ function getCheckedMoves() {
     return checkedMoves;
 }
 
-// Fetches moveID from Move table and become selection options.
-async function fetchAndDisplayMoves() {
+function buildColumnNames(checkedAttributes, tableRows) {
+    checkedAttributes.forEach(function (attribute) {
+        if (attribute === 'moveid') {
+
+        } else if (attribute === 'moveName') {
+            tableRows.insertCell().outerHTML = '<th style="width:5%">Move</th>';
+        } else if (attribute === 'PowerPoints') {
+            tableRows.insertCell().outerHTML = '<th style="width:1%">PP</th>';
+        } else if (attribute === 'TypeName') {
+            tableRows.insertCell().outerHTML = '<th style="width:10%">Type</th>';
+        } else if (attribute === 'moveEffect') {
+            tableRows.insertCell().outerHTML = '<th style="width:10%">Effect</th>';
+        } else {
+            tableRows.insertCell().outerHTML = '<th style="width:5%">' + attribute + '</th>';
+        }
+    });
+}
+
+// PROJECTION: Fetches moveID from Move table and become selection options.
+async function fetchAndDisplayMoves(type = 'All') {
     const tableElement = document.getElementById('movesTable');
     const tableRows = tableElement.querySelector('tr');
     const tableBody = tableElement.querySelector('tbody');
@@ -41,24 +59,10 @@ async function fetchAndDisplayMoves() {
     // Always clear old, already fetched data before new fetching process.
     if (tableRows) {
         tableRows.innerHTML = '<th style="width:3%">ID</th>';
-
-        checkedAttributes.forEach(function (attribute) {
-            if (attribute === 'moveid') {
-
-            } else if (attribute === 'moveName') {
-                tableRows.insertCell().outerHTML = '<th style="width:5%">Move</th>';
-            } else if (attribute === 'PowerPoints') {
-                tableRows.insertCell().outerHTML = '<th style="width:1%">PP</th>';
-            } else if (attribute === 'TypeName') {
-                tableRows.insertCell().outerHTML = '<th style="width:10%">Type</th>';
-            } else if (attribute === 'moveEffect') {
-                tableRows.insertCell().outerHTML = '<th style="width:10%">Effect</th>';
-            } else {
-                tableRows.insertCell().outerHTML = '<th style="width:5%">' + attribute + '</th>';
-            }
-        });
+        buildColumnNames(checkedAttributes, tableRows);
     }
 
+    checkedAttributes.push(type);
     const queryParams = new URLSearchParams({ attributes: checkedAttributes.join(',') });
 
     const response = await fetch(`/moves?${queryParams.toString()}`, {
@@ -85,11 +89,20 @@ async function fetchAndDisplayMoves() {
     });
 }
 
+function fetchAndDisplayMovesWithType() {
+    const typeValue = document.getElementById('insertTypeName').value;
+    fetchAndDisplayMoves(typeValue);
+}
+
 function addEventListenerToCheckBoxes() {
     var checkboxes = document.querySelectorAll("input[type=checkbox][class=moveCheck]");
     checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', fetchAndDisplayMoves)
+        checkbox.addEventListener('change', fetchAndDisplayMovesWithType)
     });
+}
+
+function addEventListenerToTypeDropdown() {
+    document.getElementById("insertTypeName").addEventListener("change", fetchAndDisplayMovesWithType);
 }
 
 // ---------------------------------------------------------------
@@ -100,6 +113,7 @@ window.onload = function() {
     fetchAndPopulateTypeName();
     fetchTableData();
     addEventListenerToCheckBoxes();
+    addEventListenerToTypeDropdown();
 };
 
 // General function to refresh the displayed table data.

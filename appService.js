@@ -207,20 +207,32 @@ async function deletePokemon(id) {
     });
 }
 
-async function fetchMoveAttributesFromDb(attributes) {
-    if (!Array.isArray(attributes) || attributes.length === 0) {
-        throw new Error('Attributes must be a non-empty array');
-    }
-
-    const attributeList = attributes.map(attr => attr.trim()).join(', ');
-    const query = `SELECT ${attributeList} FROM Movetype`;
-
+async function queryFromOracle(query) {
     return await withOracleDB(async (connection) => {
         const result = await connection.execute(query);
         return result.rows;
     }).catch(() => {
         return [];
     });
+}
+
+async function fetchMoveAttributesFromDb(attributes) {
+    const typeFilter = attributes.pop();
+
+    if (!Array.isArray(attributes) || attributes.length === 0) {
+        throw new Error('Attributes must be a non-empty array');
+    }
+
+    const attributeList = attributes.map(attr => attr.trim()).join(', ');
+
+    var query = '';
+
+    if (typeFilter === "All") {
+        query = `SELECT ${attributeList} FROM Movetype`;
+    } else {
+        query = `SELECT ${attributeList} FROM Movetype WHERE typename = :typeFilter`;
+    }
+    return await queryFromOracle(query);
 }
 
 module.exports = {
