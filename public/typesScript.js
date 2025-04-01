@@ -7,7 +7,52 @@ async function fetchAndDisplayTypes() {
     await fetchAndDisplayTable('typesTable', '/types');
 }
 
+function getParameters() {
+    var parameters = [];
+    parameters.push(document.getElementById("insertTypeName").value);
+    parameters.push(document.getElementById("operator").value);
+    parameters.push(document.getElementById("effectiveness").value);
+    parameters.push(document.getElementById("logic").value);
+    parameters.push(document.getElementById("operator2").value);
+    parameters.push(document.getElementById("effectiveness2").value);
+    return parameters;
+}
 
+async function filterTableByAttributes () {
+    const tableElement = document.getElementById('typesTable');
+    const tableBody = tableElement.querySelector('tbody');
+
+    var parameters = getParameters();
+
+    const queryParams = new URLSearchParams({ parameters: parameters.join(',') });
+
+    const response = await fetch(`/typeEffect?${queryParams.toString()}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const responseData = await response.json();
+    const content = responseData.data;
+
+    // Clear old body, already fetched data before new fetching process.
+    if (tableBody) {
+        tableBody.innerHTML = '';
+    }
+
+    content.forEach(type => {
+        const row = tableBody.insertRow();
+        type.forEach((field, index) => {
+            const cell = row.insertCell(index);
+            cell.textContent = field;
+        });
+    });
+}
+
+function addEventListenerToFilterButton() {
+    document.getElementById("filterAttributes").addEventListener("submit", filterTableByAttributes)
+}
 
 // ---------------------------------------------------------------
 // Initializes the webpage functionalities.
@@ -16,6 +61,7 @@ window.onload = function() {
     checkDbConnection();
     fetchAndPopulateTypeName();
     fetchTableData();
+    addEventListenerToFilterButton();
 };
 
 // General function to refresh the displayed table data.

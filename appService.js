@@ -137,6 +137,17 @@ async function fetchTypesEffectFromDb() {
     });
 }
 
+// SELECT & JOIN Types + Effect from DB
+async function fetchTypesEffectParamsFromDb(parameters) {
+    return await withOracleDB(async (connection) => {
+        const result = await connection.execute('SELECT t.Typename, t.typeDescription, e.percentage, e.typename2 ' +
+            'FROM Type t, Effect e WHERE t.TypeName = e.TypeName1');
+        return result.rows;
+    }).catch(() => {
+        return [];
+    });
+}
+
 // INSERTING POKEMON & associated BELONGS, LEARNS and POSSESSES into Database
 async function insertPokemon(id, description, name, type, abilityID, moveID) {
     return await withOracleDB(async (connection) => {
@@ -237,15 +248,15 @@ async function fetchMoveAttributesFromDb(attributes) {
         throw new Error('Attributes must be a non-empty array');
     }
 
-    const attributeList = attributes.map(attr => attr.trim()).join(', ');
+    // const attributeList = attributes.map(attr => attr.trim()).join(', ');
 
     var query = '';
 
     if (typeFilter === 'All') {
-        query = `SELECT ${attributeList} FROM Movetype`;
+        query = `SELECT ${attributes} FROM Movetype`;
         return await queryFromOracle(query);
     } else {
-        query = `SELECT ${attributeList} FROM Movetype mt WHERE mt.typename = :typeFilter`;
+        query = `SELECT ${attributes} FROM Movetype mt WHERE mt.typename = :typeFilter`;
         return await queryFromOracle(query, { typeFilter });
     }
 }
@@ -257,8 +268,9 @@ module.exports = {
     fetchMoveIDFromDb,
     fetchAbilityIDFromDb,
     fetchPokemonIDFromDb,
-    fetchTypesEffectFromDb,
     deletePokemon,
     insertPokemon,
-    fetchMoveAttributesFromDb
+    fetchMoveAttributesFromDb,
+    fetchTypesEffectFromDb,
+    fetchTypesEffectParamsFromDb
 };

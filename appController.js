@@ -57,6 +57,20 @@ router.get('/moves', async (req, res) => {
     }
 });
 
+router.get('/typeEffect', async (req, res) => {
+    try {
+        const parameters = req.query.attributes ? req.query.attributes.split(',') : [];
+        if (parameters.length === 0) {
+            return res.status(400).json({ error: 'No attributes provided' });
+        }
+
+        const tableContent = await appService.fetchTypesEffectParamsFromDb(parameters);
+        res.json({ data: tableContent });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 //insert pokemon
 router.post("/insert-pokemon", async (req, res) => {
     const { pokemonid, pokemondescription, pokemonname, typename, abilityID, moveID } = req.body;
