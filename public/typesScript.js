@@ -24,7 +24,7 @@ async function filterTableByAttributes () {
 
     var parameters = getParameters();
 
-    const queryParams = new URLSearchParams({ parameters: parameters.join(',') });
+    const queryParams = new URLSearchParams({ attributes: parameters.join(',') });
 
     const response = await fetch(`/typeEffect?${queryParams.toString()}`, {
         method: 'GET',
