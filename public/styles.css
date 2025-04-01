@@ -143,6 +143,21 @@ input::placeholder, textarea::placeholder {
     font-family: 'Press Start 2P', cursive;
 }
 
+.number-box {
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+input#Effectiveness {
+    width: 60px;
+}
+
+input#Effectiveness2 {
+    width: 60px;
+}
+
 /*Obtained from https://getcssscan.com/css-buttons-examples by Temani Afif*/
 .button-89 {
     --b: 3px;   /* border thickness */

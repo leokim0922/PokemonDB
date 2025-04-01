@@ -48,7 +48,6 @@ function buildColumnNames(checkedAttributes, tableRows) {
     });
 }
 
-// PROJECTION: Fetches moveID from Move table and become selection options.
 async function fetchAndDisplayMoves(type = 'All') {
     const tableElement = document.getElementById('movesTable');
     const tableRows = tableElement.querySelector('tr');

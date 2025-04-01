@@ -126,7 +126,7 @@ async function fetchPokemonIDFromDb() {
     });
 }
 
-// INSERTING INTO DATABASE
+// INSERTING POKEMON & associated BELONGS, LEARNS and POSSESSES into Database
 async function insertPokemon(id, description, name, type, abilityID, moveID) {
     return await withOracleDB(async (connection) => {
         // Check if type exists

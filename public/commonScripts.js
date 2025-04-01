@@ -43,3 +43,28 @@ export async function fetchAndPopulateTypeName() {
         selectElement.appendChild(option);
     });
 }
+
+export async function fetchAndDisplayTable(elementID, input) {
+    const tableElement = document.getElementById(elementID);
+    const tableBody = tableElement.querySelector('tbody');
+
+    const response = await fetch(input, {
+        method: 'GET'
+    });
+
+    const responseData = await response.json();
+    const content = responseData.data;
+
+    // Always clear old, already fetched data before new fetching process.
+    if (tableBody) {
+        tableBody.innerHTML = '';
+    }
+
+    content.forEach(subContent => {
+        const row = tableBody.insertRow();
+        subContent.forEach((field, index) => {
+            const cell = row.insertCell(index);
+            cell.textContent = field;
+        });
+    });
+}

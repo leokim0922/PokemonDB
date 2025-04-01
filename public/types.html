@@ -29,49 +29,51 @@
 
 <br>
 <div class="body-container">
-    <h2>Moves</h2>
+    <h2>Types</h2>
 
     <h4><button type="submit">Filter</button> Attributes:</h4>
-    <form id="selectAttributes">
-        <div class="checkbox-container">
-            <label for="moveName">Move</label>
-            <input type="checkbox" id="moveName" class="moveCheck" checked>
-        </div>
-        <div class="checkbox-container">
-            <label for="Power">Power</label>
-            <input type="checkbox" id="Power" class="moveCheck" checked>
-        </div>
-        <div class="checkbox-container">
-            <label for="Accuracy">Accuracy</label>
-            <input type="checkbox" id="Accuracy" class="moveCheck" checked>
-        </div>
-        <div class="checkbox-container">
-            <label for="PowerPoints">PP</label>
-            <input type="checkbox" id="PowerPoints" class="moveCheck" checked>
-        </div>
-        <div class="checkbox-container">
-            <label for="Effect">Effect</label>
-            <input type="checkbox" id="Effect" class="moveCheck" checked>
-        </div>
-        <div class="checkbox-container">
-            <label for="Type">Type</label>
-            <input type="checkbox" id="Type" class="moveCheck" checked>
-        </div>
-        <br><br>
-        <div>
-            <label for="insertTypeName">Type</label>
-            <select name="TypeName" id="insertTypeName">
-                <option value='All'>Select Type:</option>
+    <form id="filterAttributes">
+        <div class="number-box">
+            <label for="Effectiveness">Effectiveness:</label>
+            <select name="operator" id="operator">
+                <option value="None">None</option>
+                <option value="larger">&gt;</option>
+                <option value="less">&lt;</option>
+                <option value="equal">=</option>
             </select>
+            <input type="number" id="Effectiveness" placeholder="0" min="0" max="300" required />
+
+            <select name="logic" id="logic">
+                <option value="None">None</option>
+                <option value="AND">AND</option>
+                <option value="OR">OR</option>
+            </select>
+
+            <select name="operator" id="operator2">
+                <option value="None">None</option>
+                <option value="larger">&gt;</option>
+                <option value="less">&lt;</option>
+                <option value="equal">=</option>
+            </select>
+            <input type="number" id="Effectiveness2" placeholder="0" min="0" max="300" required />
         </div>
+        <label for="insertTypeName">Filter Type:</label>
+        <select name="TypeName" id="insertTypeName">
+            <option value="All">Select Type:</option>
+        </select>
     </form>
+    <div>
+    </div>
     <br>
     <!-- Show 'pokemon' table.
         Data will be fetched and inserted here dynamically using JavaScript. -->
-    <table id="movesTable">
+    <table id="typesTable">
         <thead>
         <tr>
-            <th style="width:3%">ID</th>
+            <th style="width:10%">Type</th>
+            <th style="width:20%">Description</th>
+            <th style="width:10%">Effectiveness (Percentage)</th>
+            <th style="width:10%">Type</th>
         </tr>
         </thead>
         <tbody>
@@ -89,6 +91,6 @@
 
 <!-- ===================================================================================== -->
 <!-- External JavaScript file that contains the functionality/logic for the operations above. -->
-<script type="module" src="movesScript.js"></script>
+<script type="module" src="typesScript.js"></script>
 </body>
 </html>
