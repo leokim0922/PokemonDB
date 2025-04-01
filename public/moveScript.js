@@ -1,7 +1,7 @@
 import { checkDbConnection, fetchAndPopulateTypeName } from './commonScripts.js';
 
 function getCheckedMoves() {
-    const checkedMoves = [];
+    const checkedMoves = ['moveid'];
 
     if (document.getElementById('moveName').checked) {
         checkedMoves.push('moveName');
@@ -20,7 +20,7 @@ function getCheckedMoves() {
     }
 
     if (document.getElementById('Effect').checked) {
-        checkedMoves.push('Effect');
+        checkedMoves.push('moveEffect');
     }
 
     if (document.getElementById('Type').checked) {
@@ -49,6 +49,8 @@ async function fetchAndDisplayMoves() {
                 tableRows.insertCell().outerHTML = '<th style="width:10%">PP</th>';
             } else if (attribute === 'TypeName') {
                 tableRows.insertCell().outerHTML = '<th style="width:10%">Type</th>';
+            } else if (attribute === 'moveEffect') {
+                tableRows.insertCell().outerHTML = '<th style="width:10%">Effect</th>';
             } else {
                 tableRows.insertCell().outerHTML = '<th style="width:10%">' + attribute + '</th>';
             }
