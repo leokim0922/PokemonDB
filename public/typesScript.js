@@ -67,5 +67,5 @@ window.onload = function() {
 // General function to refresh the displayed table data.
 // Invoke this after any table-modifying operation to keep consistency.
 function fetchTableData() {
-    fetchAndDisplayTypes()();
+    fetchAndDisplayTypes();
 }
