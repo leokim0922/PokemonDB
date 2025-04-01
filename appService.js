@@ -108,7 +108,7 @@ async function fetchPokemonIDFromDb() {
 
 // SELECT Abilities from DB
 async function fetchAbilitiesFromDb() {
-    const query = 'SELECT (*) FROM Ability';
+    const query = 'SELECT * FROM Ability';
     return await fetchQuery(query);
 }
 
