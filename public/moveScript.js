@@ -43,16 +43,18 @@ async function fetchAndDisplayMoves() {
         tableRows.innerHTML = '<th style="width:3%">ID</th>';
 
         checkedAttributes.forEach(function (attribute) {
-            if (attribute === 'moveName') {
-                tableRows.insertCell().outerHTML = '<th style="width:10%">Move</th>';
+            if (attribute === 'moveid') {
+
+            } else if (attribute === 'moveName') {
+                tableRows.insertCell().outerHTML = '<th style="width:5%">Move</th>';
             } else if (attribute === 'PowerPoints') {
-                tableRows.insertCell().outerHTML = '<th style="width:10%">PP</th>';
+                tableRows.insertCell().outerHTML = '<th style="width:1%">PP</th>';
             } else if (attribute === 'TypeName') {
                 tableRows.insertCell().outerHTML = '<th style="width:10%">Type</th>';
             } else if (attribute === 'moveEffect') {
                 tableRows.insertCell().outerHTML = '<th style="width:10%">Effect</th>';
             } else {
-                tableRows.insertCell().outerHTML = '<th style="width:10%">' + attribute + '</th>';
+                tableRows.insertCell().outerHTML = '<th style="width:5%">' + attribute + '</th>';
             }
         });
     }
