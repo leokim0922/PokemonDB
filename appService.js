@@ -131,10 +131,10 @@ async function fetchTypesEffectParamsFromDb(parameters) {
         return fetchTypesEffectFromDb();
     }
     if (parameters[0] !== 'All') {
-        query = query + 'and t.Typename = :parameters[0]';
+        query = query + ' and t.Typename = :parameters[0]';
     }
     if (parameters[1] !== 'None') {
-        query = query + 'and (e.percentage :parameters[1] :parameters[2]';
+        query = query + ' and (e.percentage :parameters[1] :parameters[2]';
     }
     if (parameters[3] === 'None') {
         query = query + ')'
