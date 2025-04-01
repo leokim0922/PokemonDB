@@ -7,7 +7,7 @@ header {
     text-align: center;
     border-radius: 15px 15px 15px 15px;
     opacity: 1;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
 
 body {
@@ -113,12 +113,6 @@ input::placeholder, textarea::placeholder {
     color: #aaa;
 }
 
-/* OTHER STYLES */
-.loading-gif {
-    height: 1em;
-    vertical-align: middle;
-}
-
 .button-container {
     display: flex;
     justify-content: center;
@@ -158,18 +152,18 @@ input#Effectiveness2 {
     width: 60px;
 }
 
-/*Obtained from https://getcssscan.com/css-buttons-examples by Temani Afif*/
+/*Modified from https://getcssscan.com/css-buttons-examples by Temani Afif*/
 .button-89 {
     --b: 3px;   /* border thickness */
     --s: .45em; /* size of the corner */
     --color: #373B44;
-    padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+    padding: calc(0.9em + var(--s)) calc(.9em + var(--s)); /* button size */
     color: var(--color);--_p: var(--s);
     background:conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
     transition: .3s linear, color 0s, background-color 0s;
     outline: var(--b) solid #0000;outline-offset: .6em;
     font-family: 'Press Start 2P', cursive;
-    font-size: 16px;
+    font-size: 13px;
     border: 0;
     user-select: none;
     -webkit-user-select: none;

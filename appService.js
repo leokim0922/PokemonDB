@@ -106,6 +106,12 @@ async function fetchPokemonIDFromDb() {
     return await fetchQuery(query);
 }
 
+// SELECT Abilities from DB
+async function fetchAbilitiesFromDb() {
+    const query = 'SELECT (*) FROM Ability';
+    return await fetchQuery(query);
+}
+
 async function fetchQuery(query, bindValues = {}) {
     return await withOracleDB(async (connection) => {
         const result = await connection.execute(query, bindValues);
@@ -144,7 +150,6 @@ async function fetchTypesEffectParamsFromDb(parameters) {
         bindValues.type = type;
     }
     if (op1 !== 'None' && num1 >= 0 && num1 != '') {
-        console.log("num1: ", num1);
         query = query + ` and (e.percentage ${op1} :num1`;
         bindValues.num1 = num1;
         if (logic === 'None') {
@@ -291,5 +296,6 @@ module.exports = {
     insertPokemon,
     fetchMoveAttributesFromDb,
     fetchTypesEffectFromDb,
-    fetchTypesEffectParamsFromDb
+    fetchTypesEffectParamsFromDb,
+    fetchAbilitiesFromDb
 };

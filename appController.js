@@ -33,6 +33,11 @@ router.get('/abilityid', async (req, res) => {
     res.json({data: tableContent});
 });
 
+router.get('/abilities', async (req, res) => {
+    const tableContent = await appService.fetchAbilitiesFromDb();
+    res.json({data: tableContent});
+});
+
 router.get('/pokemonid', async (req, res) => {
     const tableContent = await appService.fetchPokemonIDFromDb();
     res.json({data: tableContent});
