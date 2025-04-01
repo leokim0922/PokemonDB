@@ -216,6 +216,9 @@ async function queryFromOracle(query, binds = {}) {
     });
 }
 
+
+// PROJECTION & JOIN (join statement in SQL by creating VIEW, joining MoveAssociate_1 &
+// MoveAssociate_2 to find Move's associated Type)
 async function fetchMoveAttributesFromDb(attributes) {
     const typeFilter = attributes.pop();
 
