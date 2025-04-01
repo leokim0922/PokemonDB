@@ -32,7 +32,7 @@ export async function fetchAndPopulateTypeName() {
     // Always clear old, already fetched data before new fetching process.
     if (selectElement) {
         selectElement.innerHTML = `
-                <option value="0">Select Type:</option>
+                <option value='All'>Select Type:</option>
         `;
     }
 
