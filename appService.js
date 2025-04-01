@@ -74,52 +74,41 @@ async function testOracleConnection() {
 
 // SELECT FROM DATABASE
 async function fetchPokemonFromDb() {
-    return await withOracleDB(async (connection) => {
-        const result = await connection.execute('SELECT DISTINCT p.pokemonid, p.pokemonname, b.typename, m.movename, a.abilityeffect  \n' +
-            'FROM pokemon p, belongs b, possesses po, ability a, learns l, move_associates1 m\n' +
-            'WHERE p.pokemonid = po.pokemonid and po.abilityid = a.abilityid and \n' +
-            'p.pokemonid = b.pokemonid and p.pokemonid = l.pokemonid and l.moveid = m.moveid\n' +
-            'ORDER BY p.pokemonid');
-        return result.rows;
-    }).catch(() => {
-        return [];
-    });
+    const query = 'SELECT DISTINCT p.pokemonid, p.pokemonname, b.typename, m.movename, a.abilityeffect  \n' +
+        'FROM pokemon p, belongs b, possesses po, ability a, learns l, move_associates1 m\n' +
+        'WHERE p.pokemonid = po.pokemonid and po.abilityid = a.abilityid and \n' +
+        'p.pokemonid = b.pokemonid and p.pokemonid = l.pokemonid and l.moveid = m.moveid\n' +
+        'ORDER BY p.pokemonid';
+    return await fetchQuery(query);
 }
 
 // SELECT FROM DATABASE
 async function fetchTypeNameFromDb() {
-    return await withOracleDB(async (connection) => {
-        const result = await connection.execute('SELECT typename FROM type');
-        return result.rows;
-    }).catch(() => {
-        return [];
-    });
+    const query = 'SELECT typename FROM type';
+    return await fetchQuery(query);
 }
 
 // SELECT FROM DATABASE
 async function fetchMoveIDFromDb() {
-    return await withOracleDB(async (connection) => {
-        const result = await connection.execute('SELECT moveid FROM move_associates1');
-        return result.rows;
-    }).catch(() => {
-        return [];
-    });
+    const query = 'SELECT moveid FROM move_associates1';
+    return await fetchQuery(query);
 }
 
 // SELECT FROM DATABASE
 async function fetchAbilityIDFromDb() {
-    return await withOracleDB(async (connection) => {
-        const result = await connection.execute('SELECT abilityid FROM ability');
-        return result.rows;
-    }).catch(() => {
-        return [];
-    });
+    const query = 'SELECT abilityid FROM ability';
+    return await fetchQuery(query);
 }
 
 // SELECT FROM DATABASE
 async function fetchPokemonIDFromDb() {
+    const query = 'SELECT pokemonid FROM Pokemon';
+    return await fetchQuery(query);
+}
+
+async function fetchQuery(query) {
     return await withOracleDB(async (connection) => {
-        const result = await connection.execute('SELECT pokemonid FROM Pokemon');
+        const result = await connection.execute(query);
         return result.rows;
     }).catch(() => {
         return [];
@@ -128,24 +117,36 @@ async function fetchPokemonIDFromDb() {
 
 // SELECT & JOIN Types + Effect from DB
 async function fetchTypesEffectFromDb() {
-    return await withOracleDB(async (connection) => {
-        const result = await connection.execute('SELECT t.Typename, t.typeDescription, e.percentage, e.typename2 ' +
-            'FROM Type t, Effect e WHERE t.TypeName = e.TypeName1');
-        return result.rows;
-    }).catch(() => {
-        return [];
-    });
+    const query = 'SELECT t.Typename, t.typeDescription, e.percentage, e.typename2 ' +
+        'FROM Type t, Effect e WHERE t.TypeName = e.TypeName1';
+    return await fetchQuery(query);
 }
 
 // SELECT & JOIN Types + Effect from DB
 async function fetchTypesEffectParamsFromDb(parameters) {
-    return await withOracleDB(async (connection) => {
-        const result = await connection.execute('SELECT t.Typename, t.typeDescription, e.percentage, e.typename2 ' +
-            'FROM Type t, Effect e WHERE t.TypeName = e.TypeName1');
-        return result.rows;
-    }).catch(() => {
-        return [];
-    });
+    var query = 'SELECT t.Typename, t.typeDescription, e.percentage, e.typename2 ' +
+        'FROM Type t, Effect e WHERE t.TypeName = e.TypeName1';
+
+    if (parameters[0] === 'All' && parameters[1] === 'None') {
+        return fetchTypesEffectFromDb();
+    }
+    if (parameters[0] !== 'All') {
+        query = query + 'and t.Typename = :parameters[0]';
+    }
+    if (parameters[1] !== 'None') {
+        query = query + 'and (e.percentage :parameters[1] :parameters[2]';
+    }
+    if (parameters[3] === 'None') {
+        query = query + ')'
+        return await fetchQuery(query);
+    } else {
+        query = query + ' :parameters[3] e.percentage :parameters[4] :parameters[5])';
+    }
+    try {
+        return await fetchQuery(query);
+    } catch (error) {
+        document.getElementById("error message").innterHTML = error.name;
+    }
 }
 
 // INSERTING POKEMON & associated BELONGS, LEARNS and POSSESSES into Database
@@ -247,8 +248,6 @@ async function fetchMoveAttributesFromDb(attributes) {
     if (!Array.isArray(attributes) || attributes.length === 0) {
         throw new Error('Attributes must be a non-empty array');
     }
-
-    // const attributeList = attributes.map(attr => attr.trim()).join(', ');
 
     var query = '';
 
