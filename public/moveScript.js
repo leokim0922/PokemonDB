@@ -59,7 +59,7 @@ async function fetchAndDisplayMoves() {
 
     const queryParams = new URLSearchParams({ attributes: checkedAttributes.join(',') });
 
-    const response = await fetch(`/move?${queryParams.toString()}`, {
+    const response = await fetch(`/moves?${queryParams.toString()}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
