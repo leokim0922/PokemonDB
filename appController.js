@@ -59,7 +59,7 @@ router.get('/moves', async (req, res) => {
 
 router.get('/typeEffect', async (req, res) => {
     try {
-        const parameters = req.query.attributes ? req.query.attributes.split(',') : [];
+        const parameters = req.query.parameters ? req.query.parameters.split(',') : [];
         if (parameters.length === 0) {
             return res.status(400).json({ error: 'No attributes provided' });
         }
