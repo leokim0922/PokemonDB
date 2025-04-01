@@ -138,16 +138,17 @@ async function fetchTypesEffectParamsFromDb(parameters) {
         let op1 = parameters[1];
         let num1 = parameters[2];
         query = query + ' and (e.percentage :op1 :num1';
+        if (parameters[3] === 'None') {
+            query = query + ')'
+            return await fetchQuery(query);
+        } else {
+            let logic = parameters[3];
+            let op2 = parameters[4];
+            let num2 = parameters[5];
+            query = query + ' :logic e.percentage :op2 :num2)';
+        }
     }
-    if (parameters[3] === 'None') {
-        query = query + ')'
-        return await fetchQuery(query);
-    } else {
-        let logic = parameters[3];
-        let op2 = parameters[4];
-        let num2 = parameters[5];
-        query = query + ' :logic e.percentage :op2 :num2)';
-    }
+
     try {
         return await fetchQuery(query);
     } catch (error) {
