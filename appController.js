@@ -38,6 +38,20 @@ router.get('/pokemonid', async (req, res) => {
     res.json({data: tableContent});
 });
 
+router.get('/moves', async (req, res) => {
+    try {
+        const attributes = req.query.attributes ? req.query.attributes.split(',') : [];
+        if (attributes.length === 0) {
+            return res.status(400).json({ error: 'No attributes provided' });
+        }
+
+        const tableContent = await appService.fetchMoveAttributesFromDb(attributes);
+        res.json({ data: tableContent });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 //insert pokemon
 router.post("/insert-pokemon", async (req, res) => {
     const { pokemonid, pokemondescription, pokemonname, typename, abilityID, moveID } = req.body;

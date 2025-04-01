@@ -207,6 +207,22 @@ async function deletePokemon(id) {
     });
 }
 
+async function fetchMoveAttributesFromDb(attributes) {
+    if (!Array.isArray(attributes) || attributes.length === 0) {
+        throw new Error('Attributes must be a non-empty array');
+    }
+
+    const attributeList = attributes.map(attr => attr.trim()).join(', ');
+    const query = `SELECT ${attributeList} FROM MoveAssociates_1`;
+
+    return await withOracleDB(async (connection) => {
+        const result = await connection.execute(query);
+        return result.rows;
+    }).catch(() => {
+        return [];
+    });
+}
+
 module.exports = {
     testOracleConnection,
     fetchPokemonFromDb,
@@ -215,5 +231,6 @@ module.exports = {
     fetchAbilityIDFromDb,
     fetchPokemonIDFromDb,
     deletePokemon,
-    insertPokemon
+    insertPokemon,
+    fetchMoveAttributesFromDb
 };

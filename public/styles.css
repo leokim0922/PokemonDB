@@ -139,6 +139,7 @@ input::placeholder, textarea::placeholder {
     color: rgb(0, 0, 0);
     border-radius: 15px 15px 15px 15px;
     padding: 10px;
+    font-size: 13px;
     font-family: 'Press Start 2P', cursive;
 }
 
