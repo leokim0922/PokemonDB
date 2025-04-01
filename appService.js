@@ -126,6 +126,17 @@ async function fetchPokemonIDFromDb() {
     });
 }
 
+// SELECT & JOIN Types + Effect from DB
+async function fetchTypesEffectFromDb() {
+    return await withOracleDB(async (connection) => {
+        const result = await connection.execute('SELECT t.Typename, t.typeDescription, e.percentage, e.typename2 ' +
+            'FROM Type t, Effect e WHERE t.TypeName = e.TypeName1');
+        return result.rows;
+    }).catch(() => {
+        return [];
+    });
+}
+
 // INSERTING POKEMON & associated BELONGS, LEARNS and POSSESSES into Database
 async function insertPokemon(id, description, name, type, abilityID, moveID) {
     return await withOracleDB(async (connection) => {
@@ -246,6 +257,7 @@ module.exports = {
     fetchMoveIDFromDb,
     fetchAbilityIDFromDb,
     fetchPokemonIDFromDb,
+    fetchTypesEffectFromDb,
     deletePokemon,
     insertPokemon,
     fetchMoveAttributesFromDb

@@ -38,6 +38,11 @@ router.get('/pokemonid', async (req, res) => {
     res.json({data: tableContent});
 });
 
+router.get('/types', async (req, res) => {
+    const tableContent = await appService.fetchTypesEffectFromDb();
+    res.json({data: tableContent});
+});
+
 router.get('/moves', async (req, res) => {
     try {
         const attributes = req.query.attributes ? req.query.attributes.split(',') : [];
