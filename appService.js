@@ -145,7 +145,7 @@ async function fetchTypesEffectParamsFromDb(parameters) {
     try {
         return await fetchQuery(query);
     } catch (error) {
-        document.getElementById("error message").innterHTML = error.name;
+        console.error("Error message element not found:", error.message);
     }
 }
 

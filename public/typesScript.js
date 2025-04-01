@@ -51,7 +51,7 @@ async function filterTableByAttributes () {
 }
 
 function addEventListenerToFilterButton() {
-    document.getElementById("filterAttributes").addEventListener("submit", filterTableByAttributes)
+    document.getElementById("filterAttributes").addEventListener("click", filterTableByAttributes)
 }
 
 // ---------------------------------------------------------------
