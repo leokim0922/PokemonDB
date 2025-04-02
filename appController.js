@@ -48,6 +48,11 @@ router.get('/types', async (req, res) => {
     res.json({data: tableContent});
 });
 
+router.get('/gym', async (req, res) => {
+    const tableContent = await appService.fetchGymTrainersFromDb();
+    res.json({data: tableContent});
+});
+
 router.get('/moves', async (req, res) => {
     try {
         const attributes = req.query.attributes ? req.query.attributes.split(',') : [];

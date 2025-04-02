@@ -112,6 +112,13 @@ async function fetchAbilitiesFromDb() {
     return await fetchQuery(query);
 }
 
+// SELECT Trainer + Gyms from DB
+async function fetchGymTrainersFromDb() {
+    const query = 'SELECT td.locationname, td.regionname, td.trainername, td.winnings' +
+        ' FROM trainer_defends td';
+    return await fetchQuery(query);
+}
+
 async function fetchQuery(query, bindValues = {}) {
     return await withOracleDB(async (connection) => {
         const result = await connection.execute(query, bindValues);
@@ -418,7 +425,8 @@ module.exports = {
     fetchItemFromDB,
     fetchItemCountByType,
     fetchMartFromDB,
-    fetchPokeMartByTypeAndMin
+    fetchPokeMartByTypeAndMin,
+    fetchGymTrainersFromDb
     // fetchItemNameFromDb,
     // fetchItemEffectFromDb
 };
