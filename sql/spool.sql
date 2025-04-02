@@ -1,11 +1,12 @@
-SET UNDERLINE OFF
-SET COLSEP ','
---That's the separator used by excel later to parse the data to columns
-SET LINES 100 PAGES 100
-SET FEEDBACK off
---If you don't want column headings in CSV file
-SET HEADING off 
-Spool ~\myresults.csv
+SET PAGESIZE 40000
+
+SET FEEDBACK OFF
+
+SET MARKUP HTML ON
+
+SET NUM 24
+
+SPOOL file_name.xls
 
 PROMPT Table: Pokemon
 SELECT * FROM Pokemon;
@@ -66,3 +67,9 @@ SELECT * FROM Item_Owns;
 
 PROMPT Table: Sells
 SELECT * FROM Sells;
+
+SPOOL OFF
+
+SET MARKUP HTML OFF
+
+SPOOL OFF
