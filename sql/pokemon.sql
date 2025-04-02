@@ -519,35 +519,30 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 	-- INSERT Move_Associates
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Burns opponent', 'Fire');
-
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints,
 		MoveEffect)
 		VALUES (101, 'Flamethrower', 90, 100, 15, 'Burns opponent');
 
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('High power water attack', 'Water');
-
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints,
 		MoveEffect)
 		VALUES (102, 'Hydro Pump', 110, 80, 5, 'High power water attack');
 
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Charges and fires on second turn', 'Grass');
-
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints,
 		MoveEffect)
 		VALUES (103, 'Solar Beam', 120, 100, 10, 'Charges and fires on second turn');
 
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('May paralyze opponent', 'Electric');
-
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints,
 		MoveEffect)
 		VALUES (104, 'Thunderbolt', 90, 100, 15, 'May paralyze opponent');
 
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('May lower opponent special defense', 'Psychic');
-		
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints,
 		MoveEffect)
 		VALUES (105, 'Psychic', 90, 100, 10, 'May lower opponent special defense');
@@ -640,7 +635,7 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Normal move that causes opponent to flee', 'Normal');
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
-		VALUES (18, 'Whirlwind', —, ∞%, 20, 'Normal move that causes opponent to flee');
+		VALUES (18, 'Whirlwind', 0, 1000, 20, 'Normal move that causes opponent to flee');
 
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Flying physical attack', 'Flying');
@@ -690,7 +685,7 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Ground move that reduces accuracy', 'Ground');
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
-		VALUES (28, 'Sand Attack', —, 100, 15, 'Ground move that reduces accuracy');
+		VALUES (28, 'Sand Attack', 0, 100, 15, 'Ground move that reduces accuracy');
 
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Normal physical attack with flinching', 'Normal');
@@ -704,49 +699,122 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 	-- INSERT POKEMON with Associated Type & Ability & Learns
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(101, 'An electric mouse', 'Pikachu', 'Electric', 204, 104);
+			AddPokemonWithTypeAbilityLearns(1, 'A grass-poison type Pokemon that grows flowers as it evolves. Known for its sweet scent.', 'Bulbasaur', 'Grass', 101, 201);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(1, 'For some time after its birth, it uses the nutrients that are packed into the
-			seed on its back in order to grow.', 'Bulbasaur', 'Grass', 201, 103);
+			AddPokemonWithTypeAbilityLearns(2, 'It evolves from Bulbasaur. The seed on its back grows into a large plant as it matures.', 'Ivysaur', 'Grass', 102, 202);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(2, 'Its plant blooms when it is absorbing solar energy. It stays on the move to
-			seek sunlight.', 'Ivysaur', 'Grass', 201, 103);
+			AddPokemonWithTypeAbilityLearns(3, 'Known for its powerful solar beam attack. It is fully grown with an enormous plant on its back.', 'Venusaur', 'Grass', 103, 203);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(3, 'Venusaur is a large, quadrupedal Pokemon with a turquoise body.',
-			'Venusaur', 'Grass', 201, 103);
+			AddPokemonWithTypeAbilityLearns(4, 'A fire-type Pokemon that burns with great intensity, often using its flame to intimidate opponents.', 'Charmander', 'Fire', 104, 204);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(4, 'It has a preference for hot things. When it rains, steam is said to spout from
-			the tip of its tail.', 'Charmander', 'Fire', 202, 101);
+			AddPokemonWithTypeAbilityLearns(5, 'It evolves from Charmander and is known for its fiery tail flame that burns fiercely.', 'Charmeleon', 'Fire', 105, 205);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(5, 'When it swings its burning tail, it elevates the temperature to unbearably high
-			levels.', 'Charmeleon', 'Fire', 202, 101);
+			AddPokemonWithTypeAbilityLearns(6, 'Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.', 'Charizard', 'Fire', 202, 101);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(6, 'Spits fire that is hot enough to melt boulders. Known to cause forest fires
-			unintentionally.', 'Charizard', 'Fire', 202, 101);
+			AddPokemonWithTypeAbilityLearns(7, 'When its huge eyes light up, it leans forward and rams into its foe at full speed.', 'Squirtle', 'Water', 203, 102);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(7, 'When its huge eyes light up, it leans forward and rams into its foe at full
-			speed.', 'Squirtle', 'Water', 203, 102);
+			AddPokemonWithTypeAbilityLearns(8, 'It evolves from Squirtle and uses its powerful tail to swim at high speeds.', 'Wartortle', 'Water', 204, 103);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(9, 'A mighty and fearsome Pokemon with a tough shell, it is a master of water-based attacks.', 'Blastoise', 'Water', 205, 104);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(10, 'It is a bug-type Pokemon with a soft, green body, known for its adorable appearance and simple nature.', 'Caterpie', 'Bug', 106, 205);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(11, 'It evolves from Caterpie and forms a cocoon to undergo its metamorphosis.', 'Metapod', 'Bug', 107, 206);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(12, 'A graceful butterfly Pokemon with beautiful wings, it uses powders for defense.', 'Butterfree', 'Bug', 108, 207);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(13, 'Known for its quick and agile flying abilities, it is a normal and flying-type Pokemon.', 'Pidgey', 'Normal', 109, 208);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(14, 'It evolves from Pidgey and is skilled at aerial combat, using powerful wing attacks.', 'Pidgeotto', 'Normal', 110, 209);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(15, 'A powerful and majestic bird known for its speed and aerial acrobatics.', 'Pidgeot', 'Normal', 111, 210);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(16, 'It is a normal-type Pokemon with a fast-moving and agile nature, known for its quick attacks.', 'Rattata', 'Normal', 112, 211);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(17, 'A tougher and stronger version of Rattata, it is adept at using its teeth and claws in battle.', 'Raticate', 'Normal', 113, 212);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(18, 'It is a snake-like Pokemon that specializes in stealthy movements and venomous attacks.', 'Ekans', 'Poison', 114, 213);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(19, 'It evolves from Ekans and has a fearsome presence with powerful poison-based attacks.', 'Arbok', 'Poison', 115, 214);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(20, 'A dog-like Pokemon with a friendly demeanor, it is known for its fire-based attacks and loyal nature.', 'Growlithe', 'Fire', 116, 215);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(21, 'It evolves from Growlithe and is a fierce and loyal guardian of its territory.', 'Arcanine', 'Fire', 117, 216);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(22, 'It is a tadpole Pokemon with powerful water abilities and a distinctive spiral pattern.', 'Poliwag', 'Water', 118, 217);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(23, 'It evolves from Poliwag and is skilled in both water and fighting moves.', 'Poliwhirl', 'Water', 119, 218);
+		END;
+		/
+
+		BEGIN
+			AddPokemonWithTypeAbilityLearns(24, 'A massive turtle-like Pokemon that controls water and is equipped with powerful attacks.', 'Politoed', 'Water', 120, 219);
 		END;
 		/
 
@@ -771,18 +839,326 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INTO Effect(TypeName1, TypeName2, Percentage)
 		VALUES ('Water', 'Fire', 200);
 
+		-- Normal Type against other Types
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Normal', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Fighting', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Flying', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Poison', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Ground', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Rock', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Bug', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Ghost', 0);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Steel', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Fire', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Water', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Grass', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Electric', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Psychic', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Ice', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Dragon', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Dark', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Fairy', 100);
+
+		-- Normal Type against other Types
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Normal', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Fighting', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Flying', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Poison', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Ground', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Rock', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Bug', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Ghost', 0);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Steel', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Fire', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Water', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Grass', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Electric', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Psychic', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Ice', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Dragon', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Dark', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Normal', 'Fairy', 100);
+
+		-- Fighting Type against other Types
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Normal', 200);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Fighting', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Flying', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Poison', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Ground', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Rock', 200);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Bug', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Ghost', 0);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Steel', 200);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Fire', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Water', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Grass', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Electric', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Psychic', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Ice', 200);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Dragon', 200);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Dark', 200);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Fighting', 'Fairy', 50);
+
+		-- Flying Type against other Types
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Normal', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Fighting', 200);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Flying', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Poison', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Ground', 0);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Rock', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Bug', 200);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Ghost', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Steel', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Fire', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Water', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Grass', 200);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Electric', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Psychic', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Ice', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Dragon', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Dark', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Flying', 'Fairy', 100);
+
+		-- Poison Type against other Types
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Normal', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Fighting', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Flying', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Poison', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Ground', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Rock', 50);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Bug', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Ghost', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Steel', 0);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Fire', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Water', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Grass', 200);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Electric', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Psychic', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Ice', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Dragon', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Dark', 100);
+
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
+		VALUES ('Poison', 'Fairy', 200);
+
 	-- INSERT EvolvesInto
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (1, 2, 'Level 16');
+		VALUES (1, 2, 'Level 16'); -- Example: Bulbasaur to Ivysaur
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (2, 3, 'Level 40');
+		VALUES (2, 3, 'Level 32'); -- Example: Ivysaur to Venusaur
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (4, 5, 'Level 17');
+		VALUES (4, 5, 'Level 16'); -- Example: Charmander to Charmeleon
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (5, 6, 'Level 38');
+		VALUES (5, 6, 'Level 36'); -- Example: Charmeleon to Charizard
+
+		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
+		VALUES (7, 8, 'Level 16'); -- Example: Squirtle to Wartortle
+
+		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
+		VALUES (8, 9, 'Level 36'); -- Example: Wartortle to Blastoise
+
+		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
+		VALUES (10, 11, 'Level 20'); -- Example: Caterpie to Metapod
+
+		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
+		VALUES (11, 12, 'Level 30'); -- Example: Metapod to Butterfree
+
+		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
+		VALUES (13, 14, 'Level 16'); -- Example: Pidgey to Pidgeotto
+
+		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
+		VALUES (14, 15, 'Level 36'); -- Example: Pidgeotto to Pidgeot
+
+		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
+		VALUES (16, 17, 'Level 16'); -- Example: Rattata to Raticate
+
+		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
+		VALUES (18, 19, 'Level 20'); -- Example: Ekans to Arbok
+
+		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
+		VALUES (20, 21, 'Use Fire Stone'); -- Example: Growlithe to Arcanine
+
+		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
+		VALUES (22, 23, 'Use Water Stone'); -- Example: Poliwag to Poliwhirl
+
+		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
+		VALUES (23, 24, 'Use Water Stone'); -- Example: Poliwhirl to Politoed
 
 	-- INSERT Region
 		INSERT INTO Region(RegionName, RegionDescription)
