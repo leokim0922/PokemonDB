@@ -1,4 +1,11 @@
-SPOOL table_output.txt;
+SET UNDERLINE OFF
+SET COLSEP ','
+--That's the separator used by excel later to parse the data to columns
+SET LINES 100 PAGES 100
+SET FEEDBACK off
+--If you don't want column headings in CSV file
+SET HEADING off 
+Spool ~\myresults.csv
 
 PROMPT Table: Pokemon
 SELECT * FROM Pokemon;
