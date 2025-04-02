@@ -951,14 +951,6 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INTO Effect(TypeName1, TypeName2, Percentage)
 		VALUES ('Fire', 'Fire', 50);
 
-		INSERT
-		INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Grass', 'Water', 200);
-
-		INSERT
-		INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Water', 'Fire', 200);
-
 		COMMIT;
 
 		-- Normal Type against other Types
@@ -1190,6 +1182,88 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
 		VALUES ('Poison', 'Fairy', 200);
+
+		COMMIT;
+
+		-- Bug Type Effectiveness
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Bug', 'Grass', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Bug', 'Psychic', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Bug', 'Fighting', 50);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Bug', 'Fire', 50);
+
+		-- Dark Type Effectiveness
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Dark', 'Psychic', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Dark', 'Fighting', 50);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Dark', 'Fairy', 50);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Dark', 'Ghost', 200);
+
+		-- Dragon Type Effectiveness
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Dragon', 'Dragon', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Dragon', 'Fairy', 0);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Dragon', 'Ice', 50);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Dragon', 'Steel', 50);
+
+		-- Electric Type Effectiveness
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Electric', 'Water', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Electric', 'Ground', 0);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Electric', 'Flying', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Electric', 'Grass', 50);
+
+		-- Water Type Effectiveness
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Water', 'Fire', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Water', 'Rock', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Water', 'Grass', 50);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Water', 'Dragon', 50);
+
+		-- Steel Type Effectiveness
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Steel', 'Ice', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Steel', 'Rock', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Steel', 'Water', 50);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Steel', 'Electric', 50);
+
+		-- Rock Type Effectiveness
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Rock', 'Fire', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Rock', 'Flying', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Rock', 'Fighting', 50);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Rock', 'Steel', 50);
+
+		COMMIT;
+		
+		-- Psychic Type Effectiveness
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Psychic', 'Fighting', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Psychic', 'Poison', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Psychic', 'Steel', 50);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Psychic', 'Dark', 0);
+
+		-- Ground Type Effectiveness
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Ground', 'Electric', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Ground', 'Flying', 0);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Ground', 'Rock', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Ground', 'Bug', 50);
+
+		-- Ice Type Effectiveness
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Ice', 'Dragon', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Ice', 'Flying', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Ice', 'Water', 50);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Ice', 'Fire', 50);
+
+		-- Grass Type Effectiveness
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Grass', 'Water', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Grass', 'Ground', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Grass', 'Flying', 50);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Grass', 'Steel', 50);
+
+		-- Ghost Type Effectiveness
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Ghost', 'Ghost', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Ghost', 'Psychic', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Ghost', 'Normal', 0);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Ghost', 'Dark', 50);
+
+		-- Fairy Type Effectiveness
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Fairy', 'Dragon', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Fairy', 'Dark', 200);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Fairy', 'Fire', 50);
+		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Fairy', 'Poison', 50);
 
 		COMMIT;
 
