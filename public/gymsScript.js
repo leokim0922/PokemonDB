@@ -28,5 +28,5 @@ async function fetchAverageWinnings() {
 window.onload = function() {
     checkDbConnection();
     fetchAndDisplayTrainers();
-    document.getElementById('filterGymsByWinnings').addEventListener('submit', fetchAverageWinnings);
+    document.getElementById('filterGymsByWinnings').addEventListener('click', fetchAverageWinnings);
 };
