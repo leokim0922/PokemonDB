@@ -5,9 +5,14 @@ evolutions, and regional differences.
 It is designed for players and enthusiasts who want to explore detailed information about Pokémon, their interactions, 
 and their evolution paths across different game versions and regions.
 
-## Milestone 4 (TODO)
+## Milestone 5 (TODO)
+- Project Showcase
+
+## Milestone 4
 - Database setup
 - tasks 1-8 denoted in "Pokemon ER - Milestone 3.pdf"
+- Milestone 4 pdf summary
+- Completion: April 1, 2025
 
 ## Milestone 3
 - Division of tasks (Frontend & Backend)
