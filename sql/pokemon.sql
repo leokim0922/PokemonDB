@@ -710,6 +710,113 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		COMMIT;
 
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Drenches opponent in water, may lower speed', 'Water');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (31, 'Aqua Surge', 85, 95, 10, 'Drenches opponent in water, may lower speed');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Powerful water blast that takes time to charge', 'Water');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (32, 'Tsunami Wave', 120, 80, 5, 'Powerful water blast that takes time to charge');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Rapid water jets strike multiple times', 'Water');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (33, 'Hydro Barrage', 30, 100, 15, 'Rapid water jets strike multiple times');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Steel claw attack, may increase user attack', 'Steel');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (34, 'Iron Slash', 70, 100, 20, 'Steel claw attack, may increase user attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Steel punch with high impact', 'Steel');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (35, 'Titan Fist', 90, 95, 10, 'Steel punch with high impact');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Sharp metallic shards strike multiple times', 'Steel');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (36, 'Steel Shrapnel', 25, 100, 20, 'Sharp metallic shards strike multiple times');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Rock smash attack, may lower opponent defense', 'Rock');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (37, 'Boulder Crash', 80, 90, 15, 'Rock smash attack, may lower opponent defense');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Heavy rock slam attack', 'Rock');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (38, 'Stone Slam', 100, 85, 10, 'Heavy rock slam attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Scattering sharp rocks to damage opponent', 'Rock');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (39, 'Rock Shards', 50, 100, 20, 'Scattering sharp rocks to damage opponent');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Psychic force pushes opponent away', 'Psychic');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (40, 'Mind Thrust', 75, 100, 15, 'Psychic force pushes opponent away');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Strong psychic blast that may lower special defense', 'Psychic');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (41, 'Psi Storm', 95, 90, 10, 'Strong psychic blast that may lower special defense');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Manipulates gravity to increase damage on next turn', 'Psychic');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (42, 'Gravity Crush', 0, 0, 15, 'Manipulates gravity to increase damage on next turn');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Toxic mist engulfs opponent', 'Poison');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (43, 'Venom Fog', 60, 100, 15, 'Toxic mist engulfs opponent');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Poisonous fangs that may badly poison', 'Poison');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (44, 'Toxic Bite', 80, 95, 10, 'Poisonous fangs that may badly poison');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Freezing blast with a chance to freeze', 'Ice');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (45, 'Glacier Beam', 90, 95, 10, 'Freezing blast with a chance to freeze');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Ground shaking attack that may cause flinching', 'Ground');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (46, 'Tectonic Slam', 110, 80, 5, 'Ground shaking attack that may cause flinching');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Haunting attack that may cause confusion', 'Ghost');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (47, 'Phantom Howl', 75, 95, 15, 'Haunting attack that may cause confusion');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Ethereal strike bypasses defenses', 'Ghost');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (48, 'Spectral Slash', 90, 100, 10, 'Ethereal strike bypasses defenses');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Dark tendrils strike opponent', 'Dark');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (49, 'Night Bind', 80, 95, 15, 'Dark tendrils strike opponent');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Mystical fairy blast', 'Fairy');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (50, 'Pixie Burst', 85, 100, 10, 'Mystical fairy blast');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Swarm of insects bite opponent', 'Bug');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (51, 'Insect Swarm', 60, 100, 15, 'Swarm of insects bite opponent');
+
+		COMMIT;
+
 	-- INSERT POKEMON with Associated Type & Ability & Learns
 		BEGIN
 			AddPokemonWithTypeAbilityLearns(1, 'A grass-poison type Pokemon that grows flowers as it evolves. Known for its sweet scent.', 'Bulbasaur', 'Grass', 201, 101);
