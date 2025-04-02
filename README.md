@@ -1,3 +1,7 @@
+<p align="center">
+<img src="utils/githublogo.png">
+</p>
+
 # PokemonDB
 The project is a database management system that organizes and catalogs Pokémon data. 
 The domain of the project focuses on the Pokémon universe, specifically the various species, their moves, abilities, 
