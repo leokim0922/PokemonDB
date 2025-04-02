@@ -557,12 +557,12 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		COMMIT;
 
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
-		VALUES ('Normal physical attack', 'Normal');
+		VALUES ('Normal Pound attack', 'Normal');
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
 		VALUES (1, 'Pound', 40, 100, 35, 'Normal physical attack');
 
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
-		VALUES ('Fighting physical attack', 'Fighting');
+		VALUES ('Fighting Chop attack', 'Fighting');
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
 		VALUES (2, 'Karate Chop', 50, 100, 25, 'Fighting physical attack');
 
@@ -577,7 +577,7 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		VALUES (4, 'Comet Punch', 18, 85, 15, 'Normal physical attack, may hit multiple times');
 
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
-		VALUES ('Normal physical attack', 'Normal');
+		VALUES ('Normal Mega physical attack', 'Normal');
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
 		VALUES (5, 'Mega Punch', 80, 85, 20, 'Normal physical attack');
 
@@ -1205,7 +1205,7 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		VALUES ('Kanto', 7);
 
 		INSERT INTO AppearsIn(RegionName, PokemonID)
-		VALUES ('Hoenn', 101);
+		VALUES ('Hoenn', 6);
 
 		INSERT INTO AppearsIn(RegionName, PokemonID)
 		VALUES ('Unova', 16);
@@ -1280,7 +1280,7 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		VALUES ('Sinnoh', 1);
 
 		COMMIT; 
-		
+
 	-- INSERT Location
 		INSERT INTO Location(LocationName, RegionName, Function)
 		VALUES ('Pewter City', 'Kanto', 'Gym, Pokemart, Museum');
@@ -1306,6 +1306,38 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Location(LocationName, RegionName, Function)
 		VALUES ('Mt. Pyre', 'Hoenn', 'A Pokemon graveyard');
 
+		INSERT INTO Location(LocationName, RegionName, Function)
+		VALUES ('Littleroot Town', 'Hoenn', 'Pokemart, Lab');
+
+		INSERT INTO Location(LocationName, RegionName, Function)
+		VALUES ('Slateport City', 'Hoenn', 'Pokemart, Harbor, Market');
+
+		INSERT INTO Location(LocationName, RegionName, Function)
+		VALUES ('Fortree City', 'Hoenn', 'Gym, Pokemart, Forest');
+
+		INSERT INTO Location(LocationName, RegionName, Function)
+		VALUES ('Mauville City', 'Hoenn', 'Gym, Pokemart, Game Corner');
+
+		INSERT INTO Location(LocationName, RegionName, Function)
+		VALUES ('Lilycove City', 'Hoenn', 'Gym, Pokemart, Museum');
+
+		INSERT INTO Location(LocationName, RegionName, Function)
+		VALUES ('Lumiose City', 'Kalos', 'Gym, Pokemart, Cafe');
+
+		INSERT INTO Location(LocationName, RegionName, Function)
+		VALUES ('Santalune City', 'Kalos', 'Gym, Pokemart, Forest');
+
+		INSERT INTO Location(LocationName, RegionName, Function)
+		VALUES ('Anistar City', 'Kalos', 'Gym, Pokemart, Sundial');
+
+		INSERT INTO Location(LocationName, RegionName, Function)
+		VALUES ('Virbank City', 'Unova', 'Gym, Pokemart, Film Studio');
+
+		INSERT INTO Location(LocationName, RegionName, Function)
+		VALUES ('Castelia City', 'Unova', 'Gym, Pokemart, Business District');
+
+		COMMIT;
+
 	-- INSERT Gym
 		INSERT INTO Gym(LocationName, RegionName, Badge)
 		VALUES ('Pewter City', 'Kanto', 'Boulder Badge');
@@ -1322,6 +1354,32 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Gym(LocationName, RegionName, Badge)
 		VALUES ('Azalea Town', 'Johto', 'Hive Badge');
 
+		INSERT INTO Gym(LocationName, RegionName, Badge)
+		VALUES ('Lavender Town', 'Kanto', 'Soul Badge');
+
+		INSERT INTO Gym(LocationName, RegionName, Badge)
+		VALUES ('Celadon City', 'Kanto', 'Rainbow Badge');
+
+		INSERT INTO Gym(LocationName, RegionName, Badge)
+		VALUES ('Fuchsia City', 'Kanto', 'Soul Badge');
+
+		INSERT INTO Gym(LocationName, RegionName, Badge)
+		VALUES ('Goldenrod City', 'Johto', 'Plain Badge');
+
+		INSERT INTO Gym(LocationName, RegionName, Badge)
+		VALUES ('Ecruteak City', 'Johto', 'Relic Badge');
+
+		INSERT INTO Gym(LocationName, RegionName, Badge)
+		VALUES ('Slateport City', 'Hoenn', 'Sea Badge');
+
+		INSERT INTO Gym(LocationName, RegionName, Badge)
+		VALUES ('Fortree City', 'Hoenn', 'Feather Badge');
+
+		INSERT INTO Gym(LocationName, RegionName, Badge)
+		VALUES ('Lilycove City', 'Hoenn', 'Rain Badge');
+
+		COMMIT;
+
 	-- INSERT Trainer_Defends
 		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
 		VALUES ('Brock', 500, 'Pewter City', 'Kanto');
@@ -1337,6 +1395,58 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
 		VALUES ('Falkner', 710, 'Violet City', 'Johto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Swimmer Paula', 250, 'Cerulean City', 'Kanto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Youngster Benny', 170, 'Cerulean City', 'Kanto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Swimmer Mike', 200, 'Cerulean City', 'Kanto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Mista', 800, 'Cerulean City', 'Kanto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Youngster Joe', 150, 'Violet City', 'Johto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Bird Keeper Andy', 220, 'Violet City', 'Johto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Bird Keeper Steven', 300, 'Violet City', 'Johto');
+
+		COMMIT;
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Falkna', 600, 'Violet City', 'Johto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Bugsy', 500, 'Azalea Town', 'Johto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Bug Catcher Rick', 150, 'Azalea Town', 'Johto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Bug Catcher Tim', 130, 'Azalea Town', 'Johto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Youngster Sam', 100, 'Azalea Town', 'Johto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Steven Stone', 800, 'Slateport City', 'Hoenn');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Sailor John', 220, 'Slateport City', 'Hoenn');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Youngster Ben', 180, 'Slateport City', 'Hoenn');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Swimmer Kate', 250, 'Slateport City', 'Hoenn');
+
+		COMMIT;
 
 	-- INSERT Owns
 		INSERT INTO Owns(TrainerName, PokemonID)
@@ -1357,6 +1467,8 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Owns(TrainerName, PokemonID)
 		VALUES ('Lt. Surge', 2);
 
+		COMMIT;
+
 	-- INSERT Pokemart
 		INSERT INTO Pokemart(LocationName, RegionName)
 		VALUES ('Pewter City', 'Kanto');
@@ -1369,6 +1481,32 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT INTO Pokemart(LocationName, RegionName)
 		VALUES ('Blackthorn City', 'Johto');
+
+		INSERT INTO Pokemart(LocationName, RegionName)
+		VALUES ('Vermilion City', 'Kanto');
+
+		INSERT INTO Pokemart(LocationName, RegionName)
+		VALUES ('Lavender Town', 'Kanto');
+
+		INSERT INTO Pokemart(LocationName, RegionName)
+		VALUES ('Goldenrod City', 'Johto');
+
+		INSERT INTO Pokemart(LocationName, RegionName)
+		VALUES ('Ecruteak City', 'Johto');
+
+		INSERT INTO Pokemart(LocationName, RegionName)
+		VALUES ('Mauville City', 'Hoenn');
+
+		INSERT INTO Pokemart(LocationName, RegionName)
+		VALUES ('Slateport City', 'Hoenn');
+
+		INSERT INTO Pokemart(LocationName, RegionName)
+		VALUES ('Fortree City', 'Hoenn');
+
+		INSERT INTO Pokemart(LocationName, RegionName)
+		VALUES ('Lilycove City', 'Hoenn');
+
+		COMMIT;
 		
 	-- INSERT Item_Owns
 		INSERT INTO Item_Owns2
@@ -1416,6 +1554,8 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Item_Owns2
 		VALUES ('Captures Pokemon', 'Pokeball');
 
+		COMMIT;
+
 		INSERT INTO Item_Owns
 		VALUES ('Poke Ball', 'Captures Pokemon', NULL);
 
@@ -1430,6 +1570,70 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT INTO Item_Owns
 		VALUES ('Ultra Ball', 'Greatly Captures Pokemon', NULL);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Restores 200 HP', 'Healing');
+
+		INSERT INTO Item_Owns
+		VALUES ('Max Potion', 'Restores 200 HP', NULL);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Evolves Electric-type Pokemon', 'Evolution');
+
+		INSERT INTO Item_Owns
+		VALUES ('Thunder Stone', 'Evolves Electric-type Pokemon', 4);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Evolves Leaf-type Pokemon', 'Evolution');
+
+		INSERT INTO Item_Owns
+		VALUES ('Leaf Stone', 'Evolves Leaf-type Pokemon', 5);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Restores 50 PP', 'Medicine');
+
+		INSERT INTO Item_Owns
+		VALUES ('Ether', 'Restores 50 PP', NULL);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Restores 100 PP', 'Medicine');
+
+		INSERT INTO Item_Owns
+		VALUES ('Max Ether', 'Restores 100 PP', NULL);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Cures Poison', 'Medicine');
+
+		INSERT INTO Item_Owns
+		VALUES ('Antidote', 'Cures Poison', NULL);
+
+		COMMIT;
+
+		INSERT INTO Item_Owns2
+		VALUES ('Increases Defense Stat', 'Stat');
+
+		INSERT INTO Item_Owns
+		VALUES ('Iron', 'Increases Defense Stat', NULL);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Increases Speed Stat', 'Stat');
+
+		INSERT INTO Item_Owns
+		VALUES ('Carbos', 'Increases Speed Stat', NULL);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Increases Attack Stat', 'Stat');
+
+		INSERT INTO Item_Owns
+		VALUES ('Calcium', 'Increases Attack Stat', NULL);
+
+		INSERT INTO Item_Owns2
+		VALUES ('Increases Special Attack Stat', 'Stat');
+
+		INSERT INTO Item_Owns
+		VALUES ('PP Up', 'Increases Special Attack Stat', NULL);
+
+		COMMIT;
 
 	-- INSERT Sells
 		INSERT INTO Sells(ItemName, LocationName, RegionName)
@@ -1479,5 +1683,46 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT INTO Sells(ItemName, LocationName, RegionName)
 		VALUES ('Fire Stone', 'Azalea Town', 'Johto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Thunder Stone', 'Slateport City', 'Hoenn');
+
+		COMMIT;
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Hyper Potion', 'Slateport City', 'Hoenn');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Max Ether', 'Slateport City', 'Hoenn');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Great Ball', 'Slateport City', 'Hoenn');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Rare Candy', 'Slateport City', 'Hoenn');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Awakening', 'Azalea Town', 'Johto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Ether', 'Azalea Town', 'Johto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Ultra Ball', 'Azalea Town', 'Johto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Leaf Stone', 'Azalea Town', 'Johto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Max Potion', 'Azalea Town', 'Johto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Super Potion', 'Pewter City', 'Kanto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Fire Stone', 'Pewter City', 'Kanto');
+
+		INSERT INTO Sells(ItemName, LocationName, RegionName)
+		VALUES ('Rare Candy', 'Pewter City', 'Kanto');
 
 COMMIT;
