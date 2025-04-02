@@ -1,5 +1,4 @@
-import {checkDbConnection, fetchAndPopulateTypeName} from './commonScripts.js';
-import { fetchAndDisplayTable } from './commonScripts.js';
+import {checkDbConnection, fetchAndDisplayTable} from './commonScripts.js';
 
 // Fetch Items from DB
 async function fetchAndDisplayItems() {
