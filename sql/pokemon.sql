@@ -559,12 +559,12 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Normal Pound attack', 'Normal');
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
-		VALUES (1, 'Pound', 40, 100, 35, 'Normal physical attack');
+		VALUES (1, 'Pound', 40, 100, 35, 'Normal Pound attack');
 
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Fighting Chop attack', 'Fighting');
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
-		VALUES (2, 'Karate Chop', 50, 100, 25, 'Fighting physical attack');
+		VALUES (2, 'Karate Chop', 50, 100, 25, 'Fighting Chop attack');
 
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Normal physical attack, may hit twice', 'Normal');
@@ -579,7 +579,7 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Normal Mega physical attack', 'Normal');
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
-		VALUES (5, 'Mega Punch', 80, 85, 20, 'Normal physical attack');
+		VALUES (5, 'Mega Punch', 80, 85, 20, 'Normal Mega physical attack');
 
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Normal move that earns money', 'Normal');
@@ -1355,21 +1355,6 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		VALUES ('Azalea Town', 'Johto', 'Hive Badge');
 
 		INSERT INTO Gym(LocationName, RegionName, Badge)
-		VALUES ('Lavender Town', 'Kanto', 'Soul Badge');
-
-		INSERT INTO Gym(LocationName, RegionName, Badge)
-		VALUES ('Celadon City', 'Kanto', 'Rainbow Badge');
-
-		INSERT INTO Gym(LocationName, RegionName, Badge)
-		VALUES ('Fuchsia City', 'Kanto', 'Soul Badge');
-
-		INSERT INTO Gym(LocationName, RegionName, Badge)
-		VALUES ('Goldenrod City', 'Johto', 'Plain Badge');
-
-		INSERT INTO Gym(LocationName, RegionName, Badge)
-		VALUES ('Ecruteak City', 'Johto', 'Relic Badge');
-
-		INSERT INTO Gym(LocationName, RegionName, Badge)
 		VALUES ('Slateport City', 'Hoenn', 'Sea Badge');
 
 		INSERT INTO Gym(LocationName, RegionName, Badge)
@@ -1484,15 +1469,6 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT INTO Pokemart(LocationName, RegionName)
 		VALUES ('Vermilion City', 'Kanto');
-
-		INSERT INTO Pokemart(LocationName, RegionName)
-		VALUES ('Lavender Town', 'Kanto');
-
-		INSERT INTO Pokemart(LocationName, RegionName)
-		VALUES ('Goldenrod City', 'Johto');
-
-		INSERT INTO Pokemart(LocationName, RegionName)
-		VALUES ('Ecruteak City', 'Johto');
 
 		INSERT INTO Pokemart(LocationName, RegionName)
 		VALUES ('Mauville City', 'Hoenn');
