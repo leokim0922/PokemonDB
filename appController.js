@@ -54,7 +54,7 @@ router.get('/gym', async (req, res) => {
 });
 
 router.get('/calculateAvgWinningAggregate', async (req, res) => {
-    const tableContent = await appService.fetchAverageWinningAggregate();
+    const tableContent = await appService.fetchAverageWinningAggregate(req.query.attributes);
     res.json({data: tableContent});
 });
 

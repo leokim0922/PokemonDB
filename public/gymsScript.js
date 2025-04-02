@@ -6,9 +6,12 @@ async function fetchAndDisplayTrainers() {
 
 async function fetchAverageWinnings() {
     const avgNumber = document.getElementById('avgNumber');
+    const operator = document.getElementById('insertOperatorWinnings').value;
+    const queryParams = new URLSearchParams({ attributes: operator });
 
     try {
-        const response = await fetch('/calculateAvgWinningAggregate', { method: 'GET' });
+        const response = await fetch(`/calculateAvgWinningAggregate?${queryParams.toString()}`,
+            { method: 'GET' });
         const data = await response.json();
 
         avgNumber.style.display = 'inline';
