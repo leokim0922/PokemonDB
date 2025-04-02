@@ -13,9 +13,9 @@ async function fetchAverageWinnings() {
 
     avgNumber.style.display = 'inline';
 
-    response["data"].text()
+    response.text()
         .then((text) => {
-            avgNumber.data = text;
+            avgNumber.textContent = text.trim();
         })
         .catch((error) => {
             avgNumber.textContent = 'error calculating averages';  // Adjust error handling if required.
