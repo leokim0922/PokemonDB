@@ -53,6 +53,11 @@ router.get('/gym', async (req, res) => {
     res.json({data: tableContent});
 });
 
+router.get('/calculateAvgWinningAggregate', async (req, res) => {
+    const tableContent = await appService.fetchAverageWinningAggregate();
+    res.json({data: tableContent});
+});
+
 router.get('/moves', async (req, res) => {
     try {
         const attributes = req.query.attributes ? req.query.attributes.split(',') : [];

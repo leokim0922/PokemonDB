@@ -7,7 +7,7 @@ async function fetchAndDisplayTrainers() {
 async function fetchAverageWinnings() {
     const avgNumber = document.getElementById('avgNumber');
 
-    const response = await fetch('/calculateAvgWinning', {
+    const response = await fetch('/calculateAvgWinningAggregate', {
         method: 'GET'
     });
 

@@ -373,7 +373,6 @@ async function fetchMartFromDB() {
 }
 
 // Filter Poke Marts by item type and minimum quantity
-
 async function fetchPokeMartByTypeAndMin(itemType, minQuantity) {
     const minQuantityNum = parseInt(minQuantity, 10); // Convert minQuantity from a string to an integer (base 10)
     return await withOracleDB(async (connection) => {
@@ -408,6 +407,14 @@ async function fetchPokeMartByTypeAndMin(itemType, minQuantity) {
     });
 }
 
+// NESTED AGGREGATION with GROUP BY
+async function fetchAverageWinningAggregate() {
+    const query = 'SELECT AVG(td.winnings) FROM trainer_defends td WHERE td.winnings >= ' +
+        'ALL (SELECT AVG(td2.winnings) FROM trainer_defends td2 GROUP BY td2.locationname, td2.regionname)';
+    return await fetchQuery(query);
+}
+
+
 module.exports = {
     testOracleConnection,
     fetchPokemonFromDb,
@@ -426,7 +433,8 @@ module.exports = {
     fetchItemCountByType,
     fetchMartFromDB,
     fetchPokeMartByTypeAndMin,
-    fetchGymTrainersFromDb
+    fetchGymTrainersFromDb,
+    fetchAverageWinningAggregate
     // fetchItemNameFromDb,
     // fetchItemEffectFromDb
 };

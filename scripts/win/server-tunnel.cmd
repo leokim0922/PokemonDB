@@ -33,7 +33,7 @@ if not defined chosen_port (
 
 echo --------------------------------------------------------------------------
 echo         You will be able to access your application at:
-echo         http://localhost:!chosen_port!
+echo         http://localhost:!chosen_port!/
 echo         after completing the steps below...
 echo --------------------------------------------------------------------------
 
