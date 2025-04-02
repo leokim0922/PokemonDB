@@ -411,10 +411,7 @@ async function fetchPokeMartByTypeAndMin(itemType, minQuantity) {
 async function fetchAverageWinningAggregate(operator) {
     const query = 'SELECT AVG(td.winnings) FROM trainer_defends td WHERE td.winnings' + operator +
         'ALL (SELECT AVG(td2.winnings) FROM trainer_defends td2 GROUP BY td2.locationname, td2.regionname)';
-    console.log("Final Query: ", query);
-    console.log("Operator: ", operator);
     return await fetchQuery(query);
-
 }
 
 

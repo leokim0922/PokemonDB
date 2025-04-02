@@ -318,31 +318,203 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INTO Ability(AbilityID, AbilityEffect)
 		VALUES (205, 'Levitate - Immune to Ground-type moves');
 
+		INSERT
+		INTO Ability(AbilityID, AbilityEffect)
+		VALUES (1, 'Stench - By releasing a stench when attacking, the Pokemon may cause the target to flinch. ');
+
+		INSERT
+		INTO Ability(AbilityID, AbilityEffect)
+		VALUES (2, 'Drizzle -  	The Pokemon makes it rain when it enters a battle. ');
+
+		INSERT
+		INTO Ability(AbilityID, AbilityEffect)
+		VALUES (3, 'Speed Boost - The Pokemons Speed stat is boosted every turn.');
+
+		INSERT
+		INTO Ability(AbilityID, AbilityEffect)
+		VALUES (4, 'Battle Armor -  Hard armor protects the Pokemon from critical hits. ');
+
+		INSERT
+		INTO Ability(AbilityID, AbilityEffect)
+		VALUES (5, 'Sturdy -The Pokemon cannot be knocked out by a single hit as long as its HP is full. One-hit KO moves will also fail to knock it out. ');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (6, 'Damp - Prevents all Pokemon from using explosive moves like Self-Destruct.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (7, 'Limber - Prevents the Pokemon from being paralyzed.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (8, 'Sand Veil - Boosts the Pokemons evasiveness in a sandstorm.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (9, 'Static - May paralyze attackers that make direct contact with the Pokemon.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (10, 'Volt Absorb - Restores HP instead of taking damage from Electric-type moves.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (11, 'Water Absorb - Restores HP instead of taking damage from Water-type moves.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (12, 'Oblivious - Prevents infatuation, taunts, and the effects of Intimidate.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (13, 'Cloud Nine - Eliminates the effects of weather.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (14, 'Compound Eyes - Increases the Pokemons accuracy.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (15, 'Insomnia - Prevents the Pokemon from falling asleep.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (16, 'Color Change - The Pokemons type changes to match the move used on it.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (17, 'Immunity - Prevents the Pokemon from being poisoned.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (18, 'Flash Fire - Powers up Fire-type moves when hit by one.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (19, 'Shield Dust - Blocks additional effects of incoming moves.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (20, 'Own Tempo - Prevents confusion and the effects of Intimidate.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (21, 'Suction Cups - Prevents forced switching due to moves or items.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (22, 'Intimidate - Lowers the Attack of opposing Pokemon when entering battle.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (23, 'Shadow Tag - Prevents opposing Pokemon from switching out or escaping.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (24, 'Rough Skin - Damages attackers that make direct contact.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (25, 'Wonder Guard - Only supereffective moves can hit this Pokemon.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (26, 'Levitate - Grants full immunity to all Ground-type moves.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (27, 'Effect Spore - Contact may inflict poison, sleep, or paralysis.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (28, 'Synchronize - Passes on burn, paralysis, or poison to the foe.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (29, 'Clear Body - Prevents stat reduction from opposing Pokemon.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (30, 'Natural Cure - Heals status conditions when switching out.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (31, 'Lightning Rod - Draws in Electric moves and boosts Sp. Atk instead.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (32, 'Serene Grace - Boosts the chance of additional move effects occurring.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (33, 'Swift Swim - Increases Speed during rain.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (34, 'Chlorophyll - Increases Speed in harsh sunlight.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (35, 'Illuminate - Prevents accuracy from being lowered.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (36, 'Trace - Copies an opposing Pokemons Ability when entering battle.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (37, 'Huge Power - Doubles the Pokemons Attack stat.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (38, 'Poison Point - May poison attackers that make direct contact.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (39, 'Inner Focus - Prevents flinching and the effects of Intimidate.');
+
+		INSERT INTO Ability (AbilityID, AbilityEffect)
+		VALUES (40, 'Magma Armor - Prevents the Pokemon from being frozen.');
+
 	-- INSERT Types
 		INSERT
 		INTO Type(TypeName, TypeDescription)
-		VALUES ('Fire', 'Fire is one of the three basic elemental types along with Water and
-		Grass');
+		VALUES ('Normal', 'Normal-type moves have no special effectiveness or weaknesses.');
 
 		INSERT
 		INTO Type(TypeName, TypeDescription)
-		VALUES ('Water', 'Water is one of the three basic elemental types along with Fire and
-		Grass');
+		VALUES ('Fire', 'Fire-type moves are strong against Grass, Bug, Ice, and Steel, but weak against Water, Rock, and Fire.');
 
 		INSERT
 		INTO Type(TypeName, TypeDescription)
-		VALUES ('Grass', 'Grass is one of the three basic elemental types along with Fire and
-		Water');
+		VALUES ('Water', 'Water-type moves are strong against Fire, Rock, and Ground, but weak against Water, Grass, and Electric.');
 
 		INSERT
 		INTO Type(TypeName, TypeDescription)
-		VALUES ('Electric', 'Electric Pokemon are very good defensively, being weak only to
-		Ground moves.');
+		VALUES ('Grass', 'Grass-type moves are strong against Water, Ground, and Rock, but weak against Fire, Poison, Flying, Bug, and Grass.');
 
 		INSERT
 		INTO Type(TypeName, TypeDescription)
-		VALUES ('Psychic', 'The Psychic type has few outright strengths, however, it also has few
-		weaknesses.');
+		VALUES ('Electric', 'Electric-type moves are strong against Water and Flying, but weak against Electric, Ground, and Grass.');
+
+		INSERT
+		INTO Type(TypeName, TypeDescription)
+		VALUES ('Ice', 'Ice-type moves are strong against Dragon, Flying, Grass, and Ground, but weak against Fire, Ice, Steel, and Water.');
+
+		INSERT
+		INTO Type(TypeName, TypeDescription)
+		VALUES ('Fighting', 'Fighting-type moves are strong against Normal, Ice, Rock, Dark, and Steel, but weak against Flying, Psychic, Bug, Fairy, and Poison.');
+
+		INSERT
+		INTO Type(TypeName, TypeDescription)
+		VALUES ('Poison', 'Poison-type moves are strong against Grass and Fairy, but weak against Poison, Ground, Rock, and Ghost.');
+
+		INSERT
+		INTO Type(TypeName, TypeDescription)
+		VALUES ('Ground', 'Ground-type moves are strong against Fire, Electric, Poison, Rock, and Steel, but weak against Grass and Bug.');
+
+		INSERT
+		INTO Type(TypeName, TypeDescription)
+		VALUES ('Flying', 'Flying-type moves are strong against Grass, Fighting, and Bug, but weak against Electric, Ice, and Rock.');
+
+		INSERT
+		INTO Type(TypeName, TypeDescription)
+		VALUES ('Psychic', 'Psychic-type moves are strong against Fighting and Poison, but weak against Psychic and Steel.');
+
+		INSERT
+		INTO Type(TypeName, TypeDescription)
+		VALUES ('Bug', 'Bug-type moves are strong against Grass, Psychic, and Dark, but weak against Fire, Fighting, Poison, Flying, Ghost, Steel, and Fairy.');
+
+		INSERT
+		INTO Type(TypeName, TypeDescription)
+		VALUES ('Rock', 'Rock-type moves are strong against Fire, Ice, Flying, and Bug, but weak against Fighting, Ground, and Steel.');
+
+		INSERT
+		INTO Type(TypeName, TypeDescription)
+		VALUES ('Ghost', 'Ghost-type moves are strong against Psychic and Ghost, but weak against Dark.');
+
+		INSERT
+		INTO Type(TypeName, TypeDescription)
+		VALUES ('Dragon', 'Dragon-type moves are strong against Dragon, but weak against Steel and Fairy.');
+
+		INSERT
+		INTO Type(TypeName, TypeDescription)
+		VALUES ('Dark', 'Dark-type moves are strong against Psychic and Ghost, but weak against Fighting, Fairy, and Bug.');
+
+		INSERT
+		INTO Type(TypeName, TypeDescription)
+		VALUES ('Steel', 'Steel-type moves are strong against Ice, Rock, and Fairy, but weak against Fire, Water, and Electric.');
+
+		INSERT
+		INTO Type(TypeName, TypeDescription)
+		VALUES ('Fairy', 'Fairy-type moves are strong against Fighting, Dragon, and Dark, but weak against Poison, Steel, and Fire.');
 
 	-- INSERT Move_Associates
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
@@ -379,6 +551,156 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints,
 		MoveEffect)
 		VALUES (105, 'Psychic', 90, 100, 10, 'May lower opponent special defense');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal physical attack', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (1, 'Pound', 40, 100, 35, 'Normal physical attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Fighting physical attack', 'Fighting');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (2, 'Karate Chop', 50, 100, 25, 'Fighting physical attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal physical attack, may hit twice', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (3, 'Double Slap', 15, 85, 10, 'Normal physical attack, may hit twice');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal physical attack, may hit multiple times', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (4, 'Comet Punch', 18, 85, 15, 'Normal physical attack, may hit multiple times');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal physical attack', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (5, 'Mega Punch', 80, 85, 20, 'Normal physical attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal move that earns money', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (6, 'Pay Day', 40, 100, 20, 'Normal move that earns money');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Fire physical attack', 'Fire');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (7, 'Fire Punch', 75, 100, 15, 'Fire physical attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Ice physical attack', 'Ice');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (8, 'Ice Punch', 75, 100, 15, 'Ice physical attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Electric physical attack', 'Electric');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (9, 'Thunder Punch', 75, 100, 15, 'Electric physical attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal Scratch attack', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (10, 'Scratch', 40, 100, 35, 'Normal Scratch attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal Grip attack', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (11, 'Vise Grip', 55, 100, 30, 'Normal Grip attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Instant KO move with low accuracy', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (12, 'Guillotine', 1000, 30, 5, 'Instant KO move with low accuracy');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal move that charges and strikes next turn', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (13, 'Razor Wind', 80, 100, 10, 'Normal move that charges and strikes next turn');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal move to raise attack', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (14, 'Swords Dance', 0, 0, 20, 'Normal move to raise attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal Cut attack', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (15, 'Cut', 50, 95, 30, 'Normal Cut attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Flying Gust attack', 'Flying');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (16, 'Gust', 40, 100, 35, 'Flying Gust attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Flying Wing attack', 'Flying');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (17, 'Wing Attack', 60, 100, 35, 'Flying Wing attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal move that causes opponent to flee', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (18, 'Whirlwind', —, ∞%, 20, 'Normal move that causes opponent to flee');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Flying physical attack', 'Flying');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (19, 'Fly', 90, 95, 15, 'Flying physical attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal move that traps the opponent', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (20, 'Bind', 15, 85, 20, 'Normal move that traps the opponent');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal Slam attack', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (21, 'Slam', 80, 75, 20, 'Normal Slam attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Grass physical attack', 'Grass');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (22, 'Vine Whip', 45, 100, 25, 'Grass physical attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal Stomp attack', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (23, 'Stomp', 65, 100, 20, 'Normal Stomp attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Fighting Kick attack', 'Fighting');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (24, 'Double Kick', 30, 100, 30, 'Fighting Kick attack');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal physical attack with low accuracy', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (25, 'Mega Kick', 120, 75, 5, 'Normal physical attack with low accuracy');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Fighting physical attack with high power', 'Fighting');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (26, 'Jump Kick', 100, 95, 10, 'Fighting physical attack with high power');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Fighting physical attack with moderate power', 'Fighting');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (27, 'Rolling Kick', 60, 85, 15, 'Fighting physical attack with moderate power');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Ground move that reduces accuracy', 'Ground');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (28, 'Sand Attack', —, 100, 15, 'Ground move that reduces accuracy');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal physical attack with flinching', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (29, 'Headbutt', 70, 100, 15, 'Normal physical attack with flinching');
+
+		INSERT INTO Move_Associates2(MoveEffect, TypeName)
+		VALUES ('Normal Horn attack', 'Normal');
+		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
+		VALUES (30, 'Horn Attack', 65, 100, 25, 'Normal Horn attack');
 
 	-- INSERT POKEMON with Associated Type & Ability & Learns
 		BEGIN
