@@ -1,3 +1,4 @@
+drop VIEW moveType cascade constraints;
 drop table ABILITY cascade constraints;
 drop table APPEARSIN cascade constraints;
 drop table BELONGS cascade constraints;
@@ -336,7 +337,7 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT
 		INTO Ability(AbilityID, AbilityEffect)
-		VALUES (5, 'Sturdy -The Pokemon cannot be knocked out by a single hit as long as its HP is full. One-hit KO moves will also fail to knock it out. ');
+		VALUES (5, 'Sturdy -The Pokemon cannot be knocked out by a single hit as long as its HP is full.');
 
 		INSERT INTO Ability (AbilityID, AbilityEffect)
 		VALUES (6, 'Damp - Prevents all Pokemon from using explosive moves like Self-Destruct.');
@@ -382,6 +383,8 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT INTO Ability (AbilityID, AbilityEffect)
 		VALUES (20, 'Own Tempo - Prevents confusion and the effects of Intimidate.');
+
+		COMMIT;
 
 		INSERT INTO Ability (AbilityID, AbilityEffect)
 		VALUES (21, 'Suction Cups - Prevents forced switching due to moves or items.');
@@ -442,6 +445,8 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT INTO Ability (AbilityID, AbilityEffect)
 		VALUES (40, 'Magma Armor - Prevents the Pokemon from being frozen.');
+
+		COMMIT;
 
 	-- INSERT Types
 		INSERT
@@ -516,6 +521,8 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INTO Type(TypeName, TypeDescription)
 		VALUES ('Fairy', 'Fairy-type moves are strong against Fighting, Dragon, and Dark, but weak against Poison, Steel, and Fire.');
 
+		COMMIT;
+
 	-- INSERT Move_Associates
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Burns opponent', 'Fire');
@@ -546,6 +553,8 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints,
 		MoveEffect)
 		VALUES (105, 'Psychic', 90, 100, 10, 'May lower opponent special defense');
+
+		COMMIT;
 
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Normal physical attack', 'Normal');
@@ -622,6 +631,8 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
 		VALUES (15, 'Cut', 50, 95, 30, 'Normal Cut attack');
 
+		COMMIT;
+
 		INSERT INTO Move_Associates2(MoveEffect, TypeName)
 		VALUES ('Flying Gust attack', 'Flying');
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
@@ -697,29 +708,31 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Move_Associates1(MoveID, MoveName, Power, Accuracy, PowerPoints, MoveEffect)
 		VALUES (30, 'Horn Attack', 65, 100, 25, 'Normal Horn attack');
 
+		COMMIT;
+
 	-- INSERT POKEMON with Associated Type & Ability & Learns
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(1, 'A grass-poison type Pokemon that grows flowers as it evolves. Known for its sweet scent.', 'Bulbasaur', 'Grass', 101, 201);
+			AddPokemonWithTypeAbilityLearns(1, 'A grass-poison type Pokemon that grows flowers as it evolves. Known for its sweet scent.', 'Bulbasaur', 'Grass', 201, 101);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(2, 'It evolves from Bulbasaur. The seed on its back grows into a large plant as it matures.', 'Ivysaur', 'Grass', 102, 202);
+			AddPokemonWithTypeAbilityLearns(2, 'It evolves from Bulbasaur. The seed on its back grows into a large plant as it matures.', 'Ivysaur', 'Grass', 202, 102);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(3, 'Known for its powerful solar beam attack. It is fully grown with an enormous plant on its back.', 'Venusaur', 'Grass', 103, 203);
+			AddPokemonWithTypeAbilityLearns(3, 'Known for its powerful solar beam attack. It is fully grown with an enormous plant on its back.', 'Venusaur', 'Grass', 203, 103);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(4, 'A fire-type Pokemon that burns with great intensity, often using its flame to intimidate opponents.', 'Charmander', 'Fire', 104, 204);
+			AddPokemonWithTypeAbilityLearns(4, 'A fire-type Pokemon that burns with great intensity, often using its flame to intimidate opponents.', 'Charmander', 'Fire', 204, 104);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(5, 'It evolves from Charmander and is known for its fiery tail flame that burns fiercely.', 'Charmeleon', 'Fire', 105, 205);
+			AddPokemonWithTypeAbilityLearns(5, 'It evolves from Charmander and is known for its fiery tail flame that burns fiercely.', 'Charmeleon', 'Fire', 205, 105);
 		END;
 		/
 
@@ -744,77 +757,77 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(10, 'It is a bug-type Pokemon with a soft, green body, known for its adorable appearance and simple nature.', 'Caterpie', 'Bug', 106, 205);
+			AddPokemonWithTypeAbilityLearns(10, 'It is a bug-type Pokemon with a soft, green body, known for its adorable appearance and simple nature.', 'Caterpie', 'Bug', 1, 24);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(11, 'It evolves from Caterpie and forms a cocoon to undergo its metamorphosis.', 'Metapod', 'Bug', 107, 206);
+			AddPokemonWithTypeAbilityLearns(11, 'It evolves from Caterpie and forms a cocoon to undergo its metamorphosis.', 'Metapod', 'Bug', 2, 30);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(12, 'A graceful butterfly Pokemon with beautiful wings, it uses powders for defense.', 'Butterfree', 'Bug', 108, 207);
+			AddPokemonWithTypeAbilityLearns(12, 'A graceful butterfly Pokemon with beautiful wings, it uses powders for defense.', 'Butterfree', 'Bug', 12, 23);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(13, 'Known for its quick and agile flying abilities, it is a normal and flying-type Pokemon.', 'Pidgey', 'Normal', 109, 208);
+			AddPokemonWithTypeAbilityLearns(13, 'Known for its quick and agile flying abilities, it is a normal and flying-type Pokemon.', 'Pidgey', 'Normal', 30, 21);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(14, 'It evolves from Pidgey and is skilled at aerial combat, using powerful wing attacks.', 'Pidgeotto', 'Normal', 110, 209);
+			AddPokemonWithTypeAbilityLearns(14, 'It evolves from Pidgey and is skilled at aerial combat, using powerful wing attacks.', 'Pidgeotto', 'Normal', 32, 30);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(15, 'A powerful and majestic bird known for its speed and aerial acrobatics.', 'Pidgeot', 'Normal', 111, 210);
+			AddPokemonWithTypeAbilityLearns(15, 'A powerful and majestic bird known for its speed and aerial acrobatics.', 'Pidgeot', 'Normal', 11, 11);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(16, 'It is a normal-type Pokemon with a fast-moving and agile nature, known for its quick attacks.', 'Rattata', 'Normal', 112, 211);
+			AddPokemonWithTypeAbilityLearns(16, 'It is a normal-type Pokemon with a fast-moving and agile nature, known for its quick attacks.', 'Rattata', 'Normal', 12, 11);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(17, 'A tougher and stronger version of Rattata, it is adept at using its teeth and claws in battle.', 'Raticate', 'Normal', 113, 212);
+			AddPokemonWithTypeAbilityLearns(17, 'A tougher and stronger version of Rattata, it is adept at using its teeth and claws in battle.', 'Raticate', 'Normal', 6, 9);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(18, 'It is a snake-like Pokemon that specializes in stealthy movements and venomous attacks.', 'Ekans', 'Poison', 114, 213);
+			AddPokemonWithTypeAbilityLearns(18, 'It is a snake-like Pokemon that specializes in stealthy movements and venomous attacks.', 'Ekans', 'Poison', 3, 24);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(19, 'It evolves from Ekans and has a fearsome presence with powerful poison-based attacks.', 'Arbok', 'Poison', 115, 214);
+			AddPokemonWithTypeAbilityLearns(19, 'It evolves from Ekans and has a fearsome presence with powerful poison-based attacks.', 'Arbok', 'Poison', 12, 16);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(20, 'A dog-like Pokemon with a friendly demeanor, it is known for its fire-based attacks and loyal nature.', 'Growlithe', 'Fire', 116, 215);
+			AddPokemonWithTypeAbilityLearns(20, 'A dog-like Pokemon with a friendly demeanor, it is known for its fire-based attacks and loyal nature.', 'Growlithe', 'Fire', 18, 23);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(21, 'It evolves from Growlithe and is a fierce and loyal guardian of its territory.', 'Arcanine', 'Fire', 117, 216);
+			AddPokemonWithTypeAbilityLearns(21, 'It evolves from Growlithe and is a fierce and loyal guardian of its territory.', 'Arcanine', 'Fire', 4, 30);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(22, 'It is a tadpole Pokemon with powerful water abilities and a distinctive spiral pattern.', 'Poliwag', 'Water', 118, 217);
+			AddPokemonWithTypeAbilityLearns(22, 'It is a tadpole Pokemon with powerful water abilities and a distinctive spiral pattern.', 'Poliwag', 'Water', 5, 7);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(23, 'It evolves from Poliwag and is skilled in both water and fighting moves.', 'Poliwhirl', 'Water', 119, 218);
+			AddPokemonWithTypeAbilityLearns(23, 'It evolves from Poliwag and is skilled in both water and fighting moves.', 'Poliwhirl', 'Water', 8, 28);
 		END;
 		/
 
 		BEGIN
-			AddPokemonWithTypeAbilityLearns(24, 'A massive turtle-like Pokemon that controls water and is equipped with powerful attacks.', 'Politoed', 'Water', 120, 219);
+			AddPokemonWithTypeAbilityLearns(24, 'A massive turtle-like Pokemon that controls water and is equipped with powerful attacks.', 'Politoed', 'Water', 6, 30);
 		END;
 		/
 
@@ -839,60 +852,7 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INTO Effect(TypeName1, TypeName2, Percentage)
 		VALUES ('Water', 'Fire', 200);
 
-		-- Normal Type against other Types
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Normal', 100);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Fighting', 100);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Flying', 100);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Poison', 100);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Ground', 100);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Rock', 100);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Bug', 50);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Ghost', 0);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Steel', 50);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Fire', 50);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Water', 100);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Grass', 100);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Electric', 100);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Psychic', 100);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Ice', 100);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Dragon', 100);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Dark', 100);
-
-		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
-		VALUES ('Normal', 'Fairy', 100);
+		COMMIT;
 
 		-- Normal Type against other Types
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
@@ -925,6 +885,8 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
 		VALUES ('Normal', 'Fire', 50);
 
+		COMMIT;
+
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
 		VALUES ('Normal', 'Water', 100);
 
@@ -948,6 +910,8 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
 		VALUES ('Normal', 'Fairy', 100);
+
+		COMMIT;
 
 		-- Fighting Type against other Types
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
@@ -989,6 +953,8 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
 		VALUES ('Fighting', 'Electric', 100);
 
+		COMMIT;
+
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
 		VALUES ('Fighting', 'Psychic', 50);
 
@@ -1003,6 +969,8 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
 		VALUES ('Fighting', 'Fairy', 50);
+
+		COMMIT;
 
 		-- Flying Type against other Types
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
@@ -1059,6 +1027,8 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
 		VALUES ('Flying', 'Fairy', 100);
 
+		COMMIT;
+
 		-- Poison Type against other Types
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
 		VALUES ('Poison', 'Normal', 100);
@@ -1114,51 +1084,55 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage)
 		VALUES ('Poison', 'Fairy', 200);
 
+		COMMIT;
+
 	-- INSERT EvolvesInto
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (1, 2, 'Level 16'); -- Example: Bulbasaur to Ivysaur
+		VALUES (1, 2, 'Level 16'); 
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (2, 3, 'Level 32'); -- Example: Ivysaur to Venusaur
+		VALUES (2, 3, 'Level 32'); 
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (4, 5, 'Level 16'); -- Example: Charmander to Charmeleon
+		VALUES (4, 5, 'Level 16'); 
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (5, 6, 'Level 36'); -- Example: Charmeleon to Charizard
+		VALUES (5, 6, 'Level 36'); 
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (7, 8, 'Level 16'); -- Example: Squirtle to Wartortle
+		VALUES (7, 8, 'Level 16'); 
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (8, 9, 'Level 36'); -- Example: Wartortle to Blastoise
+		VALUES (8, 9, 'Level 36');
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (10, 11, 'Level 20'); -- Example: Caterpie to Metapod
+		VALUES (10, 11, 'Level 20');
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (11, 12, 'Level 30'); -- Example: Metapod to Butterfree
+		VALUES (11, 12, 'Level 30');
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (13, 14, 'Level 16'); -- Example: Pidgey to Pidgeotto
+		VALUES (13, 14, 'Level 16');
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (14, 15, 'Level 36'); -- Example: Pidgeotto to Pidgeot
+		VALUES (14, 15, 'Level 36');
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (16, 17, 'Level 16'); -- Example: Rattata to Raticate
+		VALUES (16, 17, 'Level 16');
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (18, 19, 'Level 20'); -- Example: Ekans to Arbok
+		VALUES (18, 19, 'Level 20');
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (20, 21, 'Use Fire Stone'); -- Example: Growlithe to Arcanine
+		VALUES (20, 21, 'Use Fire Stone');
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (22, 23, 'Use Water Stone'); -- Example: Poliwag to Poliwhirl
+		VALUES (22, 23, 'Use Water Stone');
 
 		INSERT INTO EvolvesInto(PreEvolutionID, PostEvolutionID, Condition)
-		VALUES (23, 24, 'Use Water Stone'); -- Example: Poliwhirl to Politoed
+		VALUES (23, 24, 'Use Water Stone');
+
+		COMMIT;
 
 	-- INSERT Region
 		INSERT INTO Region(RegionName, RegionDescription)
@@ -1175,6 +1149,38 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT INTO Region(RegionName, RegionDescription)
 		VALUES ('Unova', 'A modernized region with industrial cities.');
+
+		INSERT INTO Region(RegionName, RegionDescription)
+		VALUES ('Galar', 'A region influenced by British culture, known for its new Pokemon League format.');
+
+		INSERT INTO Region(RegionName, RegionDescription)
+		VALUES ('Alola', 'A sun-soaked region inspired by Hawaii, with unique regional forms of Pokemon.');
+
+		INSERT INTO Region(RegionName, RegionDescription)
+		VALUES ('Kalos', 'A region inspired by France, known for its fashion, beauty, and artistic culture.');
+
+		INSERT INTO Region(RegionName, RegionDescription)
+		VALUES ('Orre', 'A desert-like region with a focus on shadow Pokemon and the battle against evil forces.');
+
+		INSERT INTO Region(RegionName, RegionDescription)
+		VALUES ('Fiore', 'A peaceful region with a strong bond between Pokemon and humans, known for its beauty.');
+
+		INSERT INTO Region(RegionName, RegionDescription)
+		VALUES ('Almia', 'A region with a great relationship between people and Pokemon, known for the Ranger organization.');
+
+		INSERT INTO Region(RegionName, RegionDescription)
+		VALUES ('Ransei', 'A region where warriors fight alongside Pokemon in a battle for control of territories.');
+
+		INSERT INTO Region(RegionName, RegionDescription)
+		VALUES ('Oblivia', 'A region where Pokemon Rangers help protect the land, with a focus on adventure and teamwork.');
+
+		INSERT INTO Region(RegionName, RegionDescription)
+		VALUES ('Decolore', 'A small region with numerous islands, and a unique history of mystical occurrences.');
+
+		INSERT INTO Region(RegionName, RegionDescription)
+		VALUES ('Sevii Islands', 'A group of islands off the Kanto region, with their own unique culture and history.');
+
+		COMMIT;
 
 	-- INSERT AppearsIn
 		INSERT INTO AppearsIn(RegionName, PokemonID)
@@ -1201,6 +1207,80 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO AppearsIn(RegionName, PokemonID)
 		VALUES ('Hoenn', 101);
 
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Unova', 16);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Galar', 18);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Galar', 20);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Kalos', 14);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Kanto', 9);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Alola', 10);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Alola', 22);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Kalos', 15);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Galar', 2);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Kanto', 12);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Johto', 11);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Unova', 8);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Sinnoh', 7);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Johto', 24);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Johto', 6);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Unova', 21);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Galar', 23);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Galar', 17);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Unova', 19);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Alola', 3);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Johto', 5);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Alola', 13);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Kalos', 4);
+
+		INSERT INTO AppearsIn(RegionName, PokemonID)
+		VALUES ('Sinnoh', 1);
+
+		COMMIT; 
+		
 	-- INSERT Location
 		INSERT INTO Location(LocationName, RegionName, Function)
 		VALUES ('Pewter City', 'Kanto', 'Gym, Pokemart, Museum');
