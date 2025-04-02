@@ -96,7 +96,7 @@ async function fetchMoveIDFromDb() {
 
 // SELECT FROM DATABASE
 async function fetchAbilityIDFromDb() {
-    const query = 'SELECT abilityid FROM ability';
+    const query = 'SELECT abilityid FROM ability ORDER BY abilityid';
     return await fetchQuery(query);
 }
 
