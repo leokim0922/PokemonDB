@@ -1228,7 +1228,7 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Rock', 'Steel', 50);
 
 		COMMIT;
-		
+
 		-- Psychic Type Effectiveness
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Psychic', 'Fighting', 200);
 		INSERT INTO Effect(TypeName1, TypeName2, Percentage) VALUES ('Psychic', 'Poison', 200);
@@ -1611,6 +1611,48 @@ drop PROCEDURE AddPokemonWithTypeAbilityLearns;
 
 		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
 		VALUES ('Swimmer Kate', 250, 'Slateport City', 'Hoenn');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName) 
+		VALUES ('Hiker Tom', 450, 'Pewter City', 'Kanto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName) 
+		VALUES ('Camper Jake', 300, 'Pewter City', 'Kanto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName) 
+		VALUES ('Fisherman Kyle', 270, 'Cerulean City', 'Kanto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName)
+		VALUES ('Picnicker Sarah', 290, 'Cerulean City', 'Kanto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName) 
+		VALUES ('Swimmer Julia', 230, 'Cerulean City', 'Kanto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName) 
+		VALUES ('Gentleman Roger', 750, 'Vermilion City', 'Kanto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName) 
+		VALUES ('Engineer Greg', 670, 'Vermilion City', 'Kanto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName) 
+		VALUES ('Bird Keeper Kevin', 280, 'Violet City', 'Johto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName) 
+		VALUES ('Lass Megan', 200, 'Violet City', 'Johto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName) 
+		VALUES ('Bug Catcher Leo', 160, 'Azalea Town', 'Johto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName) 
+		VALUES ('Twins Emma', 140, 'Azalea Town', 'Johto');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName) 
+		VALUES ('Fisherman Joe', 190, 'Slateport City', 'Hoenn');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName) 
+		VALUES ('Tuber Tommy', 160, 'Slateport City', 'Hoenn');
+
+		INSERT INTO Trainer_Defends(TrainerName, Winnings, LocationName, RegionName) 
+		VALUES ('Sailor Mark', 240, 'Slateport City', 'Hoenn');
 
 		COMMIT;
 
