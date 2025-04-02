@@ -7,19 +7,17 @@ async function fetchAndDisplayTrainers() {
 async function fetchAverageWinnings() {
     const avgNumber = document.getElementById('avgNumber');
 
-    const response = await fetch('/calculateAvgWinningAggregate', {
-        method: 'GET'
-    });
+    try {
+        const response = await fetch('/calculateAvgWinningAggregate', { method: 'GET' });
+        const data = await response.json();
 
-    avgNumber.style.display = 'inline';
+        avgNumber.style.display = 'inline';
 
-    response.text()
-        .then((text) => {
-            avgNumber.textContent = text.trim();
-        })
-        .catch((error) => {
-            avgNumber.textContent = 'error calculating averages';  // Adjust error handling if required.
-        });
+        // Extract the number from the nested array structure
+        avgNumber.textContent = data.data[0][0];
+    } catch (error) {
+        avgNumber.textContent = 'Error calculating averages';
+    }
 }
 
 // ---------------------------------------------------------------
