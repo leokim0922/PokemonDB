@@ -28,7 +28,6 @@ async function fetchAndPopulateItemType(elementId) {
 
 // Fetch ItemType and populate for fitler selection
 async function fetchAndPopulateItemTypes() {
-    await fetchAndPopulateItemType('itemtypes1');
     await fetchAndPopulateItemType('itemtypes2');
 }
 
@@ -37,14 +36,7 @@ async function fetchAndPopulateItemTypes() {
 async function fetchAndDisplayItemCountByType(event) {
     event.preventDefault();
 
-    const selectedType = document.getElementById('itemtypes1').value;
-
-    let url = '/item-count';
-    if (selectedType && selectedType !== "0") {
-        url += `?itemtype=${encodeURIComponent(selectedType)}`;
-    }
-
-    const response = await fetch(url, { method: 'GET' });
+    const response = await fetch('/item-count', { method: 'GET' });
     const responseData = await response.json();
 
     const tableElement = document.getElementById('itemCountsTable');

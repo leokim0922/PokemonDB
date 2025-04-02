@@ -292,16 +292,6 @@ async function fetchMoveAttributesFromDb(attributes) {
     }
 }
 
-// // SELECT FROM DATABASE
-// async function fetchItemNameFromDb() {
-//     return await withOracleDB(async (connection) => {
-//         const result = await connection.execute('SELECT itemname FROM item_owns');
-//         return result.rows;
-//     }).catch(() => {
-//         return [];
-//     });
-// }
-
 // SELECT FROM DATABASE
 async function fetchItemFromDB() {
     return await withOracleDB(async (connection) => {
@@ -317,16 +307,6 @@ async function fetchItemFromDB() {
     });
 }
 
-// // SELECT FROM DATABASE
-// async function fetchItemNameFromDb() {
-//     return await withOracleDB(async (connection) => {
-//         const result = await connection.execute('SELECT itemname FROM item_owns');
-//         return result.rows;
-//     }).catch(() => {
-//         return [];
-//     });
-// }
-
 // SELECT FROM DATABASE
 async function fetchItemTypeFromDb() {
     return await withOracleDB(async (connection) => {
@@ -337,16 +317,14 @@ async function fetchItemTypeFromDb() {
     });
 }
 
-async function fetchItemCountByType(itemtype) {
+async function fetchItemCountByType() {
     return await withOracleDB(async (connection) => {
         const result = await connection.execute(
             `SELECT io.ItemType, COUNT(i.ItemName) AS ItemCount
             FROM Item_Owns i
             JOIN Item_Owns2 io ON i.ItemEffect = io.ItemEffect
-            WHERE io.ItemType = :itemtype
             GROUP BY io.ItemType
             ORDER BY ItemCount DESC`,
-            { itemtype }
         );
         return result.rows;
     }).catch(() => {
@@ -365,7 +343,6 @@ async function fetchMartFromDB() {
             JOIN Pokemart p ON s.LocationName = p.LocationName AND s.RegionName = p.RegionName
             ORDER BY io.ItemName`
         );
-        console.log(result)
         return result.rows;
     }).catch(() => {
         return [];
@@ -438,6 +415,4 @@ module.exports = {
     fetchPokeMartByTypeAndMin,
     fetchGymTrainersFromDb,
     fetchAverageWinningAggregate
-    // fetchItemNameFromDb,
-    // fetchItemEffectFromDb
 };

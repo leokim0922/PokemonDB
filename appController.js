@@ -113,25 +113,13 @@ router.get('/items', async (req, res) => {
     res.json({data: tableContent});
 });
 
-// router.get('/itemname', async (req, res) => {
-//     console.log("Database connection established!");
-//     const tableContent = await appService.fetchItemNameFromDb();
-//     res.json({data: tableContent});
-// });
-
 router.get('/itemtype', async (req, res) => {
     const tableContent = await appService.fetchItemTypeFromDb();
     res.json({data: tableContent});
 });
 
-// router.get('/itemeffect', async (req, res) => {
-//     const tableContent = await appService.fetchItemEffectFromDb();
-//     res.json({data: tableContent});
-// });
-
 router.get('/item-count', async (req, res) => {
-    const { itemtype } = req.query;
-    const tableContent = await appService.fetchItemCountByType(itemtype);
+    const tableContent = await appService.fetchItemCountByType();
     res.json({data: tableContent});
 });
 
