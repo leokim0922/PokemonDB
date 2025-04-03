@@ -284,7 +284,7 @@ async function fetchMoveAttributesFromDb(attributes) {
     var query = '';
 
     if (typeFilter === 'All') {
-        query = `SELECT ${attributes} FROM Movetype`;
+        query = `SELECT ${attributes} FROM Movetype ORDER BY Movetype.moveid`;
         return await queryFromOracle(query);
     } else {
         query = `SELECT ${attributes} FROM Movetype mt WHERE mt.typename = :typeFilter`;
